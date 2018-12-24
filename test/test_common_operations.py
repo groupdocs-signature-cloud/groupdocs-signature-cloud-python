@@ -32,7 +32,7 @@ import unittest
 import groupdocs_signature_cloud
 from groupdocs_signature_cloud.apis.signature_api import SignatureApi
 from groupdocs_signature_cloud.models.requests.get_barcodes_request import GetBarcodesRequest
-from groupdocs_signature_cloud.models.requests.get_qrcodes_request import GetQRCodesRequest
+from groupdocs_signature_cloud.models.requests.get_qr_codes_request import GetQrCodesRequest
 from groupdocs_signature_cloud.models.requests.get_document_info_request import GetDocumentInfoRequest
 from groupdocs_signature_cloud.models.requests.get_document_info_from_url_request import GetDocumentInfoFromUrlRequest
 from groupdocs_signature_cloud.models.requests.get_supported_formats_request import GetSupportedFormatsRequest
@@ -70,7 +70,7 @@ class TestsCommonOperations(unittest.TestCase):
             self.assertNotEqual(curItem.name, False)
 
     def test_get_supported_qrcodes(self):
-        request = GetQRCodesRequest()
+        request = GetQrCodesRequest()
         response = self.BaseTest.SignatureApi.get_qr_codes(request)
 
         self.assertNotEqual(response, False)

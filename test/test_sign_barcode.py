@@ -52,7 +52,7 @@ class TestsSignBarcode(unittest.TestCase):
         options1 = self.get_options_sign_barcode_cells()
         options2 = self.get_options_sign_barcode_cells()
         options2.text = "87654321"
-        options2.height = 300
+        options2.top = 10
         collection._items = [options1, options2]
 
         file = self.BaseTest.TestFiles.getFileSignedCells()
@@ -67,7 +67,7 @@ class TestsSignBarcode(unittest.TestCase):
         options1 = self.get_options_sign_barcode_cells()
         options2 = self.get_options_sign_barcode_cells()
         options2.text = "87654321"
-        options2.height = 300
+        options2.top = 10
         collection._items = [options1, options2]
 
         file = self.BaseTest.TestFiles.getFileSignedCellsUrl()
@@ -79,26 +79,24 @@ class TestsSignBarcode(unittest.TestCase):
     def test_signature_post_barcode_cells(self):
         file = self.BaseTest.TestFiles.getFile01PagesCells()
         options = self.get_options_sign_barcode_cells()
-        options.top = 1 
-        options.left = 1 
         request = PostBarcodeRequest(file.fileName, options, file.password, file.folder, self.BaseTest.FileStorage)
         response = self.BaseTest.SignatureApi.post_barcode(request)
         self.assert_response(file, response) 
-
+    
     def test_signature_post_barcode_cells_url(self):
         file = self.BaseTest.TestFiles.getFile01PagesCellsUrl()
         options = self.get_options_sign_barcode_cells()
-        options.top = 1 
-        options.left = 1 
         request = PostBarcodeFromUrlRequest(file.url, options, file.password, self.BaseTest.FileStorage)
         response = self.BaseTest.SignatureApi.post_barcode_from_url(request)
         self.assert_response(file, response)
-
+    
     def get_options_sign_barcode_cells(self):
         options = CellsSignBarcodeOptionsData(1, 1, 1)
         self.compose_barcode_sign_optionsData(options)
+        options.top = 5 
+        options.left = 5           
         return options
-
+    
     def test_signature_post_barcode_docimages(self):
         file = self.BaseTest.TestFiles.getFile01PagesDocImages()
         options = self.get_options_sign_barcode_docimages()
@@ -174,7 +172,7 @@ class TestsSignBarcode(unittest.TestCase):
         options = WordsSignBarcodeOptionsData()
         self.compose_barcode_sign_optionsData(options)
         return options
-
+    
     def compose_barcode_sign_optionsData(self, options):
         # set barcode properties
         options.barcode_type_name ="Code128"
@@ -188,8 +186,8 @@ class TestsSignBarcode(unittest.TestCase):
         options.size_measure_type = "Pixels"
         options.stretch = "None"
         options.rotation_angle = 45
-        options.horizontal_alignment = "Left"
-        options.vertical_alignment = "Top"
+        options.horizontal_alignment = "None"
+        options.vertical_alignment = "None"
         # set margin
         margin = PaddingData(all = 100)        
         options.margin = margin
@@ -215,10 +213,10 @@ class TestsSignBarcode(unittest.TestCase):
     def assert_response(self, file, response):
     
         self.assertNotEqual(response, False)
-        self.assertEqual(response["code"], 200)
-        self.assertEqual(response["status"], "OK")
-        self.assertEqual(response["fileName"], file.fileName)
-        self.assertEqual(response["folder"], "Output")
+        self.assertEqual(response.code, "200")
+        self.assertEqual(response.status, "OK")
+        self.assertEqual(file.fileName, file.fileName)
+        self.assertEqual(response.folder, "Output")
 
     def tearDown(self):
         pass

@@ -55,7 +55,7 @@ class TestsSignDigital(unittest.TestCase):
         options1 = self.get_options_sign_digital_cells()
         options2 = self.get_options_sign_digital_cells()
         options2.certificate_guid = "certificates\\test03_rsa_sha1_1024.pfx"
-        options2.top = 5
+        options2.top = 10
         collection._items = [options1, options2]
 
         file = self.BaseTest.TestFiles.getFileSignedCells()
@@ -70,7 +70,7 @@ class TestsSignDigital(unittest.TestCase):
         options1 = self.get_options_sign_digital_cells()
         options2 = self.get_options_sign_digital_cells()
         options2.certificate_guid = "certificates\\test03_rsa_sha1_1024.pfx"
-        options2.top = 5
+        options2.top = 10
         collection._items = [options1, options2]
 
         file = self.BaseTest.TestFiles.getFileSignedCellsUrl()
@@ -82,8 +82,6 @@ class TestsSignDigital(unittest.TestCase):
     def test_signature_post_digital_cells(self):
         file = self.BaseTest.TestFiles.getFile01PagesCells()
         options = self.get_options_sign_digital_cells()
-        options.top = 1 
-        options.left = 1 
         request = PostDigitalRequest(file.fileName, options, file.password, file.folder, self.cer, self.img, self.BaseTest.FileStorage)
         response = self.BaseTest.SignatureApi.post_digital(request)
         self.assert_response(file, response) 
@@ -91,8 +89,6 @@ class TestsSignDigital(unittest.TestCase):
     def test_signature_post_digital_cells_url(self):
         file = self.BaseTest.TestFiles.getFile01PagesCellsUrl()
         options = self.get_options_sign_digital_cells()
-        options.top = 1 
-        options.left = 1 
         request = PostDigitalFromUrlRequest(file.url, options, file.password, self.cer, self.img, self.BaseTest.FileStorage)
         response = self.BaseTest.SignatureApi.post_digital_from_url(request)
         self.assert_response(file, response)
@@ -100,6 +96,8 @@ class TestsSignDigital(unittest.TestCase):
     def get_options_sign_digital_cells(self):
         options = CellsSignDigitalOptionsData(1, 1, 1)
         self.compose_digital_sign_optionsData(options)
+        options.top = 5 
+        options.left = 5 
         return options
 
     def test_signature_post_digital_pdf(self):
@@ -152,19 +150,15 @@ class TestsSignDigital(unittest.TestCase):
         options.height = 100
         options.location_measure_type = "Pixels"
         options.size_measure_type = "Pixels"
-        options.stretch = "None"
         options.rotation_angle = 45
-        options.horizontal_alignment = "Left"
-        options.vertical_alignment = "Top"
+        options.horizontal_alignment = "None"
+        options.vertical_alignment = "None"
         # set margin
         margin = PaddingData(all = 100)        
         options.margin = margin
         options.margin_measure_type = "Pixels"
         #set border    
-        options.border_dash_style = "DashLongDashDot"
-        options.border_weight = 1
         options.opacity = 1
-        options.border_visiblity = True
         #set pages for signing
         options.sign_all_pages = False
         options.document_page_number = 1
@@ -174,10 +168,10 @@ class TestsSignDigital(unittest.TestCase):
     def assert_response(self, file, response):
     
         self.assertNotEqual(response, False)
-        self.assertEqual(response["code"], 200)
-        self.assertEqual(response["status"], "OK")
-        self.assertEqual(response["fileName"], file.fileName)
-        self.assertEqual(response["folder"], "Output")
+        self.assertEqual(response.code, "200")
+        self.assertEqual(response.status, "OK")
+        self.assertEqual(file.fileName, file.fileName)
+        self.assertEqual(response.folder, "Output")
 
     def tearDown(self):
         pass

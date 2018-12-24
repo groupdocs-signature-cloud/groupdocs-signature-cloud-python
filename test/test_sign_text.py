@@ -209,10 +209,10 @@ class TestsSignText(unittest.TestCase):
     def assert_response(self, file, response):
     
         self.assertNotEqual(response, False)
-        self.assertEqual(response["code"], 200)
-        self.assertEqual(response["status"], "OK")
-        self.assertEqual(response["fileName"], file.fileName)
-        self.assertEqual(response["folder"], "Output")
+        self.assertEqual(response.code, "200")
+        self.assertEqual(response.status, "OK")
+        self.assertEqual(file.fileName, file.fileName)
+        self.assertEqual(response.folder, "Output")
 
     def tearDown(self):
         pass

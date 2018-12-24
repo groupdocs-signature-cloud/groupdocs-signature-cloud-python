@@ -51,7 +51,6 @@ class TestsVerificationText(unittest.TestCase):
         collection = VerifyOptionsCollectionData()
         options1 = self.get_options_verify_text_cells()
         options2 = self.get_options_verify_text_cells()
-        options2.text = "John"
 
         collection._items = [options1 , options2]
 
@@ -66,7 +65,6 @@ class TestsVerificationText(unittest.TestCase):
         collection = VerifyOptionsCollectionData()
         options1 = self.get_options_verify_text_cells()
         options2 = self.get_options_verify_text_cells()
-        options2.text = "John"
         
         collection._items = [options1 , options2]
 

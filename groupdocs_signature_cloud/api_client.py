@@ -91,6 +91,7 @@ class ApiClient(object):
     }
 
     RESPONSE_MODELS = {
+		"SignatureDocumentResponse",
         "VerifiedDocumentResponse",
          "SearchDocumentResponse"
     }
@@ -741,6 +742,8 @@ class ApiClient(object):
             instance = PdfDigitalSignatureData()
         if klass is "WordsDigitalSignatureData":
             instance = WordsDigitalSignatureData()
+        if klass is "SignatureDocumentResponse":
+            instance = SignatureDocumentResponse()			
         if klass is "VerifiedDocumentResponse":
             instance = VerifiedDocumentResponse()
         if klass is "SearchDocumentResponse":
@@ -763,7 +766,13 @@ class ApiClient(object):
             instance.digital_signature_type = kwargs["digital_signature_type"]            
             instance.comments = kwargs["comments"]            
             instance.is_valid = kwargs["is_valid"]            
-            instance.sign_time = kwargs["sign_time"]            
+            instance.sign_time = kwargs["sign_time"]  
+        if  klass == "SignatureDocumentResponse":
+            instance._code = kwargs["code"]
+            if "folder" in kwargs:
+                instance._folder = kwargs["folder"]            
+            instance._file_name = kwargs["file_name"]            
+            instance._status = kwargs["status"]			
         if  klass == "VerifiedDocumentResponse":
             instance._code = kwargs["code"]
             instance._result = kwargs["result"]            

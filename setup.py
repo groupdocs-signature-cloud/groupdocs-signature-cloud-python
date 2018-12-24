@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "groupdocs-signature-cloud"
-VERSION = "18.12"
+VERSION = "18.8.1"
 
 # To install the library, run the following
 #
@@ -22,8 +22,8 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 TEST_REQUIRES = ['asposestoragecloud >= 1.0.5']
 
 setup(
-    name="groupdocs-signature-cloud",
-    version="18.12",
+    name=NAME,
+    version=VERSION,
     description="GroupDocs.Signature Cloud SDK for Python allows you to use GroupDocs.Signature APIs in your Python applications",
 	author="GroupDocs Signature",
     author_email="groupdocs.cloud@asposeptyltd.com",
@@ -53,5 +53,6 @@ setup(
     """,
     long_description_content_type="text/markdown"
 )
+
 
 

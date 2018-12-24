@@ -51,8 +51,8 @@ class TestsSignStamp(unittest.TestCase):
         collection = SignOptionsCollectionData()
         options1 = self.get_options_sign_stamp_cells()
         options2 = self.get_options_sign_stamp_cells()
-        options2.text = "Smith John"
-        options2.top = 5
+        options2.inner_lines[0].text = "Smith John"
+        options2.top = 10
         collection._items = [options1, options2]
 
         file = self.BaseTest.TestFiles.getFileSignedCells()
@@ -66,8 +66,8 @@ class TestsSignStamp(unittest.TestCase):
         collection = SignOptionsCollectionData()
         options1 = self.get_options_sign_stamp_cells()
         options2 = self.get_options_sign_stamp_cells()
-        options2.text = "Smith John"
-        options2.top = 5
+        options2.inner_lines[0].text  = "Smith John"
+        options2.top = 10
         collection._items = [options1, options2]
 
         file = self.BaseTest.TestFiles.getFileSignedCellsUrl()
@@ -79,8 +79,6 @@ class TestsSignStamp(unittest.TestCase):
     def test_signature_post_stamp_cells(self):
         file = self.BaseTest.TestFiles.getFile01PagesCells()
         options = self.get_options_sign_stamp_cells()
-        options.top = 1 
-        options.left = 1 
         request = PostStampRequest(file.fileName, options, file.password, file.folder, self.BaseTest.FileStorage)
         response = self.BaseTest.SignatureApi.post_stamp(request)
         self.assert_response(file, response) 
@@ -88,8 +86,6 @@ class TestsSignStamp(unittest.TestCase):
     def test_signature_post_stamp_cells_url(self):
         file = self.BaseTest.TestFiles.getFile01PagesCellsUrl()
         options = self.get_options_sign_stamp_cells()
-        options.top = 1 
-        options.left = 1 
         request = PostStampFromUrlRequest(file.url, options, file.password, self.BaseTest.FileStorage)
         response = self.BaseTest.SignatureApi.post_stamp_from_url(request)
         self.assert_response(file, response)
@@ -97,6 +93,8 @@ class TestsSignStamp(unittest.TestCase):
     def get_options_sign_stamp_cells(self):
         options = CellsSignStampOptionsData(1, 1, 1)
         self.compose_stamp_sign_optionsData(options)
+        options.top = 5 
+        options.left = 5 
         return options
 
     def test_signature_post_stamp_docimages(self):
@@ -246,10 +244,10 @@ class TestsSignStamp(unittest.TestCase):
     def assert_response(self, file, response):
     
         self.assertNotEqual(response, False)
-        self.assertEqual(response["code"], 200)
-        self.assertEqual(response["status"], "OK")
-        self.assertEqual(response["fileName"], file.fileName)
-        self.assertEqual(response["folder"], "Output")
+        self.assertEqual(response.code, "200")
+        self.assertEqual(response.status, "OK")
+        self.assertEqual(file.fileName, file.fileName)
+        self.assertEqual(response.folder, "Output")
 
     def tearDown(self):
         pass
