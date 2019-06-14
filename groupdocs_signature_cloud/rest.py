@@ -1,7 +1,7 @@
 # coding: utf-8
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="rest.py">
-#   Copyright (c) 2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,6 +23,7 @@
 #  SOFTWARE.
 # </summary>
 # -----------------------------------------------------------------------------------
+
 from __future__ import absolute_import
 
 import io
@@ -41,9 +42,9 @@ try:
 except ImportError:
     raise ImportError('Swagger python client requires urllib3.')
 
+from groupdocs_signature_cloud.api_exception import ApiException
 
 logger = logging.getLogger(__name__)
-
 
 class RESTResponse(io.IOBase):
 
@@ -302,31 +303,3 @@ class RESTClientObject(object):
                             _preload_content=_preload_content,
                             _request_timeout=_request_timeout,
                             body=body)
-
-
-class ApiException(Exception):
-
-    def __init__(self, status=None, reason=None, http_resp=None):
-        if http_resp:
-            self.status = http_resp.status
-            self.reason = http_resp.reason
-            self.body = http_resp.data
-            self.headers = http_resp.getheaders()
-        else:
-            self.status = status
-            self.reason = reason
-            self.body = None
-            self.headers = None
-
-    def __str__(self):
-        """Custom error messages for exception"""
-        error_message = "({0})\n"\
-                        "Reason: {1}\n".format(self.status, self.reason)
-        if self.headers:
-            error_message += "HTTP response headers: {0}\n".format(
-                self.headers)
-
-        if self.body:
-            error_message += "HTTP response body: {0}\n".format(self.body)
-
-        return error_message

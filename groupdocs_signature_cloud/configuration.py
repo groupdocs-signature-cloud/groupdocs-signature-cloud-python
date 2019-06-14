@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="configuration.py">
-#   Copyright (c) 2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,56 +31,31 @@ import copy
 import logging
 import multiprocessing
 import sys
-import urllib3
-
 import six
 from six.moves import http_client as httplib
 
+class Configuration(object):
+    """API configuration"""
 
-class TypeWithDefault(type):
-    def __init__(cls, name, bases, dct):
-        super(TypeWithDefault, cls).__init__(name, bases, dct)
-        cls._default = None
+    def __init__(self, app_sid, app_key):
+        """
+        Constructor
+        :param app_sid Application identifier (App SID)
+        :param app_key Application private key (App Key)
+        """
 
-    def __call__(cls):
-        if cls._default is None:
-            cls._default = type.__call__(cls)
-        return copy.copy(cls._default)
-
-    def set_default(cls, default):
-        cls._default = copy.copy(default)
-
-
-class Configuration(six.with_metaclass(TypeWithDefault, object)):
-    """ Class which contains configuration parameters
-    """
-
-    def __init__(self):
-        """Constructor"""
-        # Default Base url
-        self.host = "http://api-dev.groupdocs.cloud"
-        # Default api version is v1. Available values are v1, v1.1, v2, v3
-        self.api_version = "v1"
+        # API Base URL
+        self.api_base_url = "https://api.groupdocs.cloud"
+        
+        # Default api version is /v2.0.
+        self.api_version = "/v2.0"
+        
         # Temp file folder for downloading files
         self.temp_folder_path = None
-        # Temp file folder for downloading files
-        self.skip_files_uploading = True
-        self.upload_only_missing_files = True
-		
-        # Authentication Settings
-        # dict to store API key(s)
-        self.api_key = {}
-        self.api_key['api_key'] = ""
-        self.api_key['app_sid'] = ""
-        # dict to store API prefix (e.g. Bearer)
-        self.api_key_prefix = {}
-        # Username for HTTP basic authentication
-        self.username = ""
-        # Password for HTTP basic authentication
-        self.password = ""
 
-        # access token for OAuth
-        self.access_token = ""
+        # Authentication Settings
+        self.app_sid = app_sid
+        self.app_key = app_key
 
         # Logging Settings
         self.logger = {}
@@ -119,6 +94,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
 
         # Proxy URL
         self.proxy = None
+
         # Safe chars for path_param
         self.safe_chars_for_path_param = ''
 
@@ -218,58 +194,6 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         self.__logger_format = value
         self.logger_formatter = logging.Formatter(self.__logger_format)
 
-    def get_api_key_with_prefix(self, identifier):
-        """Gets API key (with prefix if set).
-
-        :param identifier: The identifier of apiKey.
-        :return: The token for api key authentication.
-        """
-        if (self.api_key.get(identifier) and
-                self.api_key_prefix.get(identifier)):
-            return self.api_key_prefix[identifier] + ' ' + self.api_key[identifier]  # noqa: E501
-        elif self.api_key.get(identifier):
-            return self.api_key[identifier]
-
-    def get_basic_auth_token(self):
-        """Gets HTTP basic authentication header (string).
-
-        :return: The token for basic HTTP authentication.
-        """
-        return urllib3.util.make_headers(
-            basic_auth=self.username + ':' + self.password
-        ).get('authorization')
-
-    def auth_settings(self):
-        """Gets Auth Settings dict for api client.
-
-        :return: The Auth Settings information dict.
-        """
-        return {
-            'appsid':
-                {
-                    'type': 'api_key',
-                    'in': 'query',
-                    'key': 'Appsid',
-                    'value': self.get_api_key_with_prefix('Appsid')
-                },
-
-            'oauth':
-                {
-                    'type': 'oauth2',
-                    'in': 'header',
-                    'key': 'Authorization',
-                    'value': 'Bearer ' + self.access_token
-                },
-            'signature':
-                {
-                    'type': 'api_key',
-                    'in': 'query',
-                    'key': 'Signature',
-                    'value': self.get_api_key_with_prefix('Signature')
-                },
-
-        }
-
     def to_debug_report(self):
         """Gets the essential information for debugging.
 
@@ -278,6 +202,6 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 18.8\n"\
-               "SDK Package Version: 18.10".\
+               "Version of the API: 19.5\n"\
+               "SDK Package Version: 19.5".\
                format(env=sys.platform, pyversion=sys.version)

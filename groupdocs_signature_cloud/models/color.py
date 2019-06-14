@@ -1,7 +1,8 @@
 # coding: utf-8
+
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="Color.py">
-#   Copyright (c) 2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,13 +24,15 @@
 #  SOFTWARE.
 # </summary>
 # -----------------------------------------------------------------------------------
+
 import pprint
 import re  # noqa: F401
 
 import six
 
 class Color(object):
-    """Utility class for  serialization
+    """
+    Keep color value
     """
 
     """
@@ -40,71 +43,45 @@ class Color(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'web': 'str',
-        'alpha': 'int'
+        'web': 'str'
     }
 
     attribute_map = {
-        'web': 'Web',
-        'alpha': 'Alpha'
+        'web': 'Web'
     }
 
-    def __init__(self, web=None, alpha=None):  # noqa: E501
-        """Color - a model defined in Swagger"""  # noqa: E501
+    def __init__(self, web=None, **kwargs):  # noqa: E501
+        """Initializes new instance of Color"""  # noqa: E501
 
         self._web = None
-        self._alpha = None
-        self.discriminator = None
 
         if web is not None:
             self.web = web
-        if alpha is not None:
-            self.alpha = alpha
-
+    
     @property
     def web(self):
-        """Gets the web of this Color.  # noqa: E501
+        """
+        Gets the web.  # noqa: E501
 
         HTML string color representation  # noqa: E501
 
-        :return: The web of this Color.  # noqa: E501
+        :return: The web.  # noqa: E501
         :rtype: str
         """
         return self._web
 
     @web.setter
     def web(self, web):
-        """Sets the web of this Color.
+        """
+        Sets the web.
 
         HTML string color representation  # noqa: E501
 
-        :param web: The web of this Color.  # noqa: E501
+        :param web: The web.  # noqa: E501
         :type: str
         """
         self._web = web
-    @property
-    def alpha(self):
-        """Gets the alpha of this Color.  # noqa: E501
 
-        Alpha component of color structure  # noqa: E501
-
-        :return: The alpha of this Color.  # noqa: E501
-        :rtype: int
-        """
-        return self._alpha
-
-    @alpha.setter
-    def alpha(self, alpha):
-        """Sets the alpha of this Color.
-
-        Alpha component of color structure  # noqa: E501
-
-        :param alpha: The alpha of this Color.  # noqa: E501
-        :type: int
-        """
-        if alpha is None:
-            raise ValueError("Invalid value for `alpha`, must not be `None`")  # noqa: E501
-        self._alpha = alpha
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

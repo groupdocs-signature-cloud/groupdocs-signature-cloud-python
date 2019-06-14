@@ -1,7 +1,8 @@
 # coding: utf-8
+
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="QRCodeType.py">
-#   Copyright (c) 2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,13 +24,15 @@
 #  SOFTWARE.
 # </summary>
 # -----------------------------------------------------------------------------------
+
 import pprint
 import re  # noqa: F401
 
 import six
 
 class QRCodeType(object):
-    """Describes QRCode type.
+    """
+    Describes QR-code type
     """
 
     """
@@ -47,36 +50,38 @@ class QRCodeType(object):
         'name': 'Name'
     }
 
-    def __init__(self, name=None):  # noqa: E501
-        """QRCodeType - a model defined in Swagger"""  # noqa: E501
+    def __init__(self, name=None, **kwargs):  # noqa: E501
+        """Initializes new instance of QRCodeType"""  # noqa: E501
 
         self._name = None
-        self.discriminator = None
 
         if name is not None:
             self.name = name
-
+    
     @property
     def name(self):
-        """Gets the name of this QRCodeType.  # noqa: E501
+        """
+        Gets the name.  # noqa: E501
 
-        QRCode Type Name  # noqa: E501
+        QR-code type name  # noqa: E501
 
-        :return: The name of this QRCodeType.  # noqa: E501
+        :return: The name.  # noqa: E501
         :rtype: str
         """
         return self._name
 
     @name.setter
     def name(self, name):
-        """Sets the name of this QRCodeType.
+        """
+        Sets the name.
 
-        QRCode Type Name  # noqa: E501
+        QR-code type name  # noqa: E501
 
-        :param name: The name of this QRCodeType.  # noqa: E501
+        :param name: The name.  # noqa: E501
         :type: str
         """
         self._name = name
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

@@ -1,7 +1,8 @@
 # coding: utf-8
+
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="api_client.py">
-#   Copyright (c) 2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,20 +30,18 @@ from __future__ import absolute_import
 import datetime
 import json
 import mimetypes
-from multiprocessing.pool import ThreadPool
 import os
 import re
 import tempfile
+from multiprocessing.pool import ThreadPool
 
-# python 2 and python 3 compatibility library
-from six.moves.urllib.parse import quote
 import six
+from dateutil import parser
+from six.moves.urllib.parse import quote
 
-from groupdocs_signature_cloud.configuration import Configuration
 import groupdocs_signature_cloud.models
 from groupdocs_signature_cloud import rest
-from groupdocs_signature_cloud.models import *
-
+from groupdocs_signature_cloud.configuration import Configuration
 
 class ApiClient(object):
     """Generic API client
@@ -70,50 +69,22 @@ class ApiClient(object):
         'object': object,
     }
 
-    SIGNATURE_BARCODE_MODELS = {
-        "CellsBarcodeSignatureData", 
-        "ImagesBarcodeSignatureData", 
-        "PdfBarcodeSignatureData",
-        "SlidesBarcodeSignatureData",
-        "WordsBarcodeSignatureData"
-    }
-    SIGNATURE_QRCODE_MODELS = {
-        "CellsQRCodeSignatureData", 
-        "ImagesQRCodeSignatureData", 
-        "PdfQRCodeSignatureData",
-        "SlidesQRCodeSignatureData",
-        "WordsQRCodeSignatureData"
-    }
-    SIGNATURE_DIGITAL_MODELS = {
-        "CellsDigitalSignatureData", 
-        "PdfDigitalSignatureData",
-        "WordsDigitalSignatureData"
-    }
-
-    RESPONSE_MODELS = {
-		"SignatureDocumentResponse",
-        "VerifiedDocumentResponse",
-         "SearchDocumentResponse"
-    }
-
-    def __init__(self, configuration=None, header_name=None, header_value=None,
+    def __init__(self, configuration, header_name=None, header_value=None,
                  cookie=None):
-        if configuration is None:
-            configuration = Configuration()
         self.configuration = configuration
-
-        self.pool = ThreadPool()
+        self.pool = None
         self.rest_client = rest.RESTClientObject(configuration)
-        self.default_headers = {'x-aspose-client': 'python sdk', 'x-aspose-version': '18.10'}
+        self.default_headers = {'x-groupdocs-client': 'python sdk', 'x-groupdocs-version': '19.5'}
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'python sdk 18.10'
+        self.user_agent = 'python sdk 19.5'
 
     def __del__(self):
-        self.pool.close()
-        self.pool.join()
+        if self.pool is not None:
+            self.pool.close()
+            self.pool.join()
 
     @property
     def user_agent(self):
@@ -133,7 +104,7 @@ class ApiClient(object):
             query_params=None, header_params=None, body=None, post_params=None,
             files=None, response_type=None, auth_settings=None,
             _return_http_data_only=None, collection_formats=None,
-            _preload_content=True, _request_timeout=None):
+            _preload_content=True, _request_timeout=None, _append_api_version=True):
         """Call api method"""
         config = self.configuration
 
@@ -144,14 +115,12 @@ class ApiClient(object):
             header_params['Cookie'] = self.cookie
         if header_params:
             header_params = self.sanitize_for_serialization(header_params)
-            header_params = dict(self.parameters_to_tuples(header_params,
-                                                           collection_formats))
+            header_params = dict(self.parameters_to_tuples(header_params, collection_formats))
 
         # path parameters
         if path_params:
             path_params = self.sanitize_for_serialization(path_params)
-            path_params = self.parameters_to_tuples(path_params,
-                                                    collection_formats)
+            path_params = self.parameters_to_tuples(path_params, collection_formats)
             for k, v in path_params:
                 # specified safe chars, encode everything
                 resource_path = resource_path.replace(
@@ -162,15 +131,13 @@ class ApiClient(object):
         # query parameters
         if query_params:
             query_params = self.sanitize_for_serialization(query_params)
-            query_params = self.parameters_to_tuples(query_params,
-                                                     collection_formats)
+            query_params = self.parameters_to_tuples(query_params, collection_formats)
 
         # post parameters
         if post_params or files:
             post_params = self.prepare_post_parameters(post_params, files)
             post_params = self.sanitize_for_serialization(post_params)
-            post_params = self.parameters_to_tuples(post_params,
-                                                    collection_formats)
+            post_params = self.parameters_to_tuples(post_params, collection_formats)
 
         # auth setting
         self.update_params_for_auth(header_params, query_params, auth_settings)
@@ -182,9 +149,9 @@ class ApiClient(object):
         # request url
         url = ''
         if six.PY3:
-            url = self.configuration.host + '/' + self.configuration.api_version + resource_path
+            url = self.configuration.api_base_url + (self.configuration.api_version if _append_api_version else "") + resource_path
         else:
-            url = (self.configuration.host + '/' + self.configuration.api_version + resource_path).encode('utf8')
+            url = (self.configuration.api_base_url + (self.configuration.api_version if _append_api_version else "") + resource_path).encode('utf8')
 
         # perform request and return response
         response_data = self.request(
@@ -195,12 +162,15 @@ class ApiClient(object):
 
         self.last_response = response_data
 
-        return_data = self.deserialize(response_data, response_type)
+        if not response_type:
+            return None
+        else:
+            return_data = self.deserialize(response_data, response_type)
 
-        if _return_http_data_only:
-            return return_data
-        return (return_data, response_data.status,
-                response_data.getheaders())
+            if _return_http_data_only:
+                return return_data
+            return (return_data, response_data.status,
+                    response_data.getheaders())
 
     def sanitize_for_serialization(self, obj):
         """Builds a JSON POST object.
@@ -279,12 +249,7 @@ class ApiClient(object):
         if data is None:
             return None
 
-        modelClass = None
-
         if type(klass) == str:
-            if self.is_model_needs_initialization(klass):
-                modelClass = klass
-
             if klass.startswith('list['):
                 sub_kls = re.match(r'list\[(.*)\]', klass).group(1)
                 return [self.__deserialize(sub_data, sub_kls)
@@ -310,14 +275,15 @@ class ApiClient(object):
         elif klass == datetime.datetime:
             return self.__deserialize_datatime(data)
         else:
-            return self.__deserialize_model(data, klass, modelClass)
+            return self.__deserialize_model(data, klass)
 
     def call_api(self, resource_path, method,
                  path_params=None, query_params=None, header_params=None,
                  body=None, post_params=None, files=None,
                  response_type=None, auth_settings=None, is_async=None,
                  _return_http_data_only=None, collection_formats=None,
-                 _preload_content=True, _request_timeout=None):
+                 _preload_content=True, _request_timeout=None,
+                 _append_api_version=True):
         """Makes the HTTP request (synchronous) and returns deserialized data.
 
         To make an async request, set the async parameter.
@@ -347,6 +313,8 @@ class ApiClient(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :param _append_api_version: when enabled appends api version to api base url.
+
         :return:
             If is_async parameter is True,
             the request will be called asynchronously.
@@ -360,8 +328,12 @@ class ApiClient(object):
                                    body, post_params, files,
                                    response_type, auth_settings,
                                    _return_http_data_only, collection_formats,
-                                   _preload_content, _request_timeout)
+                                   _preload_content, _request_timeout, 
+                                   _append_api_version)
         else:
+            if self.pool is None:
+                self.pool = ThreadPool()
+
             thread = self.pool.apply_async(self.__call_api, (resource_path,
                                                              method, path_params, query_params,
                                                              header_params, body,
@@ -369,7 +341,9 @@ class ApiClient(object):
                                                              response_type, auth_settings,
                                                              _return_http_data_only,
                                                              collection_formats,
-                                                             _preload_content, _request_timeout))
+                                                             _preload_content, 
+                                                             _request_timeout,
+                                                             _append_api_version))
         return thread
 
     def request(self, method, url, query_params=None, headers=None,
@@ -533,19 +507,15 @@ class ApiClient(object):
         if not auth_settings:
             return
 
-        for auth in auth_settings:
-            auth_setting = self.configuration.auth_settings().get(auth)
-            if auth_setting:
-                if not auth_setting['value']:
-                    continue
-                elif auth_setting['in'] == 'header':
-                    headers[auth_setting['key']] = auth_setting['value']
-                elif auth_setting['in'] == 'query':
-                    querys.append((auth_setting['key'], auth_setting['value']))
-                else:
-                    raise ValueError(
-                        'Authentication token must be in `query` or `header`'
-                    )
+        if auth_settings:
+            if auth_settings['in'] == 'header':
+                headers[auth_settings['key']] = auth_settings['value']
+            elif auth_settings['in'] == 'query':
+                querys.append((auth_settings['key'], auth_settings['value']))
+            else:
+                raise ValueError(
+                    'Authentication token must be in `query` or `header`'
+                )
 
     def __deserialize_file(self, response):
         """Deserializes body to file
@@ -603,8 +573,7 @@ class ApiClient(object):
         :return: date.
         """
         try:
-            from dateutil.parser import parse
-            return parse(string).date()
+            return parser.parse(string)
         except ImportError:
             return string
         except ValueError:
@@ -622,8 +591,7 @@ class ApiClient(object):
         :return: datetime.
         """
         try:
-            from dateutil.parser import parse
-            return parse(re.search('[0-9]', string).group(0))
+            return parser.parse(string)
         except ImportError:
             return string
         except ValueError:
@@ -635,7 +603,7 @@ class ApiClient(object):
                 )
             )
 
-    def __deserialize_model(self, data, klass, modelClass):
+    def __deserialize_model(self, data, klass):
         """Deserializes list or dict to model.
 
         :param data: dict, list.
@@ -643,149 +611,27 @@ class ApiClient(object):
         :return: model object.
         """
 
-        if not klass.swagger_types and not hasattr(klass,
-                                                   'get_real_child_model'):
+        if not klass.swagger_types and not hasattr(klass, 'get_real_child_model'):
             return data
 
-        # Get initialized instance of klass
-        if modelClass is not None:
-            klass = self.get_initalized_model(modelClass)
+        # Signature type fix
+        if (data is not None and 'signatureType' in data):
+            derived_klass = getattr(groupdocs_signature_cloud.models, data['signatureType'] + 'Signature')
+            if(issubclass(derived_klass, klass)):
+                klass = derived_klass
 
         kwargs = {}
         if klass.swagger_types is not None:
-            for attr, attr_type in six.iteritems(klass.swagger_types):
-                # Original variant
-                attrOriginal = klass.attribute_map[attr]
-                if (data is not None and
-                        attrOriginal in data and
-                        isinstance(data, (list, dict))):
-                    value = data[attrOriginal]
+            empty_instance = klass()
+            for attr, attr_type in six.iteritems(empty_instance.swagger_types):
+                pname = self.__uncap(empty_instance.attribute_map[attr])                
+                if (data is not None and pname in data and isinstance(data, (list, dict))):
+                    value = data[pname]
                     kwargs[attr] = self.__deserialize(value, attr_type)
-                    continue
-                # First letter lower case variant
-                attrLower = attrOriginal
-                if isinstance(attrLower, str) and len(attrLower) > 0:
-                    attrLower = attrOriginal[:1].lower() + attrOriginal[1:]
-                if (data is not None and
-                        attrLower in data and
-                        isinstance(data, (list, dict))):
-                    value = data[attrLower]
-                    kwargs[attr] = self.__deserialize(value, attr_type)
-                    continue
-                # First & second letter lower case variant
-                attrLower = attrOriginal
-                if isinstance(attrLower, str) and len(attrLower) > 1:
-                    attrLower = attrOriginal[:2].lower() + attrOriginal[2:]
-                if (data is not None and
-                        attrLower in data and
-                        isinstance(data, (list, dict))):
-                    value = data[attrLower]
-                    kwargs[attr] = self.__deserialize(value, attr_type)
-                    continue
-
-        if modelClass is not None:
-            klass = self.get_filled_model(modelClass, klass, kwargs)
-            return  klass   
-
 
         instance = klass(**kwargs)
 
-        if hasattr(instance, 'get_real_child_model'):
-            klass_name = instance.get_real_child_model(data)
-            if klass_name:
-                instance = self.__deserialize(data, klass_name)
         return instance
-
-    def is_model_needs_initialization(self, klass):
-
-        result = False
         
-        if  klass in self.SIGNATURE_BARCODE_MODELS:
-            result = True
-        if  klass in self.SIGNATURE_QRCODE_MODELS:
-            result = True
-        if  klass in self.SIGNATURE_DIGITAL_MODELS:
-            result = True
-        if  klass in self.RESPONSE_MODELS:
-            result = True
-
-        return result
-
-
-    def get_initalized_model(self, klass):
-
-        instance = None
-        
-        if klass is "CellsBarcodeSignatureData":
-            instance = CellsBarcodeSignatureData()
-        if klass is "ImagesBarcodeSignatureData":
-            instance = ImagesBarcodeSignatureData()
-        if klass is "PdfBarcodeSignatureData":
-            instance = PdfBarcodeSignatureData()
-        if klass is "SlidesBarcodeSignatureData":
-            instance = SlidesBarcodeSignatureData()
-        if klass is "WordsBarcodeSignatureData":
-            instance = WordsBarcodeSignatureData()
-        if klass is "CellsQRCodeSignatureData":
-            instance = CellsQRCodeSignatureData()
-        if klass is "ImagesQRCodeSignatureData":
-            instance = ImagesQRCodeSignatureData()
-        if klass is "PdfQRCodeSignatureData":
-            instance = PdfQRCodeSignatureData()
-        if klass is "SlidesQRCodeSignatureData":
-            instance = SlidesQRCodeSignatureData()
-        if klass is "WordsQRCodeSignatureData":
-            instance = WordsQRCodeSignatureData()
-        if klass is "CellsDigitalSignatureData":
-            instance = CellsDigitalSignatureData()
-        if klass is "PdfDigitalSignatureData":
-            instance = PdfDigitalSignatureData()
-        if klass is "WordsDigitalSignatureData":
-            instance = WordsDigitalSignatureData()
-        if klass is "SignatureDocumentResponse":
-            instance = SignatureDocumentResponse()			
-        if klass is "VerifiedDocumentResponse":
-            instance = VerifiedDocumentResponse()
-        if klass is "SearchDocumentResponse":
-            instance = SearchDocumentResponse()
-
-        return instance
-
-    def get_filled_model(self, klass, instance, kwargs):
-
-        if  klass in self.SIGNATURE_BARCODE_MODELS:
-            instance.signature_type = kwargs["signature_type"]
-            instance.barcode_type_name = kwargs["barcode_type_name"]
-            instance.text = kwargs["text"]
-        if  klass in self.SIGNATURE_QRCODE_MODELS:
-            instance.signature_type = kwargs["signature_type"]
-            instance.qr_code_type_name = kwargs["qr_code_type_name"]
-            instance.text = kwargs["text"]
-        if  klass in self.SIGNATURE_DIGITAL_MODELS:
-            instance.signature_type = kwargs["signature_type"]            
-            instance.digital_signature_type = kwargs["digital_signature_type"]            
-            instance.comments = kwargs["comments"]            
-            instance.is_valid = kwargs["is_valid"]            
-            instance.sign_time = kwargs["sign_time"]  
-        if  klass == "SignatureDocumentResponse":
-            instance._code = kwargs["code"]
-            if "folder" in kwargs:
-                instance._folder = kwargs["folder"]            
-            instance._file_name = kwargs["file_name"]            
-            instance._status = kwargs["status"]			
-        if  klass == "VerifiedDocumentResponse":
-            instance._code = kwargs["code"]
-            instance._result = kwargs["result"]            
-            if "folder" in kwargs:
-                instance._folder = kwargs["folder"]            
-            instance._file_name = kwargs["file_name"]            
-            instance._status = kwargs["status"]            
-        if  klass == "SearchDocumentResponse":
-            instance._code = kwargs["code"]
-            instance._signatures = kwargs["signatures"]   
-            if "folder" in kwargs:
-                instance._folder = kwargs["folder"]            
-            instance._file_name = kwargs["file_name"]            
-            instance._status = kwargs["status"]              
-
-        return instance
+    def __uncap(self, s):
+        return s[:1].lower() + s[1:]

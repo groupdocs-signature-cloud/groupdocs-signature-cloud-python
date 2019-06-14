@@ -1,7 +1,8 @@
 # coding: utf-8
+
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="Format.py">
-#   Copyright (c) 2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,13 +24,15 @@
 #  SOFTWARE.
 # </summary>
 # -----------------------------------------------------------------------------------
+
 import pprint
 import re  # noqa: F401
 
 import six
 
 class Format(object):
-    """Format description.
+    """
+    File format
     """
 
     """
@@ -40,69 +43,74 @@ class Format(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'file_format': 'str',
-        'extension': 'str'
+        'extension': 'str',
+        'file_format': 'str'
     }
 
     attribute_map = {
-        'file_format': 'FileFormat',
-        'extension': 'Extension'
+        'extension': 'Extension',
+        'file_format': 'FileFormat'
     }
 
-    def __init__(self, file_format=None, extension=None):  # noqa: E501
-        """Format - a model defined in Swagger"""  # noqa: E501
+    def __init__(self, extension=None, file_format=None, **kwargs):  # noqa: E501
+        """Initializes new instance of Format"""  # noqa: E501
 
-        self._file_format = None
         self._extension = None
-        self.discriminator = None
+        self._file_format = None
 
-        if file_format is not None:
-            self.file_format = file_format
         if extension is not None:
             self.extension = extension
-
-    @property
-    def file_format(self):
-        """Gets the file_format of this Format.  # noqa: E501
-
-        File format.  # noqa: E501
-
-        :return: The file_format of this Format.  # noqa: E501
-        :rtype: str
-        """
-        return self._file_format
-
-    @file_format.setter
-    def file_format(self, file_format):
-        """Sets the file_format of this Format.
-
-        File format.  # noqa: E501
-
-        :param file_format: The file_format of this Format.  # noqa: E501
-        :type: str
-        """
-        self._file_format = file_format
+        if file_format is not None:
+            self.file_format = file_format
+    
     @property
     def extension(self):
-        """Gets the extension of this Format.  # noqa: E501
+        """
+        Gets the extension.  # noqa: E501
 
-        File extension.  # noqa: E501
+        File format extension  # noqa: E501
 
-        :return: The extension of this Format.  # noqa: E501
+        :return: The extension.  # noqa: E501
         :rtype: str
         """
         return self._extension
 
     @extension.setter
     def extension(self, extension):
-        """Sets the extension of this Format.
+        """
+        Sets the extension.
 
-        File extension.  # noqa: E501
+        File format extension  # noqa: E501
 
-        :param extension: The extension of this Format.  # noqa: E501
+        :param extension: The extension.  # noqa: E501
         :type: str
         """
         self._extension = extension
+    
+    @property
+    def file_format(self):
+        """
+        Gets the file_format.  # noqa: E501
+
+        File format name  # noqa: E501
+
+        :return: The file_format.  # noqa: E501
+        :rtype: str
+        """
+        return self._file_format
+
+    @file_format.setter
+    def file_format(self, file_format):
+        """
+        Sets the file_format.
+
+        File format name  # noqa: E501
+
+        :param file_format: The file_format.  # noqa: E501
+        :type: str
+        """
+        self._file_format = file_format
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

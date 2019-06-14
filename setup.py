@@ -1,9 +1,17 @@
 # coding: utf-8
 
+import sys
+import datetime
+
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "groupdocs-signature-cloud"
-VERSION = "18.8.1"
+VERSION = "19.5"
+
+# Append current time to the version when publishing to test environment
+if "--test" in sys.argv:
+    VERSION += "." + datetime.datetime.now().strftime("%Y%m%d%H%M")
+    sys.argv.remove("--test")
 
 # To install the library, run the following
 #
@@ -13,21 +21,18 @@ VERSION = "18.8.1"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
-TEST_REQUIRES = ["asposestoragecloud >= 1.0.5"]
+TEST_REQUIRES = []
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
-
-REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
-TEST_REQUIRES = ['asposestoragecloud >= 1.0.5']
-
+    
 setup(
     name=NAME,
     version=VERSION,
-    description="GroupDocs.Signature Cloud SDK for Python allows you to use GroupDocs.Signature APIs in your Python applications",
-	author="GroupDocs Signature",
-    author_email="groupdocs.cloud@asposeptyltd.com",
-    url="https://github.com/groupdocs_signature_cloud/groupdocs_signature_cloud-python",
+    description="GroupDocs.Signature Cloud Python SDK",
+	author="GroupDocs",
+    author_email="support@groupdocs.cloud",
+    url="http://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-python",
 	classifiers=[
 		"Development Status :: 5 - Production/Stable",
 		"Intended Audience :: Developers",
@@ -35,24 +40,15 @@ setup(
 		"License :: OSI Approved :: MIT License",
 		"Programming Language :: Python :: 2.7",
 		"Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
+		"Programming Language :: Python :: 3.5",
+		"Programming Language :: Python :: 3.6",
+		"Programming Language :: Python :: 3.7",
 	],
     keywords=["groupdocs", "signature", "cloud", "python", "sdk"],
-    install_requires=[
-        'six',
-        'certifi',
-        'asposestoragecloud'
-    ],
+    install_requires=REQUIRES,
 	tests_require=TEST_REQUIRES,
     packages=find_packages(),
     include_package_data=True,
-    long_description="""
-    This repository contains GroupDocs Signature Cloud SDK for Python source code. This SDK allows you to work with GroupDocs Signature Cloud REST APIs in your Python applications quickly and easily, with zero initial cost.
-    """,
-    long_description_content_type="text/markdown"
+    long_description=long_description,
+    long_description_content_type="text/markdown",
 )
-
-
-

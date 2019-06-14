@@ -1,7 +1,8 @@
 # coding: utf-8
+
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="BarcodeType.py">
-#   Copyright (c) 2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,13 +24,15 @@
 #  SOFTWARE.
 # </summary>
 # -----------------------------------------------------------------------------------
+
 import pprint
 import re  # noqa: F401
 
 import six
 
 class BarcodeType(object):
-    """Describes Barcode type.
+    """
+    Describes Barcode type
     """
 
     """
@@ -47,36 +50,38 @@ class BarcodeType(object):
         'name': 'Name'
     }
 
-    def __init__(self, name=None):  # noqa: E501
-        """BarcodeType - a model defined in Swagger"""  # noqa: E501
+    def __init__(self, name=None, **kwargs):  # noqa: E501
+        """Initializes new instance of BarcodeType"""  # noqa: E501
 
         self._name = None
-        self.discriminator = None
 
         if name is not None:
             self.name = name
-
+    
     @property
     def name(self):
-        """Gets the name of this BarcodeType.  # noqa: E501
+        """
+        Gets the name.  # noqa: E501
 
-        Barcode Type Name  # noqa: E501
+        Barcode type name  # noqa: E501
 
-        :return: The name of this BarcodeType.  # noqa: E501
+        :return: The name.  # noqa: E501
         :rtype: str
         """
         return self._name
 
     @name.setter
     def name(self, name):
-        """Sets the name of this BarcodeType.
+        """
+        Sets the name.
 
-        Barcode Type Name  # noqa: E501
+        Barcode type name  # noqa: E501
 
-        :param name: The name of this BarcodeType.  # noqa: E501
+        :param name: The name.  # noqa: E501
         :type: str
         """
         self._name = name
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

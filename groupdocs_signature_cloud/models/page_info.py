@@ -1,7 +1,8 @@
 # coding: utf-8
+
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="PageInfo.py">
-#   Copyright (c) 2018 Aspose Pty Ltd
+#   Copyright (c) 2003-2019 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,13 +24,15 @@
 #  SOFTWARE.
 # </summary>
 # -----------------------------------------------------------------------------------
+
 import pprint
 import re  # noqa: F401
 
 import six
 
 class PageInfo(object):
-    """Page information.
+    """
+    Page information
     """
 
     """
@@ -57,8 +60,8 @@ class PageInfo(object):
         'visible': 'Visible'
     }
 
-    def __init__(self, number=None, name=None, width=None, height=None, angle=None, visible=None):  # noqa: E501
-        """PageInfo - a model defined in Swagger"""  # noqa: E501
+    def __init__(self, number=None, name=None, width=None, height=None, angle=None, visible=None, **kwargs):  # noqa: E501
+        """Initializes new instance of PageInfo"""  # noqa: E501
 
         self._number = None
         self._name = None
@@ -66,7 +69,6 @@ class PageInfo(object):
         self._height = None
         self._angle = None
         self._visible = None
-        self.discriminator = None
 
         if number is not None:
             self.number = number
@@ -80,143 +82,161 @@ class PageInfo(object):
             self.angle = angle
         if visible is not None:
             self.visible = visible
-
+    
     @property
     def number(self):
-        """Gets the number of this PageInfo.  # noqa: E501
+        """
+        Gets the number.  # noqa: E501
 
-        Page number.  # noqa: E501
+        Page number  # noqa: E501
 
-        :return: The number of this PageInfo.  # noqa: E501
+        :return: The number.  # noqa: E501
         :rtype: int
         """
         return self._number
 
     @number.setter
     def number(self, number):
-        """Sets the number of this PageInfo.
+        """
+        Sets the number.
 
-        Page number.  # noqa: E501
+        Page number  # noqa: E501
 
-        :param number: The number of this PageInfo.  # noqa: E501
+        :param number: The number.  # noqa: E501
         :type: int
         """
         if number is None:
             raise ValueError("Invalid value for `number`, must not be `None`")  # noqa: E501
         self._number = number
+    
     @property
     def name(self):
-        """Gets the name of this PageInfo.  # noqa: E501
+        """
+        Gets the name.  # noqa: E501
 
-        Page name.  # noqa: E501
+        Page name  # noqa: E501
 
-        :return: The name of this PageInfo.  # noqa: E501
+        :return: The name.  # noqa: E501
         :rtype: str
         """
         return self._name
 
     @name.setter
     def name(self, name):
-        """Sets the name of this PageInfo.
+        """
+        Sets the name.
 
-        Page name.  # noqa: E501
+        Page name  # noqa: E501
 
-        :param name: The name of this PageInfo.  # noqa: E501
+        :param name: The name.  # noqa: E501
         :type: str
         """
         self._name = name
+    
     @property
     def width(self):
-        """Gets the width of this PageInfo.  # noqa: E501
+        """
+        Gets the width.  # noqa: E501
 
-        Page width.  # noqa: E501
+        Page width  # noqa: E501
 
-        :return: The width of this PageInfo.  # noqa: E501
+        :return: The width.  # noqa: E501
         :rtype: int
         """
         return self._width
 
     @width.setter
     def width(self, width):
-        """Sets the width of this PageInfo.
+        """
+        Sets the width.
 
-        Page width.  # noqa: E501
+        Page width  # noqa: E501
 
-        :param width: The width of this PageInfo.  # noqa: E501
+        :param width: The width.  # noqa: E501
         :type: int
         """
         if width is None:
             raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
         self._width = width
+    
     @property
     def height(self):
-        """Gets the height of this PageInfo.  # noqa: E501
+        """
+        Gets the height.  # noqa: E501
 
-        Page height.  # noqa: E501
+        Page height  # noqa: E501
 
-        :return: The height of this PageInfo.  # noqa: E501
+        :return: The height.  # noqa: E501
         :rtype: int
         """
         return self._height
 
     @height.setter
     def height(self, height):
-        """Sets the height of this PageInfo.
+        """
+        Sets the height.
 
-        Page height.  # noqa: E501
+        Page height  # noqa: E501
 
-        :param height: The height of this PageInfo.  # noqa: E501
+        :param height: The height.  # noqa: E501
         :type: int
         """
         if height is None:
             raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
         self._height = height
+    
     @property
     def angle(self):
-        """Gets the angle of this PageInfo.  # noqa: E501
+        """
+        Gets the angle.  # noqa: E501
 
-        Page angle.  # noqa: E501
+        Page angle  # noqa: E501
 
-        :return: The angle of this PageInfo.  # noqa: E501
+        :return: The angle.  # noqa: E501
         :rtype: int
         """
         return self._angle
 
     @angle.setter
     def angle(self, angle):
-        """Sets the angle of this PageInfo.
+        """
+        Sets the angle.
 
-        Page angle.  # noqa: E501
+        Page angle  # noqa: E501
 
-        :param angle: The angle of this PageInfo.  # noqa: E501
+        :param angle: The angle.  # noqa: E501
         :type: int
         """
         if angle is None:
             raise ValueError("Invalid value for `angle`, must not be `None`")  # noqa: E501
         self._angle = angle
+    
     @property
     def visible(self):
-        """Gets the visible of this PageInfo.  # noqa: E501
+        """
+        Gets the visible.  # noqa: E501
 
-        Page visibility.  # noqa: E501
+        Page visibility  # noqa: E501
 
-        :return: The visible of this PageInfo.  # noqa: E501
+        :return: The visible.  # noqa: E501
         :rtype: bool
         """
         return self._visible
 
     @visible.setter
     def visible(self, visible):
-        """Sets the visible of this PageInfo.
+        """
+        Sets the visible.
 
-        Page visibility.  # noqa: E501
+        Page visibility  # noqa: E501
 
-        :param visible: The visible of this PageInfo.  # noqa: E501
+        :param visible: The visible.  # noqa: E501
         :type: bool
         """
         if visible is None:
             raise ValueError("Invalid value for `visible`, must not be `None`")  # noqa: E501
         self._visible = visible
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
