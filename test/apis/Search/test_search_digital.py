@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -44,7 +44,6 @@ class TestSearchDigital(TestContext):
         test_file = TestFile.pdf_signed()
         opts = SearchDigitalOptions()
         self.populate_options(opts)
-        opts.document_type = 'Pdf'
         settings = SearchSettings()
         settings.file_info = test_file.ToFileInfo()
         settings.options = [opts]
@@ -59,7 +58,6 @@ class TestSearchDigital(TestContext):
         test_file = TestFile.spreadsheet_signed()
         opts = SearchDigitalOptions()
         self.populate_options(opts)
-        opts.document_type = 'Spreadsheet'
         settings = SearchSettings()
         settings.file_info = test_file.ToFileInfo()
         settings.options = [opts]
@@ -70,7 +68,6 @@ class TestSearchDigital(TestContext):
         test_file = TestFile.wordprocessing_signed()
         opts = SearchDigitalOptions()
         self.populate_options(opts)
-        opts.document_type = 'WordProcessing'
         settings = SearchSettings()
         settings.file_info = test_file.ToFileInfo()
         settings.options = [opts]
@@ -81,7 +78,6 @@ class TestSearchDigital(TestContext):
     def populate_options(opts):
         opts.signature_type = 'Digital'
 
-    
     def check_response(self, opts, response, test_file):
         self.assertTrue(response)
         self.assertEqual(response.size, test_file.size)

@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="SignBarcodeOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,35 +46,30 @@ class SignBarcodeOptions(SignTextOptions):
     """
     swagger_types = {
         'barcode_type': 'str',
-        'border_weight': 'float',
-        'opacity': 'float',
+        'transparency': 'float',
         'code_text_alignment': 'str',
         'inner_margins': 'Padding'
     }
 
     attribute_map = {
         'barcode_type': 'BarcodeType',
-        'border_weight': 'BorderWeight',
-        'opacity': 'Opacity',
+        'transparency': 'Transparency',
         'code_text_alignment': 'CodeTextAlignment',
         'inner_margins': 'InnerMargins'
     }
 
-    def __init__(self, barcode_type=None, border_weight=None, opacity=None, code_text_alignment=None, inner_margins=None, **kwargs):  # noqa: E501
+    def __init__(self, barcode_type=None, transparency=None, code_text_alignment=None, inner_margins=None, **kwargs):  # noqa: E501
         """Initializes new instance of SignBarcodeOptions"""  # noqa: E501
 
         self._barcode_type = None
-        self._border_weight = None
-        self._opacity = None
+        self._transparency = None
         self._code_text_alignment = None
         self._inner_margins = None
 
         if barcode_type is not None:
             self.barcode_type = barcode_type
-        if border_weight is not None:
-            self.border_weight = border_weight
-        if opacity is not None:
-            self.opacity = opacity
+        if transparency is not None:
+            self.transparency = transparency
         if code_text_alignment is not None:
             self.code_text_alignment = code_text_alignment
         if inner_margins is not None:
@@ -111,54 +106,28 @@ class SignBarcodeOptions(SignTextOptions):
         self._barcode_type = barcode_type
     
     @property
-    def border_weight(self):
+    def transparency(self):
         """
-        Gets the border_weight.  # noqa: E501
+        Gets the transparency.  # noqa: E501
 
-        Gets or sets the weight of the signature border  # noqa: E501
+        Gets or sets the signature transparency (value from 0.0 (opaque) through 1.0 (clear)). Default value is 0 (opaque).  # noqa: E501
 
-        :return: The border_weight.  # noqa: E501
+        :return: The transparency.  # noqa: E501
         :rtype: float
         """
-        return self._border_weight
+        return self._transparency
 
-    @border_weight.setter
-    def border_weight(self, border_weight):
+    @transparency.setter
+    def transparency(self, transparency):
         """
-        Sets the border_weight.
+        Sets the transparency.
 
-        Gets or sets the weight of the signature border  # noqa: E501
+        Gets or sets the signature transparency (value from 0.0 (opaque) through 1.0 (clear)). Default value is 0 (opaque).  # noqa: E501
 
-        :param border_weight: The border_weight.  # noqa: E501
+        :param transparency: The transparency.  # noqa: E501
         :type: float
         """
-        if border_weight is None:
-            raise ValueError("Invalid value for `border_weight`, must not be `None`")  # noqa: E501
-        self._border_weight = border_weight
-    
-    @property
-    def opacity(self):
-        """
-        Gets the opacity.  # noqa: E501
-
-        Gets or sets the signature opacity (value from 0.0 (clear) through 1.0 (opaque)). By default the value is 1.0  # noqa: E501
-
-        :return: The opacity.  # noqa: E501
-        :rtype: float
-        """
-        return self._opacity
-
-    @opacity.setter
-    def opacity(self, opacity):
-        """
-        Sets the opacity.
-
-        Gets or sets the signature opacity (value from 0.0 (clear) through 1.0 (opaque)). By default the value is 1.0  # noqa: E501
-
-        :param opacity: The opacity.  # noqa: E501
-        :type: float
-        """
-        self._opacity = opacity
+        self._transparency = transparency
     
     @property
     def code_text_alignment(self):

@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,38 +38,38 @@ class TestVerifyCollection(TestContext):
 
     def test_verify_collection_image(self):
         test_file = TestFile.image_signed()
-        settings = self.populate_options('Image', test_file)            
+        settings = self.populate_options_image(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_collection_pdf(self):
         test_file = TestFile.pdf_signed()
-        settings = self.populate_options('Pdf', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_collection_presentation(self):
         test_file = TestFile.presentation_signed()
-        settings = self.populate_options('Presentation', test_file)            
+        settings = self.populate_options_image(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_collection_spreadsheet(self):
         test_file = TestFile.spreadsheet_signed()
-        settings = self.populate_options('Spreadsheet', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_collection_wordprocessing(self):
         test_file = TestFile.wordprocessing_signed()
-        settings = self.populate_options('WordProcessing', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)                       
 
     @staticmethod
-    def barcode_opts(documentType):
+    def barcode_opts():
         opts = VerifyBarcodeOptions()
-        opts.document_type = documentType
+        
         opts.signature_type = 'Barcode'
         opts.text = '123456789012'
         opts.barcode_type = 'Code39Standard'
@@ -88,9 +88,9 @@ class TestVerifyCollection(TestContext):
         return opts
 
     @staticmethod
-    def qr_code_opts(documentType):
+    def qr_code_opts():
         opts = VerifyQRCodeOptions()
-        opts.document_type = documentType
+        
         opts.signature_type = 'QRCode'
         opts.text = 'John Smith'
         opts.qr_code_type = 'Aztec'
@@ -109,9 +109,9 @@ class TestVerifyCollection(TestContext):
         return opts
 
     @staticmethod
-    def digital_opts(documentType):
+    def digital_opts():
         opts = VerifyDigitalOptions()
-        opts.document_type = documentType
+        
         opts.signature_type = 'Digital'
 
         opts.page = 1
@@ -127,9 +127,9 @@ class TestVerifyCollection(TestContext):
         return opts        
 
     @staticmethod
-    def text_opts(documentType):
+    def text_opts():
         opts = VerifyTextOptions()
-        opts.document_type = documentType
+        
         opts.signature_type = 'Text'
         opts.text = 'John Smith'
         opts.match_type = 'Contains'
@@ -147,23 +147,22 @@ class TestVerifyCollection(TestContext):
         return opts         
 
     @staticmethod
-    def populate_options(documentType, testFile):
+    def populate_options_image(testFile):
+        settings = VerifySettings()
+        settings.file_info = testFile.ToFileInfo()        
+        settings.options = [TestVerifyCollection.barcode_opts(),
+                            TestVerifyCollection.qr_code_opts()]
+        return settings
+
+    @staticmethod
+    def populate_options(testFile):
         settings = VerifySettings()
         settings.file_info = testFile.ToFileInfo()
-
-        if (documentType == "Image"):
-            settings.options = [TestVerifyCollection.barcode_opts(documentType),
-                                TestVerifyCollection.qr_code_opts(documentType)]
-        elif (documentType == "Presentation"):
-            settings.options = [TestVerifyCollection.barcode_opts(documentType),
-                                TestVerifyCollection.qr_code_opts(documentType),
-                                TestVerifyCollection.text_opts(documentType)]                                
-        else:
-            settings.options = [TestVerifyCollection.barcode_opts(documentType),
-                                TestVerifyCollection.qr_code_opts(documentType),
-                                TestVerifyCollection.digital_opts(documentType),
-                                TestVerifyCollection.text_opts(documentType)]
-        return settings
+        settings.options = [TestVerifyCollection.barcode_opts(),
+                            TestVerifyCollection.qr_code_opts(),
+                            TestVerifyCollection.digital_opts(),
+                            TestVerifyCollection.text_opts()]
+        return settings        
     
     def check_response(self, response, test_file):
         self.assertTrue(response)

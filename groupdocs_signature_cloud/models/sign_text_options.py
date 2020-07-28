@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="SignTextOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -60,14 +60,12 @@ class SignTextOptions(SignOptions):
         'text': 'str',
         'font': 'SignatureFont',
         'fore_color': 'Color',
-        'border_color': 'Color',
         'background_color': 'Color',
         'background_brush': 'Brush',
-        'border_visiblity': 'bool',
-        'border_dash_style': 'str',
-        'border_transparency': 'float',
+        'border': 'BorderLine',
         'text_horizontal_alignment': 'str',
-        'text_vertical_alignment': 'str'
+        'text_vertical_alignment': 'str',
+        'z_order': 'int'
     }
 
     attribute_map = {
@@ -86,17 +84,15 @@ class SignTextOptions(SignOptions):
         'text': 'Text',
         'font': 'Font',
         'fore_color': 'ForeColor',
-        'border_color': 'BorderColor',
         'background_color': 'BackgroundColor',
         'background_brush': 'BackgroundBrush',
-        'border_visiblity': 'BorderVisiblity',
-        'border_dash_style': 'BorderDashStyle',
-        'border_transparency': 'BorderTransparency',
+        'border': 'Border',
         'text_horizontal_alignment': 'TextHorizontalAlignment',
-        'text_vertical_alignment': 'TextVerticalAlignment'
+        'text_vertical_alignment': 'TextVerticalAlignment',
+        'z_order': 'ZOrder'
     }
 
-    def __init__(self, left=None, top=None, width=None, height=None, location_measure_type=None, size_measure_type=None, stretch=None, rotation_angle=None, horizontal_alignment=None, vertical_alignment=None, margin=None, margin_measure_type=None, text=None, font=None, fore_color=None, border_color=None, background_color=None, background_brush=None, border_visiblity=None, border_dash_style=None, border_transparency=None, text_horizontal_alignment=None, text_vertical_alignment=None, **kwargs):  # noqa: E501
+    def __init__(self, left=None, top=None, width=None, height=None, location_measure_type=None, size_measure_type=None, stretch=None, rotation_angle=None, horizontal_alignment=None, vertical_alignment=None, margin=None, margin_measure_type=None, text=None, font=None, fore_color=None, background_color=None, background_brush=None, border=None, text_horizontal_alignment=None, text_vertical_alignment=None, z_order=None, **kwargs):  # noqa: E501
         """Initializes new instance of SignTextOptions"""  # noqa: E501
 
         self._left = None
@@ -114,14 +110,12 @@ class SignTextOptions(SignOptions):
         self._text = None
         self._font = None
         self._fore_color = None
-        self._border_color = None
         self._background_color = None
         self._background_brush = None
-        self._border_visiblity = None
-        self._border_dash_style = None
-        self._border_transparency = None
+        self._border = None
         self._text_horizontal_alignment = None
         self._text_vertical_alignment = None
+        self._z_order = None
 
         if left is not None:
             self.left = left
@@ -153,22 +147,18 @@ class SignTextOptions(SignOptions):
             self.font = font
         if fore_color is not None:
             self.fore_color = fore_color
-        if border_color is not None:
-            self.border_color = border_color
         if background_color is not None:
             self.background_color = background_color
         if background_brush is not None:
             self.background_brush = background_brush
-        if border_visiblity is not None:
-            self.border_visiblity = border_visiblity
-        if border_dash_style is not None:
-            self.border_dash_style = border_dash_style
-        if border_transparency is not None:
-            self.border_transparency = border_transparency
+        if border is not None:
+            self.border = border
         if text_horizontal_alignment is not None:
             self.text_horizontal_alignment = text_horizontal_alignment
         if text_vertical_alignment is not None:
             self.text_vertical_alignment = text_vertical_alignment
+        if z_order is not None:
+            self.z_order = z_order
 
         base = super(SignTextOptions, self)
         base.__init__(**kwargs)
@@ -432,7 +422,7 @@ class SignTextOptions(SignOptions):
         """
         if horizontal_alignment is None:
             raise ValueError("Invalid value for `horizontal_alignment`, must not be `None`")  # noqa: E501
-        allowed_values = ["Default", "None", "Left", "Center", "Right"]  # noqa: E501
+        allowed_values = ["None", "Left", "Center", "Right"]  # noqa: E501
         if not horizontal_alignment.isdigit():	
             if horizontal_alignment not in allowed_values:
                 raise ValueError(
@@ -466,7 +456,7 @@ class SignTextOptions(SignOptions):
         """
         if vertical_alignment is None:
             raise ValueError("Invalid value for `vertical_alignment`, must not be `None`")  # noqa: E501
-        allowed_values = ["Default", "None", "Top", "Center", "Bottom"]  # noqa: E501
+        allowed_values = ["None", "Top", "Center", "Bottom"]  # noqa: E501
         if not vertical_alignment.isdigit():	
             if vertical_alignment not in allowed_values:
                 raise ValueError(
@@ -607,30 +597,6 @@ class SignTextOptions(SignOptions):
         self._fore_color = fore_color
     
     @property
-    def border_color(self):
-        """
-        Gets the border_color.  # noqa: E501
-
-        Gets or sets the border color of signature  # noqa: E501
-
-        :return: The border_color.  # noqa: E501
-        :rtype: Color
-        """
-        return self._border_color
-
-    @border_color.setter
-    def border_color(self, border_color):
-        """
-        Sets the border_color.
-
-        Gets or sets the border color of signature  # noqa: E501
-
-        :param border_color: The border_color.  # noqa: E501
-        :type: Color
-        """
-        self._border_color = border_color
-    
-    @property
     def background_color(self):
         """
         Gets the background_color.  # noqa: E501
@@ -679,90 +645,28 @@ class SignTextOptions(SignOptions):
         self._background_brush = background_brush
     
     @property
-    def border_visiblity(self):
+    def border(self):
         """
-        Gets the border_visiblity.  # noqa: E501
+        Gets the border.  # noqa: E501
 
-        Gets or sets the signature border visibility It is not suitable for PDF  # noqa: E501
+        Gets or sets the signature border properties  # noqa: E501
 
-        :return: The border_visiblity.  # noqa: E501
-        :rtype: bool
+        :return: The border.  # noqa: E501
+        :rtype: BorderLine
         """
-        return self._border_visiblity
+        return self._border
 
-    @border_visiblity.setter
-    def border_visiblity(self, border_visiblity):
+    @border.setter
+    def border(self, border):
         """
-        Sets the border_visiblity.
+        Sets the border.
 
-        Gets or sets the signature border visibility It is not suitable for PDF  # noqa: E501
+        Gets or sets the signature border properties  # noqa: E501
 
-        :param border_visiblity: The border_visiblity.  # noqa: E501
-        :type: bool
+        :param border: The border.  # noqa: E501
+        :type: BorderLine
         """
-        if border_visiblity is None:
-            raise ValueError("Invalid value for `border_visiblity`, must not be `None`")  # noqa: E501
-        self._border_visiblity = border_visiblity
-    
-    @property
-    def border_dash_style(self):
-        """
-        Gets the border_dash_style.  # noqa: E501
-
-        Gets or sets the signature border style It is not suitable for PDF  # noqa: E501
-
-        :return: The border_dash_style.  # noqa: E501
-        :rtype: str
-        """
-        return self._border_dash_style
-
-    @border_dash_style.setter
-    def border_dash_style(self, border_dash_style):
-        """
-        Sets the border_dash_style.
-
-        Gets or sets the signature border style It is not suitable for PDF  # noqa: E501
-
-        :param border_dash_style: The border_dash_style.  # noqa: E501
-        :type: str
-        """
-        if border_dash_style is None:
-            raise ValueError("Invalid value for `border_dash_style`, must not be `None`")  # noqa: E501
-        allowed_values = ["Dash", "DashDot", "DashDotDot", "DashLongDash", "DashLongDashDot", "RoundDot", "Solid", "SquareDot"]  # noqa: E501
-        if not border_dash_style.isdigit():	
-            if border_dash_style not in allowed_values:
-                raise ValueError(
-                    "Invalid value for `border_dash_style` ({0}), must be one of {1}"  # noqa: E501
-                    .format(border_dash_style, allowed_values))
-            self._border_dash_style = border_dash_style
-        else:
-            self._border_dash_style = allowed_values[int(border_dash_style) if six.PY3 else long(border_dash_style)]
-    
-    @property
-    def border_transparency(self):
-        """
-        Gets the border_transparency.  # noqa: E501
-
-        Gets or sets the signature border transparency (value from 0.0 (opaque) through 1.0 (clear)) It is not suitable for PDF  # noqa: E501
-
-        :return: The border_transparency.  # noqa: E501
-        :rtype: float
-        """
-        return self._border_transparency
-
-    @border_transparency.setter
-    def border_transparency(self, border_transparency):
-        """
-        Sets the border_transparency.
-
-        Gets or sets the signature border transparency (value from 0.0 (opaque) through 1.0 (clear)) It is not suitable for PDF  # noqa: E501
-
-        :param border_transparency: The border_transparency.  # noqa: E501
-        :type: float
-        """
-        if border_transparency is None:
-            raise ValueError("Invalid value for `border_transparency`, must not be `None`")  # noqa: E501
-        self._border_transparency = border_transparency
+        self._border = border
     
     @property
     def text_horizontal_alignment(self):
@@ -831,6 +735,32 @@ class SignTextOptions(SignOptions):
             self._text_vertical_alignment = text_vertical_alignment
         else:
             self._text_vertical_alignment = allowed_values[int(text_vertical_alignment) if six.PY3 else long(text_vertical_alignment)]
+    
+    @property
+    def z_order(self):
+        """
+        Gets the z_order.  # noqa: E501
+
+        Gets or sets the Z-order position of text signature. Determines the display order of overlapping signatures.               # noqa: E501
+
+        :return: The z_order.  # noqa: E501
+        :rtype: int
+        """
+        return self._z_order
+
+    @z_order.setter
+    def z_order(self, z_order):
+        """
+        Sets the z_order.
+
+        Gets or sets the Z-order position of text signature. Determines the display order of overlapping signatures.               # noqa: E501
+
+        :param z_order: The z_order.  # noqa: E501
+        :type: int
+        """
+        if z_order is None:
+            raise ValueError("Invalid value for `z_order`, must not be `None`")  # noqa: E501
+        self._z_order = z_order
 
     def to_dict(self):
         """Returns the model properties as a dict"""

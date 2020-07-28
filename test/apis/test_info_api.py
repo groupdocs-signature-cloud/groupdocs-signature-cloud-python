@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -62,7 +62,7 @@ class TestInfoApi(TestContext):
         response = self.info_api.get_info(GetInfoRequest(settings))
         self.assertEqual(response.size, 55321)
         self.assertEqual(response.extension, "pdf")
-        self.assertEqual(response.file_format, "Pdf")
+        self.assertEqual(response.file_format, "Portable Document Format File")
         self.assertEqual(response.max_page_height, 792)
         self.assertEqual(response.width_for_max_height, 612)
         self.assertEqual(response.pages_count, 1)

@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="VerifyDigitalOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,7 +46,7 @@ class VerifyDigitalOptions(VerifyOptions):
     """
     swagger_types = {
         'password': 'str',
-        'certificate_guid': 'str',
+        'certificate_file_path': 'str',
         'comments': 'str',
         'sign_date_time_from': 'datetime',
         'sign_date_time_to': 'datetime',
@@ -57,7 +57,7 @@ class VerifyDigitalOptions(VerifyOptions):
 
     attribute_map = {
         'password': 'Password',
-        'certificate_guid': 'CertificateGuid',
+        'certificate_file_path': 'CertificateFilePath',
         'comments': 'Comments',
         'sign_date_time_from': 'SignDateTimeFrom',
         'sign_date_time_to': 'SignDateTimeTo',
@@ -66,11 +66,11 @@ class VerifyDigitalOptions(VerifyOptions):
         'location': 'Location'
     }
 
-    def __init__(self, password=None, certificate_guid=None, comments=None, sign_date_time_from=None, sign_date_time_to=None, reason=None, contact=None, location=None, **kwargs):  # noqa: E501
+    def __init__(self, password=None, certificate_file_path=None, comments=None, sign_date_time_from=None, sign_date_time_to=None, reason=None, contact=None, location=None, **kwargs):  # noqa: E501
         """Initializes new instance of VerifyDigitalOptions"""  # noqa: E501
 
         self._password = None
-        self._certificate_guid = None
+        self._certificate_file_path = None
         self._comments = None
         self._sign_date_time_from = None
         self._sign_date_time_to = None
@@ -80,8 +80,8 @@ class VerifyDigitalOptions(VerifyOptions):
 
         if password is not None:
             self.password = password
-        if certificate_guid is not None:
-            self.certificate_guid = certificate_guid
+        if certificate_file_path is not None:
+            self.certificate_file_path = certificate_file_path
         if comments is not None:
             self.comments = comments
         if sign_date_time_from is not None:
@@ -126,28 +126,28 @@ class VerifyDigitalOptions(VerifyOptions):
         self._password = password
     
     @property
-    def certificate_guid(self):
+    def certificate_file_path(self):
         """
-        Gets the certificate_guid.  # noqa: E501
+        Gets the certificate_file_path.  # noqa: E501
 
         File Guid of Digital Certificate  # noqa: E501
 
-        :return: The certificate_guid.  # noqa: E501
+        :return: The certificate_file_path.  # noqa: E501
         :rtype: str
         """
-        return self._certificate_guid
+        return self._certificate_file_path
 
-    @certificate_guid.setter
-    def certificate_guid(self, certificate_guid):
+    @certificate_file_path.setter
+    def certificate_file_path(self, certificate_file_path):
         """
-        Sets the certificate_guid.
+        Sets the certificate_file_path.
 
         File Guid of Digital Certificate  # noqa: E501
 
-        :param certificate_guid: The certificate_guid.  # noqa: E501
+        :param certificate_file_path: The certificate_file_path.  # noqa: E501
         :type: str
         """
-        self._certificate_guid = certificate_guid
+        self._certificate_file_path = certificate_file_path
     
     @property
     def comments(self):

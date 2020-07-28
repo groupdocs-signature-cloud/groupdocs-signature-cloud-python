@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,45 +39,45 @@ class TestSignStamp(TestContext):
     def test_sign_stamp_image(self):
         test_file = TestFile.image_jpg()
         signedFileName = "Output\\ImageStampSigned.jpg"        
-        settings = self.populate_sign_options(signedFileName, 'Image', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_stamp_pdf(self):
         test_file = TestFile.pdf_one_page()
         signedFileName = "Output\\PdfStampSigned.pdf"        
-        settings = self.populate_sign_options(signedFileName, 'Pdf', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_stamp_presentation(self):
         test_file = TestFile.presentation_pptx()
         signedFileName = "Output\\PresentationStampSigned.pptx"        
-        settings = self.populate_sign_options(signedFileName, 'Presentation', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_stamp_spreadsheet(self):
         test_file = TestFile.spreadsheet_xlsx()
         signedFileName = "Output\\SpreadsheetStampSigned.xlsx"        
-        settings = self.populate_sign_options(signedFileName, 'Spreadsheet', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_stamp_wordprocessing(self):
         test_file = TestFile.word_docx()
         signedFileName = "Output\\WordStampSigned.docx"        
-        settings = self.populate_sign_options(signedFileName, 'WordProcessing', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)                       
 
     @staticmethod
-    def populate_sign_options(signedFileName, documentType, testFile):
+    def populate_sign_options(signedFileName, testFile):
         opts = SignStampOptions()        
-        opts.document_type = documentType
+        
         # set signature properties
         opts.signature_type = 'Stamp'
-        opts.image_guid = TestFile.image_sign().FilePath()
+        opts.image_file_path = TestFile.image_sign().FilePath()
 
         # set signature position on a page
         opts.left = 100
@@ -98,7 +98,7 @@ class TestSignStamp(TestContext):
         opts.background_color.web = "CornflowerBlue"   
         opts.background_color_crop_type = "InnerArea"
         opts.background_image_crop_type = "MiddleArea"
-        opts.opacity = 0.8
+        opts.transparency = 0.8
 
         outline = StampLine()
         outline.text = "John Smith"

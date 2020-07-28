@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,38 +38,38 @@ class TestVerifyBarcode(TestContext):
 
     def test_verify_barcode_image(self):
         test_file = TestFile.image_signed()
-        settings = self.populate_options('Image', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_barcode_pdf(self):
         test_file = TestFile.pdf_signed()
-        settings = self.populate_options('Pdf', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_barcode_presentation(self):
         test_file = TestFile.presentation_signed()
-        settings = self.populate_options('Presentation', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_barcode_spreadsheet(self):
         test_file = TestFile.spreadsheet_signed()
-        settings = self.populate_options('Spreadsheet', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_barcode_wordprocessing(self):
         test_file = TestFile.wordprocessing_signed()
-        settings = self.populate_options('WordProcessing', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)                       
 
     @staticmethod
-    def populate_options(documentType, testFile):
+    def populate_options(testFile):
         opts = VerifyBarcodeOptions()
-        opts.document_type = documentType
+        
         opts.signature_type = 'Barcode'
         opts.text = '123456789012'
         opts.barcode_type = 'Code39Standard'

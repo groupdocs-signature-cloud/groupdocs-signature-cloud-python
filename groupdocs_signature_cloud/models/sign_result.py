@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="SignResult.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,21 +45,27 @@ class SignResult(object):
     swagger_types = {
         'file_info': 'FileInfo',
         'size': 'int',
-        'download_url': 'str'
+        'download_url': 'str',
+        'succeeded': 'list[Signature]',
+        'failed': 'list[Signature]'
     }
 
     attribute_map = {
         'file_info': 'FileInfo',
         'size': 'Size',
-        'download_url': 'DownloadUrl'
+        'download_url': 'DownloadUrl',
+        'succeeded': 'Succeeded',
+        'failed': 'Failed'
     }
 
-    def __init__(self, file_info=None, size=None, download_url=None, **kwargs):  # noqa: E501
+    def __init__(self, file_info=None, size=None, download_url=None, succeeded=None, failed=None, **kwargs):  # noqa: E501
         """Initializes new instance of SignResult"""  # noqa: E501
 
         self._file_info = None
         self._size = None
         self._download_url = None
+        self._succeeded = None
+        self._failed = None
 
         if file_info is not None:
             self.file_info = file_info
@@ -67,6 +73,10 @@ class SignResult(object):
             self.size = size
         if download_url is not None:
             self.download_url = download_url
+        if succeeded is not None:
+            self.succeeded = succeeded
+        if failed is not None:
+            self.failed = failed
     
     @property
     def file_info(self):
@@ -141,6 +151,54 @@ class SignResult(object):
         :type: str
         """
         self._download_url = download_url
+    
+    @property
+    def succeeded(self):
+        """
+        Gets the succeeded.  # noqa: E501
+
+        List of newly created signatures  # noqa: E501
+
+        :return: The succeeded.  # noqa: E501
+        :rtype: list[Signature]
+        """
+        return self._succeeded
+
+    @succeeded.setter
+    def succeeded(self, succeeded):
+        """
+        Sets the succeeded.
+
+        List of newly created signatures  # noqa: E501
+
+        :param succeeded: The succeeded.  # noqa: E501
+        :type: list[Signature]
+        """
+        self._succeeded = succeeded
+    
+    @property
+    def failed(self):
+        """
+        Gets the failed.  # noqa: E501
+
+        List of signatures that were failed to create  # noqa: E501
+
+        :return: The failed.  # noqa: E501
+        :rtype: list[Signature]
+        """
+        return self._failed
+
+    @failed.setter
+    def failed(self, failed):
+        """
+        Sets the failed.
+
+        List of signatures that were failed to create  # noqa: E501
+
+        :param failed: The failed.  # noqa: E501
+        :type: list[Signature]
+        """
+        self._failed = failed
 
     def to_dict(self):
         """Returns the model properties as a dict"""

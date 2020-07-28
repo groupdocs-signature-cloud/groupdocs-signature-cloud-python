@@ -51,7 +51,7 @@ GroupDocs.Signature Cloud Python SDK licensed under [MIT License](http://github.
 ## Resources
 + [**Website**](https://www.groupdocs.cloud)
 + [**Product Home**](https://products.groupdocs.cloud/signature)
-+ [**Documentation**](https://docs.groupdocs.cloud/display/signaturecloud/Home)
++ [**Documentation**](https://wiki.groupdocs.cloud/display/signaturecloud/Home)
 + [**Free Support Forum**](https://forum.groupdocs.cloud/c/signature)
 + [**Blog**](https://blog.groupdocs.cloud/category/signature)
 

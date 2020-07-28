@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="DigitalSignature.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,31 +47,26 @@ class DigitalSignature(Signature):
     swagger_types = {
         'comments': 'str',
         'is_valid': 'bool',
-        'type': 'str',
         'sign_time': 'datetime'
     }
 
     attribute_map = {
         'comments': 'Comments',
         'is_valid': 'IsValid',
-        'type': 'Type',
         'sign_time': 'SignTime'
     }
 
-    def __init__(self, comments=None, is_valid=None, type=None, sign_time=None, **kwargs):  # noqa: E501
+    def __init__(self, comments=None, is_valid=None, sign_time=None, **kwargs):  # noqa: E501
         """Initializes new instance of DigitalSignature"""  # noqa: E501
 
         self._comments = None
         self._is_valid = None
-        self._type = None
         self._sign_time = None
 
         if comments is not None:
             self.comments = comments
         if is_valid is not None:
             self.is_valid = is_valid
-        if type is not None:
-            self.type = type
         if sign_time is not None:
             self.sign_time = sign_time
 
@@ -130,40 +125,6 @@ class DigitalSignature(Signature):
         if is_valid is None:
             raise ValueError("Invalid value for `is_valid`, must not be `None`")  # noqa: E501
         self._is_valid = is_valid
-    
-    @property
-    def type(self):
-        """
-        Gets the type.  # noqa: E501
-
-        Gets or sets the type of the digital signature  # noqa: E501
-
-        :return: The type.  # noqa: E501
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """
-        Sets the type.
-
-        Gets or sets the type of the digital signature  # noqa: E501
-
-        :param type: The type.  # noqa: E501
-        :type: str
-        """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["Unknown", "CryptoApi", "XmlDsig"]  # noqa: E501
-        if not type.isdigit():	
-            if type not in allowed_values:
-                raise ValueError(
-                    "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                    .format(type, allowed_values))
-            self._type = type
-        else:
-            self._type = allowed_values[int(type) if six.PY3 else long(type)]
     
     @property
     def sign_time(self):

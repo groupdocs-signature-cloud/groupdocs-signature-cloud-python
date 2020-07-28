@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="OptionsBase.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,7 +43,6 @@ class OptionsBase(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'document_type': 'str',
         'signature_type': 'str',
         'page': 'int',
         'all_pages': 'bool',
@@ -51,24 +50,20 @@ class OptionsBase(object):
     }
 
     attribute_map = {
-        'document_type': 'DocumentType',
         'signature_type': 'SignatureType',
         'page': 'Page',
         'all_pages': 'AllPages',
         'pages_setup': 'PagesSetup'
     }
 
-    def __init__(self, document_type=None, signature_type=None, page=None, all_pages=None, pages_setup=None, **kwargs):  # noqa: E501
+    def __init__(self, signature_type=None, page=None, all_pages=None, pages_setup=None, **kwargs):  # noqa: E501
         """Initializes new instance of OptionsBase"""  # noqa: E501
 
-        self._document_type = None
         self._signature_type = None
         self._page = None
         self._all_pages = None
         self._pages_setup = None
 
-        if document_type is not None:
-            self.document_type = document_type
         if signature_type is not None:
             self.signature_type = signature_type
         if page is not None:
@@ -77,40 +72,6 @@ class OptionsBase(object):
             self.all_pages = all_pages
         if pages_setup is not None:
             self.pages_setup = pages_setup
-    
-    @property
-    def document_type(self):
-        """
-        Gets the document_type.  # noqa: E501
-
-        Specifies the type of document to process  # noqa: E501
-
-        :return: The document_type.  # noqa: E501
-        :rtype: str
-        """
-        return self._document_type
-
-    @document_type.setter
-    def document_type(self, document_type):
-        """
-        Sets the document_type.
-
-        Specifies the type of document to process  # noqa: E501
-
-        :param document_type: The document_type.  # noqa: E501
-        :type: str
-        """
-        if document_type is None:
-            raise ValueError("Invalid value for `document_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["Image", "Pdf", "Presentation", "Spreadsheet", "WordProcessing"]  # noqa: E501
-        if not document_type.isdigit():	
-            if document_type not in allowed_values:
-                raise ValueError(
-                    "Invalid value for `document_type` ({0}), must be one of {1}"  # noqa: E501
-                    .format(document_type, allowed_values))
-            self._document_type = document_type
-        else:
-            self._document_type = allowed_values[int(document_type) if six.PY3 else long(document_type)]
     
     @property
     def signature_type(self):

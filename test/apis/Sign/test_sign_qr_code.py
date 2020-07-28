@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,42 +39,42 @@ class TestSignQRcode(TestContext):
     def test_sign_qr_code_image(self):
         test_file = TestFile.image_jpg()
         signedFileName = "Output\\ImageQRcodeSigned.jpg"        
-        settings = self.populate_sign_options(signedFileName, 'Image', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_qr_code_pdf(self):
         test_file = TestFile.pdf_one_page()
         signedFileName = "Output\\PdfQRcodeSigned.pdf"        
-        settings = self.populate_sign_options(signedFileName, 'Pdf', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_qr_code_presentation(self):
         test_file = TestFile.presentation_pptx()
         signedFileName = "Output\\PresentationQRcodeSigned.pptx"        
-        settings = self.populate_sign_options(signedFileName, 'Presentation', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_qr_code_spreadsheet(self):
         test_file = TestFile.spreadsheet_xlsx()
         signedFileName = "Output\\SpreadsheetQRcodeSigned.xlsx"        
-        settings = self.populate_sign_options(signedFileName, 'Spreadsheet', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_qr_code_wordprocessing(self):
         test_file = TestFile.word_docx()
         signedFileName = "Output\\WordQRcodeSigned.docx"        
-        settings = self.populate_sign_options(signedFileName, 'WordProcessing', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)                       
 
     @staticmethod
-    def populate_sign_options(signedFileName, documentType, testFile):
+    def populate_sign_options(signedFileName, testFile):
         opts = SignQRCodeOptions()        
-        opts.document_type = documentType
+        
         # set signature properties
         opts.signature_type = 'QRCode'
         opts.text = 'John Smit'
@@ -98,16 +98,18 @@ class TestSignQRcode(TestContext):
         # set signature appearance
         opts.fore_color = Color()
         opts.fore_color.web = "BlueViolet"
-        opts.border_color = Color()
-        opts.border_color.web = "DarkOrange"
+        opts.border = BorderLine()
+        opts.border.color = Color()
+        opts.border.color.web = "DarkOrange"
+        opts.border.visible = True
+        opts.border.style = "Dash"
+        opts.border.weight = 12
+
         opts.background_color = Color()
         opts.background_color.web = "DarkOrange"
-        opts.opacity = 0.8
+        opts.transparency = 0.8
         opts.inner_margins = Padding()
         opts.inner_margins.all = 2
-        opts.border_visiblity = True
-        opts.border_dash_style = "Dash"
-        opts.border_weight = 12
 
         opts.page = 1
         opts.all_pages = False

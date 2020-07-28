@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="Signature.py">
+# <copyright company="Aspose Pty Ltd" file="UpdateOptions.py">
 #   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-class Signature(object):
+class UpdateOptions(object):
     """
-    Describes base class for signatures
+    Base container class for update signature options
     """
 
     """
@@ -44,71 +44,61 @@ class Signature(object):
     """
     swagger_types = {
         'signature_type': 'str',
-        'page_number': 'int',
         'signature_id': 'str',
-        'is_signature': 'bool',
-        'created_on': 'datetime',
-        'modified_on': 'datetime',
-        'top': 'int',
         'left': 'int',
+        'top': 'int',
         'width': 'int',
-        'height': 'int'
+        'height': 'int',
+        'is_signature': 'bool',
+        'text': 'str'
     }
 
     attribute_map = {
         'signature_type': 'SignatureType',
-        'page_number': 'PageNumber',
         'signature_id': 'SignatureId',
-        'is_signature': 'IsSignature',
-        'created_on': 'CreatedOn',
-        'modified_on': 'ModifiedOn',
-        'top': 'Top',
         'left': 'Left',
+        'top': 'Top',
         'width': 'Width',
-        'height': 'Height'
+        'height': 'Height',
+        'is_signature': 'IsSignature',
+        'text': 'Text'
     }
 
-    def __init__(self, signature_type=None, page_number=None, signature_id=None, is_signature=None, created_on=None, modified_on=None, top=None, left=None, width=None, height=None, **kwargs):  # noqa: E501
-        """Initializes new instance of Signature"""  # noqa: E501
+    def __init__(self, signature_type=None, signature_id=None, left=None, top=None, width=None, height=None, is_signature=None, text=None, **kwargs):  # noqa: E501
+        """Initializes new instance of UpdateOptions"""  # noqa: E501
 
         self._signature_type = None
-        self._page_number = None
         self._signature_id = None
-        self._is_signature = None
-        self._created_on = None
-        self._modified_on = None
-        self._top = None
         self._left = None
+        self._top = None
         self._width = None
         self._height = None
+        self._is_signature = None
+        self._text = None
 
         if signature_type is not None:
             self.signature_type = signature_type
-        if page_number is not None:
-            self.page_number = page_number
         if signature_id is not None:
             self.signature_id = signature_id
-        if is_signature is not None:
-            self.is_signature = is_signature
-        if created_on is not None:
-            self.created_on = created_on
-        if modified_on is not None:
-            self.modified_on = modified_on
-        if top is not None:
-            self.top = top
         if left is not None:
             self.left = left
+        if top is not None:
+            self.top = top
         if width is not None:
             self.width = width
         if height is not None:
             self.height = height
+        if is_signature is not None:
+            self.is_signature = is_signature
+        if text is not None:
+            self.text = text
     
     @property
     def signature_type(self):
         """
         Gets the signature_type.  # noqa: E501
 
-        Specifies the signature type (Text, Image, Digital, Barcode, QRCode, Stamp)  # noqa: E501
+        Specifies the type of signature  # noqa: E501
 
         :return: The signature_type.  # noqa: E501
         :rtype: str
@@ -120,7 +110,7 @@ class Signature(object):
         """
         Sets the signature_type.
 
-        Specifies the signature type (Text, Image, Digital, Barcode, QRCode, Stamp)  # noqa: E501
+        Specifies the type of signature  # noqa: E501
 
         :param signature_type: The signature_type.  # noqa: E501
         :type: str
@@ -138,35 +128,11 @@ class Signature(object):
             self._signature_type = allowed_values[int(signature_type) if six.PY3 else long(signature_type)]
     
     @property
-    def page_number(self):
-        """
-        Gets the page_number.  # noqa: E501
-
-        Specifies the page signature was found on  # noqa: E501
-
-        :return: The page_number.  # noqa: E501
-        :rtype: int
-        """
-        return self._page_number
-
-    @page_number.setter
-    def page_number(self, page_number):
-        """
-        Sets the page_number.
-
-        Specifies the page signature was found on  # noqa: E501
-
-        :param page_number: The page_number.  # noqa: E501
-        :type: int
-        """
-        self._page_number = page_number
-    
-    @property
     def signature_id(self):
         """
         Gets the signature_id.  # noqa: E501
 
-        Unique signature identifier to modify signature in the document over Update or Delete methods. This property will be set automatically after Sign or Search method being called. If this property was saved before it can be set manually to manipulate the signature.  # noqa: E501
+        Unique signature identifier to modify signature in the document over Update or Delete methods. This property will be set automatically after Sign or Search method being called. If this property was saved before it can be set manually to manipulate the signature.                # noqa: E501
 
         :return: The signature_id.  # noqa: E501
         :rtype: str
@@ -178,116 +144,12 @@ class Signature(object):
         """
         Sets the signature_id.
 
-        Unique signature identifier to modify signature in the document over Update or Delete methods. This property will be set automatically after Sign or Search method being called. If this property was saved before it can be set manually to manipulate the signature.  # noqa: E501
+        Unique signature identifier to modify signature in the document over Update or Delete methods. This property will be set automatically after Sign or Search method being called. If this property was saved before it can be set manually to manipulate the signature.                # noqa: E501
 
         :param signature_id: The signature_id.  # noqa: E501
         :type: str
         """
         self._signature_id = signature_id
-    
-    @property
-    def is_signature(self):
-        """
-        Gets the is_signature.  # noqa: E501
-
-        Get or set flag to indicate if this component is Signature or document content. This property is being used with Update method to set element as signature (true) or document element (false).               # noqa: E501
-
-        :return: The is_signature.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_signature
-
-    @is_signature.setter
-    def is_signature(self, is_signature):
-        """
-        Sets the is_signature.
-
-        Get or set flag to indicate if this component is Signature or document content. This property is being used with Update method to set element as signature (true) or document element (false).               # noqa: E501
-
-        :param is_signature: The is_signature.  # noqa: E501
-        :type: bool
-        """
-        if is_signature is None:
-            raise ValueError("Invalid value for `is_signature`, must not be `None`")  # noqa: E501
-        self._is_signature = is_signature
-    
-    @property
-    def created_on(self):
-        """
-        Gets the created_on.  # noqa: E501
-
-        Get or set the signature creation date  # noqa: E501
-
-        :return: The created_on.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """
-        Sets the created_on.
-
-        Get or set the signature creation date  # noqa: E501
-
-        :param created_on: The created_on.  # noqa: E501
-        :type: datetime
-        """
-        if created_on is None:
-            raise ValueError("Invalid value for `created_on`, must not be `None`")  # noqa: E501
-        self._created_on = created_on
-    
-    @property
-    def modified_on(self):
-        """
-        Gets the modified_on.  # noqa: E501
-
-        Get or set the signature modification date  # noqa: E501
-
-        :return: The modified_on.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._modified_on
-
-    @modified_on.setter
-    def modified_on(self, modified_on):
-        """
-        Sets the modified_on.
-
-        Get or set the signature modification date  # noqa: E501
-
-        :param modified_on: The modified_on.  # noqa: E501
-        :type: datetime
-        """
-        if modified_on is None:
-            raise ValueError("Invalid value for `modified_on`, must not be `None`")  # noqa: E501
-        self._modified_on = modified_on
-    
-    @property
-    def top(self):
-        """
-        Gets the top.  # noqa: E501
-
-        Specifies top position of signature  # noqa: E501
-
-        :return: The top.  # noqa: E501
-        :rtype: int
-        """
-        return self._top
-
-    @top.setter
-    def top(self, top):
-        """
-        Sets the top.
-
-        Specifies top position of signature  # noqa: E501
-
-        :param top: The top.  # noqa: E501
-        :type: int
-        """
-        if top is None:
-            raise ValueError("Invalid value for `top`, must not be `None`")  # noqa: E501
-        self._top = top
     
     @property
     def left(self):
@@ -314,6 +176,32 @@ class Signature(object):
         if left is None:
             raise ValueError("Invalid value for `left`, must not be `None`")  # noqa: E501
         self._left = left
+    
+    @property
+    def top(self):
+        """
+        Gets the top.  # noqa: E501
+
+        Specifies top position of signature  # noqa: E501
+
+        :return: The top.  # noqa: E501
+        :rtype: int
+        """
+        return self._top
+
+    @top.setter
+    def top(self, top):
+        """
+        Sets the top.
+
+        Specifies top position of signature  # noqa: E501
+
+        :param top: The top.  # noqa: E501
+        :type: int
+        """
+        if top is None:
+            raise ValueError("Invalid value for `top`, must not be `None`")  # noqa: E501
+        self._top = top
     
     @property
     def width(self):
@@ -366,6 +254,56 @@ class Signature(object):
         if height is None:
             raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
         self._height = height
+    
+    @property
+    def is_signature(self):
+        """
+        Gets the is_signature.  # noqa: E501
+
+        Get or set flag to indicate if this component is Signature or document content. This property is being used with Update method to set element as signature (true) or document element (false).               # noqa: E501
+
+        :return: The is_signature.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_signature
+
+    @is_signature.setter
+    def is_signature(self, is_signature):
+        """
+        Sets the is_signature.
+
+        Get or set flag to indicate if this component is Signature or document content. This property is being used with Update method to set element as signature (true) or document element (false).               # noqa: E501
+
+        :param is_signature: The is_signature.  # noqa: E501
+        :type: bool
+        """
+        if is_signature is None:
+            raise ValueError("Invalid value for `is_signature`, must not be `None`")  # noqa: E501
+        self._is_signature = is_signature
+    
+    @property
+    def text(self):
+        """
+        Gets the text.  # noqa: E501
+
+        The text to update text signature  # noqa: E501
+
+        :return: The text.  # noqa: E501
+        :rtype: str
+        """
+        return self._text
+
+    @text.setter
+    def text(self, text):
+        """
+        Sets the text.
+
+        The text to update text signature  # noqa: E501
+
+        :param text: The text.  # noqa: E501
+        :type: str
+        """
+        self._text = text
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -401,7 +339,7 @@ class Signature(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, Signature):
+        if not isinstance(other, UpdateOptions):
             return False
 
         return self.__dict__ == other.__dict__

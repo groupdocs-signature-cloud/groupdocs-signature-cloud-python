@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,42 +39,42 @@ class TestSignBarcode(TestContext):
     def test_sign_barcode_image(self):
         test_file = TestFile.image_jpg()
         signedFileName = "Output\\ImageBarcodeSigned.jpg"        
-        settings = self.populate_sign_options(signedFileName, 'Image', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_barcode_pdf(self):
         test_file = TestFile.pdf_one_page()
         signedFileName = "Output\\PdfBarcodeSigned.pdf"        
-        settings = self.populate_sign_options(signedFileName, 'Pdf', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_barcode_presentation(self):
         test_file = TestFile.presentation_pptx()
         signedFileName = "Output\\PresentationBarcodeSigned.pptx"        
-        settings = self.populate_sign_options(signedFileName, 'Presentation', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_barcode_spreadsheet(self):
         test_file = TestFile.spreadsheet_xlsx()
         signedFileName = "Output\\SpreadsheetBarcodeSigned.xlsx"        
-        settings = self.populate_sign_options(signedFileName, 'Spreadsheet', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_barcode_wordprocessing(self):
         test_file = TestFile.word_docx()
         signedFileName = "Output\\WordBarcodeSigned.docx"        
-        settings = self.populate_sign_options(signedFileName, 'WordProcessing', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)                       
 
     @staticmethod
-    def populate_sign_options(signedFileName, documentType, testFile):
+    def populate_sign_options(signedFileName, testFile):
         opts = SignBarcodeOptions()        
-        opts.document_type = documentType
+        
         # set signature properties
         opts.signature_type = 'Barcode'
         opts.text = '123456789012'
@@ -99,16 +99,18 @@ class TestSignBarcode(TestContext):
         # set signature appearance
         opts.fore_color = Color()
         opts.fore_color.web = "BlueViolet"
-        opts.border_color = Color()
-        opts.border_color.web = "DarkOrange"
+        opts.border = BorderLine()
+        opts.border.color = Color()
+        opts.border.color.web = "DarkOrange"
+        opts.border.visible = True
+        opts.border.style = "Dash"
+        opts.border.weight = 12
+
         opts.background_color = Color()
         opts.background_color.web = "DarkOrange"
-        opts.opacity = 0.8
+        opts.transparency = 0.8
         opts.inner_margins = Padding()
         opts.inner_margins.all = 2
-        opts.border_visiblity = True
-        opts.border_dash_style = "Dash"
-        opts.border_weight = 12
 
         opts.page = 1
         opts.all_pages = False

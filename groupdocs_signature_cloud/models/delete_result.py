@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="RadialGradientBrush.py">
+# <copyright company="Aspose Pty Ltd" file="DeleteResult.py">
 #   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import Brush
-
-class RadialGradientBrush(Brush):
+class DeleteResult(object):
     """
-    Represents radial gradient brush
+    Delete result information
     """
 
     """
@@ -45,79 +43,133 @@ class RadialGradientBrush(Brush):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'inner_color': 'Color',
-        'outer_color': 'Color'
+        'file_info': 'FileInfo',
+        'size': 'int',
+        'succeeded': 'list[Signature]',
+        'failed': 'list[Signature]'
     }
 
     attribute_map = {
-        'inner_color': 'InnerColor',
-        'outer_color': 'OuterColor'
+        'file_info': 'FileInfo',
+        'size': 'Size',
+        'succeeded': 'Succeeded',
+        'failed': 'Failed'
     }
 
-    def __init__(self, inner_color=None, outer_color=None, **kwargs):  # noqa: E501
-        """Initializes new instance of RadialGradientBrush"""  # noqa: E501
+    def __init__(self, file_info=None, size=None, succeeded=None, failed=None, **kwargs):  # noqa: E501
+        """Initializes new instance of DeleteResult"""  # noqa: E501
 
-        self._inner_color = None
-        self._outer_color = None
+        self._file_info = None
+        self._size = None
+        self._succeeded = None
+        self._failed = None
 
-        if inner_color is not None:
-            self.inner_color = inner_color
-        if outer_color is not None:
-            self.outer_color = outer_color
-
-        base = super(RadialGradientBrush, self)
-        base.__init__(**kwargs)
-
-        self.swagger_types.update(base.swagger_types)
-        self.attribute_map.update(base.attribute_map)
+        if file_info is not None:
+            self.file_info = file_info
+        if size is not None:
+            self.size = size
+        if succeeded is not None:
+            self.succeeded = succeeded
+        if failed is not None:
+            self.failed = failed
     
     @property
-    def inner_color(self):
+    def file_info(self):
         """
-        Gets the inner_color.  # noqa: E501
+        Gets the file_info.  # noqa: E501
 
-        Gets or sets inner gradient color  # noqa: E501
+        Source document basic info  # noqa: E501
 
-        :return: The inner_color.  # noqa: E501
-        :rtype: Color
+        :return: The file_info.  # noqa: E501
+        :rtype: FileInfo
         """
-        return self._inner_color
+        return self._file_info
 
-    @inner_color.setter
-    def inner_color(self, inner_color):
+    @file_info.setter
+    def file_info(self, file_info):
         """
-        Sets the inner_color.
+        Sets the file_info.
 
-        Gets or sets inner gradient color  # noqa: E501
+        Source document basic info  # noqa: E501
 
-        :param inner_color: The inner_color.  # noqa: E501
-        :type: Color
+        :param file_info: The file_info.  # noqa: E501
+        :type: FileInfo
         """
-        self._inner_color = inner_color
+        self._file_info = file_info
     
     @property
-    def outer_color(self):
+    def size(self):
         """
-        Gets the outer_color.  # noqa: E501
+        Gets the size.  # noqa: E501
 
-        Gets or sets outer gradient color  # noqa: E501
+        Source document size in bytes  # noqa: E501
 
-        :return: The outer_color.  # noqa: E501
-        :rtype: Color
+        :return: The size.  # noqa: E501
+        :rtype: int
         """
-        return self._outer_color
+        return self._size
 
-    @outer_color.setter
-    def outer_color(self, outer_color):
+    @size.setter
+    def size(self, size):
         """
-        Sets the outer_color.
+        Sets the size.
 
-        Gets or sets outer gradient color  # noqa: E501
+        Source document size in bytes  # noqa: E501
 
-        :param outer_color: The outer_color.  # noqa: E501
-        :type: Color
+        :param size: The size.  # noqa: E501
+        :type: int
         """
-        self._outer_color = outer_color
+        if size is None:
+            raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
+        self._size = size
+    
+    @property
+    def succeeded(self):
+        """
+        Gets the succeeded.  # noqa: E501
+
+        List of successfully deleted signatures  # noqa: E501
+
+        :return: The succeeded.  # noqa: E501
+        :rtype: list[Signature]
+        """
+        return self._succeeded
+
+    @succeeded.setter
+    def succeeded(self, succeeded):
+        """
+        Sets the succeeded.
+
+        List of successfully deleted signatures  # noqa: E501
+
+        :param succeeded: The succeeded.  # noqa: E501
+        :type: list[Signature]
+        """
+        self._succeeded = succeeded
+    
+    @property
+    def failed(self):
+        """
+        Gets the failed.  # noqa: E501
+
+        List of signatures that were not deleted  # noqa: E501
+
+        :return: The failed.  # noqa: E501
+        :rtype: list[Signature]
+        """
+        return self._failed
+
+    @failed.setter
+    def failed(self, failed):
+        """
+        Sets the failed.
+
+        List of signatures that were not deleted  # noqa: E501
+
+        :param failed: The failed.  # noqa: E501
+        :type: list[Signature]
+        """
+        self._failed = failed
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -153,7 +205,7 @@ class RadialGradientBrush(Brush):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, RadialGradientBrush):
+        if not isinstance(other, DeleteResult):
             return False
 
         return self.__dict__ == other.__dict__

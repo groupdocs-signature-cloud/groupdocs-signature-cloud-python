@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="RadialGradientBrush.py">
+# <copyright company="Aspose Pty Ltd" file="DeleteOptions.py">
 #   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import Brush
-
-class RadialGradientBrush(Brush):
+class DeleteOptions(object):
     """
-    Represents radial gradient brush
+    Base container class for delete signature options
     """
 
     """
@@ -45,79 +43,83 @@ class RadialGradientBrush(Brush):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'inner_color': 'Color',
-        'outer_color': 'Color'
+        'signature_type': 'str',
+        'signature_id': 'str'
     }
 
     attribute_map = {
-        'inner_color': 'InnerColor',
-        'outer_color': 'OuterColor'
+        'signature_type': 'SignatureType',
+        'signature_id': 'SignatureId'
     }
 
-    def __init__(self, inner_color=None, outer_color=None, **kwargs):  # noqa: E501
-        """Initializes new instance of RadialGradientBrush"""  # noqa: E501
+    def __init__(self, signature_type=None, signature_id=None, **kwargs):  # noqa: E501
+        """Initializes new instance of DeleteOptions"""  # noqa: E501
 
-        self._inner_color = None
-        self._outer_color = None
+        self._signature_type = None
+        self._signature_id = None
 
-        if inner_color is not None:
-            self.inner_color = inner_color
-        if outer_color is not None:
-            self.outer_color = outer_color
-
-        base = super(RadialGradientBrush, self)
-        base.__init__(**kwargs)
-
-        self.swagger_types.update(base.swagger_types)
-        self.attribute_map.update(base.attribute_map)
+        if signature_type is not None:
+            self.signature_type = signature_type
+        if signature_id is not None:
+            self.signature_id = signature_id
     
     @property
-    def inner_color(self):
+    def signature_type(self):
         """
-        Gets the inner_color.  # noqa: E501
+        Gets the signature_type.  # noqa: E501
 
-        Gets or sets inner gradient color  # noqa: E501
+        Specifies the type of signature  # noqa: E501
 
-        :return: The inner_color.  # noqa: E501
-        :rtype: Color
+        :return: The signature_type.  # noqa: E501
+        :rtype: str
         """
-        return self._inner_color
+        return self._signature_type
 
-    @inner_color.setter
-    def inner_color(self, inner_color):
+    @signature_type.setter
+    def signature_type(self, signature_type):
         """
-        Sets the inner_color.
+        Sets the signature_type.
 
-        Gets or sets inner gradient color  # noqa: E501
+        Specifies the type of signature  # noqa: E501
 
-        :param inner_color: The inner_color.  # noqa: E501
-        :type: Color
+        :param signature_type: The signature_type.  # noqa: E501
+        :type: str
         """
-        self._inner_color = inner_color
+        if signature_type is None:
+            raise ValueError("Invalid value for `signature_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["None", "Text", "Image", "Digital", "Barcode", "QRCode", "Stamp"]  # noqa: E501
+        if not signature_type.isdigit():	
+            if signature_type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `signature_type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(signature_type, allowed_values))
+            self._signature_type = signature_type
+        else:
+            self._signature_type = allowed_values[int(signature_type) if six.PY3 else long(signature_type)]
     
     @property
-    def outer_color(self):
+    def signature_id(self):
         """
-        Gets the outer_color.  # noqa: E501
+        Gets the signature_id.  # noqa: E501
 
-        Gets or sets outer gradient color  # noqa: E501
+        Unique signature identifier to modify signature in the document over Update or Delete methods. This property will be set automatically after Sign or Search method being called. If this property was saved before it can be set manually to manipulate the signature.                # noqa: E501
 
-        :return: The outer_color.  # noqa: E501
-        :rtype: Color
+        :return: The signature_id.  # noqa: E501
+        :rtype: str
         """
-        return self._outer_color
+        return self._signature_id
 
-    @outer_color.setter
-    def outer_color(self, outer_color):
+    @signature_id.setter
+    def signature_id(self, signature_id):
         """
-        Sets the outer_color.
+        Sets the signature_id.
 
-        Gets or sets outer gradient color  # noqa: E501
+        Unique signature identifier to modify signature in the document over Update or Delete methods. This property will be set automatically after Sign or Search method being called. If this property was saved before it can be set manually to manipulate the signature.                # noqa: E501
 
-        :param outer_color: The outer_color.  # noqa: E501
-        :type: Color
+        :param signature_id: The signature_id.  # noqa: E501
+        :type: str
         """
-        self._outer_color = outer_color
+        self._signature_id = signature_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -153,7 +155,7 @@ class RadialGradientBrush(Brush):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, RadialGradientBrush):
+        if not isinstance(other, DeleteOptions):
             return False
 
         return self.__dict__ == other.__dict__

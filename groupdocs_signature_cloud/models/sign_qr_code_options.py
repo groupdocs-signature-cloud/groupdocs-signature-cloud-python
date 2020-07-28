@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="SignQRCodeOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,44 +46,39 @@ class SignQRCodeOptions(SignTextOptions):
     """
     swagger_types = {
         'qr_code_type': 'str',
-        'border_weight': 'float',
-        'opacity': 'float',
+        'transparency': 'float',
         'code_text_alignment': 'str',
         'inner_margins': 'Padding',
-        'logo_guid': 'str'
+        'logo_file_path': 'str'
     }
 
     attribute_map = {
         'qr_code_type': 'QRCodeType',
-        'border_weight': 'BorderWeight',
-        'opacity': 'Opacity',
+        'transparency': 'Transparency',
         'code_text_alignment': 'CodeTextAlignment',
         'inner_margins': 'InnerMargins',
-        'logo_guid': 'LogoGuid'
+        'logo_file_path': 'LogoFilePath'
     }
 
-    def __init__(self, qr_code_type=None, border_weight=None, opacity=None, code_text_alignment=None, inner_margins=None, logo_guid=None, **kwargs):  # noqa: E501
+    def __init__(self, qr_code_type=None, transparency=None, code_text_alignment=None, inner_margins=None, logo_file_path=None, **kwargs):  # noqa: E501
         """Initializes new instance of SignQRCodeOptions"""  # noqa: E501
 
         self._qr_code_type = None
-        self._border_weight = None
-        self._opacity = None
+        self._transparency = None
         self._code_text_alignment = None
         self._inner_margins = None
-        self._logo_guid = None
+        self._logo_file_path = None
 
         if qr_code_type is not None:
             self.qr_code_type = qr_code_type
-        if border_weight is not None:
-            self.border_weight = border_weight
-        if opacity is not None:
-            self.opacity = opacity
+        if transparency is not None:
+            self.transparency = transparency
         if code_text_alignment is not None:
             self.code_text_alignment = code_text_alignment
         if inner_margins is not None:
             self.inner_margins = inner_margins
-        if logo_guid is not None:
-            self.logo_guid = logo_guid
+        if logo_file_path is not None:
+            self.logo_file_path = logo_file_path
 
         base = super(SignQRCodeOptions, self)
         base.__init__(**kwargs)
@@ -116,56 +111,30 @@ class SignQRCodeOptions(SignTextOptions):
         self._qr_code_type = qr_code_type
     
     @property
-    def border_weight(self):
+    def transparency(self):
         """
-        Gets the border_weight.  # noqa: E501
+        Gets the transparency.  # noqa: E501
 
-        Gets or sets the weight of the signature border  # noqa: E501
+        Gets or sets the signature transparency (value from 0.0 (opaque) through 1.0 (clear)). Default value is 0 (opaque).               # noqa: E501
 
-        :return: The border_weight.  # noqa: E501
+        :return: The transparency.  # noqa: E501
         :rtype: float
         """
-        return self._border_weight
+        return self._transparency
 
-    @border_weight.setter
-    def border_weight(self, border_weight):
+    @transparency.setter
+    def transparency(self, transparency):
         """
-        Sets the border_weight.
+        Sets the transparency.
 
-        Gets or sets the weight of the signature border  # noqa: E501
+        Gets or sets the signature transparency (value from 0.0 (opaque) through 1.0 (clear)). Default value is 0 (opaque).               # noqa: E501
 
-        :param border_weight: The border_weight.  # noqa: E501
+        :param transparency: The transparency.  # noqa: E501
         :type: float
         """
-        if border_weight is None:
-            raise ValueError("Invalid value for `border_weight`, must not be `None`")  # noqa: E501
-        self._border_weight = border_weight
-    
-    @property
-    def opacity(self):
-        """
-        Gets the opacity.  # noqa: E501
-
-        Gets or sets the signature opacity (value from 0.0 (clear) through 1.0 (opaque)) By default the value is 1.0  # noqa: E501
-
-        :return: The opacity.  # noqa: E501
-        :rtype: float
-        """
-        return self._opacity
-
-    @opacity.setter
-    def opacity(self, opacity):
-        """
-        Sets the opacity.
-
-        Gets or sets the signature opacity (value from 0.0 (clear) through 1.0 (opaque)) By default the value is 1.0  # noqa: E501
-
-        :param opacity: The opacity.  # noqa: E501
-        :type: float
-        """
-        if opacity is None:
-            raise ValueError("Invalid value for `opacity`, must not be `None`")  # noqa: E501
-        self._opacity = opacity
+        if transparency is None:
+            raise ValueError("Invalid value for `transparency`, must not be `None`")  # noqa: E501
+        self._transparency = transparency
     
     @property
     def code_text_alignment(self):
@@ -226,28 +195,28 @@ class SignQRCodeOptions(SignTextOptions):
         self._inner_margins = inner_margins
     
     @property
-    def logo_guid(self):
+    def logo_file_path(self):
         """
-        Gets the logo_guid.  # noqa: E501
+        Gets the logo_file_path.  # noqa: E501
 
         Gets or sets the QR-code logo image file name. This property in use only if LogoStream is not specified. Using of this property could cause problems with verification. Use it carefully  # noqa: E501
 
-        :return: The logo_guid.  # noqa: E501
+        :return: The logo_file_path.  # noqa: E501
         :rtype: str
         """
-        return self._logo_guid
+        return self._logo_file_path
 
-    @logo_guid.setter
-    def logo_guid(self, logo_guid):
+    @logo_file_path.setter
+    def logo_file_path(self, logo_file_path):
         """
-        Sets the logo_guid.
+        Sets the logo_file_path.
 
         Gets or sets the QR-code logo image file name. This property in use only if LogoStream is not specified. Using of this property could cause problems with verification. Use it carefully  # noqa: E501
 
-        :param logo_guid: The logo_guid.  # noqa: E501
+        :param logo_file_path: The logo_file_path.  # noqa: E501
         :type: str
         """
-        self._logo_guid = logo_guid
+        self._logo_file_path = logo_file_path
 
     def to_dict(self):
         """Returns the model properties as a dict"""

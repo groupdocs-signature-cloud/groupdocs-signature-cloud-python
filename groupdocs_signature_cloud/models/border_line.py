@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="BorderLine.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,23 +46,26 @@ class BorderLine(object):
         'style': 'str',
         'transparency': 'float',
         'weight': 'float',
-        'color': 'Color'
+        'color': 'Color',
+        'visible': 'bool'
     }
 
     attribute_map = {
         'style': 'Style',
         'transparency': 'Transparency',
         'weight': 'Weight',
-        'color': 'Color'
+        'color': 'Color',
+        'visible': 'Visible'
     }
 
-    def __init__(self, style=None, transparency=None, weight=None, color=None, **kwargs):  # noqa: E501
+    def __init__(self, style=None, transparency=None, weight=None, color=None, visible=None, **kwargs):  # noqa: E501
         """Initializes new instance of BorderLine"""  # noqa: E501
 
         self._style = None
         self._transparency = None
         self._weight = None
         self._color = None
+        self._visible = None
 
         if style is not None:
             self.style = style
@@ -72,6 +75,8 @@ class BorderLine(object):
             self.weight = weight
         if color is not None:
             self.color = color
+        if visible is not None:
+            self.visible = visible
     
     @property
     def style(self):
@@ -97,7 +102,7 @@ class BorderLine(object):
         """
         if style is None:
             raise ValueError("Invalid value for `style`, must not be `None`")  # noqa: E501
-        allowed_values = ["Default", "Solid", "ShortDash", "ShortDot", "ShortDashDot", "ShortDashDotDot", "Dot", "Dash", "LongDash", "DashDot", "LongDashDot", "LongDashDotDot"]  # noqa: E501
+        allowed_values = ["Solid", "ShortDash", "ShortDot", "ShortDashDot", "ShortDashDotDot", "Dot", "Dash", "LongDash", "DashDot", "LongDashDot", "LongDashDotDot", "RoundDot", "SquareDot", "DashDotDot", "DashLongDash", "DashLongDashDot"]  # noqa: E501
         if not style.isdigit():	
             if style not in allowed_values:
                 raise ValueError(
@@ -182,6 +187,32 @@ class BorderLine(object):
         :type: Color
         """
         self._color = color
+    
+    @property
+    def visible(self):
+        """
+        Gets the visible.  # noqa: E501
+
+        Gets or sets the border visibility  # noqa: E501
+
+        :return: The visible.  # noqa: E501
+        :rtype: bool
+        """
+        return self._visible
+
+    @visible.setter
+    def visible(self, visible):
+        """
+        Sets the visible.
+
+        Gets or sets the border visibility  # noqa: E501
+
+        :param visible: The visible.  # noqa: E501
+        :type: bool
+        """
+        if visible is None:
+            raise ValueError("Invalid value for `visible`, must not be `None`")  # noqa: E501
+        self._visible = visible
 
     def to_dict(self):
         """Returns the model properties as a dict"""

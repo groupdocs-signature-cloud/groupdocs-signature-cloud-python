@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="QRCodeSignature.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,24 +46,29 @@ class QRCodeSignature(Signature):
     """
     swagger_types = {
         'qr_code_type': 'str',
-        'text': 'str'
+        'text': 'str',
+        'format': 'str'
     }
 
     attribute_map = {
         'qr_code_type': 'QrCodeType',
-        'text': 'Text'
+        'text': 'Text',
+        'format': 'Format'
     }
 
-    def __init__(self, qr_code_type=None, text=None, **kwargs):  # noqa: E501
+    def __init__(self, qr_code_type=None, text=None, format=None, **kwargs):  # noqa: E501
         """Initializes new instance of QRCodeSignature"""  # noqa: E501
 
         self._qr_code_type = None
         self._text = None
+        self._format = None
 
         if qr_code_type is not None:
             self.qr_code_type = qr_code_type
         if text is not None:
             self.text = text
+        if format is not None:
+            self.format = format
 
         base = super(QRCodeSignature, self)
         base.__init__(**kwargs)
@@ -118,6 +123,30 @@ class QRCodeSignature(Signature):
         :type: str
         """
         self._text = text
+    
+    @property
+    def format(self):
+        """
+        Gets the format.  # noqa: E501
+
+        Specifies the format of QR-code signature image.  # noqa: E501
+
+        :return: The format.  # noqa: E501
+        :rtype: str
+        """
+        return self._format
+
+    @format.setter
+    def format(self, format):
+        """
+        Sets the format.
+
+        Specifies the format of QR-code signature image.  # noqa: E501
+
+        :param format: The format.  # noqa: E501
+        :type: str
+        """
+        self._format = format
 
     def to_dict(self):
         """Returns the model properties as a dict"""

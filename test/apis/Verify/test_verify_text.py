@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -42,32 +42,32 @@ class TestVerifyText(TestContext):
 
     def test_verify_text_pdf(self):
         test_file = TestFile.pdf_signed()
-        settings = self.populate_options('Pdf', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_text_presentation(self):
         test_file = TestFile.presentation_signed()
-        settings = self.populate_options('Presentation', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_text_spreadsheet(self):
         test_file = TestFile.spreadsheet_signed()
-        settings = self.populate_options('Spreadsheet', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
 
     def test_verify_text_wordprocessing(self):
         test_file = TestFile.wordprocessing_signed()
-        settings = self.populate_options('WordProcessing', test_file)            
+        settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)                       
 
     @staticmethod
-    def populate_options(documentType, testFile):
+    def populate_options(testFile):
         opts = VerifyTextOptions()
-        opts.document_type = documentType
+        
         opts.signature_type = 'Text'
         opts.text = 'John Smith'
         opts.match_type = 'Contains'

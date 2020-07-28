@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="SignDigitalOptions.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,31 +45,154 @@ class SignDigitalOptions(SignImageOptions):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'reason': 'str',
+        'contact': 'str',
+        'location': 'str',
+        'visible': 'bool',
         'password': 'str',
-        'certificate_guid': 'str'
+        'certificate_file_path': 'str',
+        'x_ad_es_type': 'str'
     }
 
     attribute_map = {
+        'reason': 'Reason',
+        'contact': 'Contact',
+        'location': 'Location',
+        'visible': 'Visible',
         'password': 'Password',
-        'certificate_guid': 'CertificateGuid'
+        'certificate_file_path': 'CertificateFilePath',
+        'x_ad_es_type': 'XAdESType'
     }
 
-    def __init__(self, password=None, certificate_guid=None, **kwargs):  # noqa: E501
+    def __init__(self, reason=None, contact=None, location=None, visible=None, password=None, certificate_file_path=None, x_ad_es_type=None, **kwargs):  # noqa: E501
         """Initializes new instance of SignDigitalOptions"""  # noqa: E501
 
+        self._reason = None
+        self._contact = None
+        self._location = None
+        self._visible = None
         self._password = None
-        self._certificate_guid = None
+        self._certificate_file_path = None
+        self._x_ad_es_type = None
 
+        if reason is not None:
+            self.reason = reason
+        if contact is not None:
+            self.contact = contact
+        if location is not None:
+            self.location = location
+        if visible is not None:
+            self.visible = visible
         if password is not None:
             self.password = password
-        if certificate_guid is not None:
-            self.certificate_guid = certificate_guid
+        if certificate_file_path is not None:
+            self.certificate_file_path = certificate_file_path
+        if x_ad_es_type is not None:
+            self.x_ad_es_type = x_ad_es_type
 
         base = super(SignDigitalOptions, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
+    
+    @property
+    def reason(self):
+        """
+        Gets the reason.  # noqa: E501
+
+        Gets or sets the reason of signature.  # noqa: E501
+
+        :return: The reason.  # noqa: E501
+        :rtype: str
+        """
+        return self._reason
+
+    @reason.setter
+    def reason(self, reason):
+        """
+        Sets the reason.
+
+        Gets or sets the reason of signature.  # noqa: E501
+
+        :param reason: The reason.  # noqa: E501
+        :type: str
+        """
+        self._reason = reason
+    
+    @property
+    def contact(self):
+        """
+        Gets the contact.  # noqa: E501
+
+        Gets or sets the signature contact.  # noqa: E501
+
+        :return: The contact.  # noqa: E501
+        :rtype: str
+        """
+        return self._contact
+
+    @contact.setter
+    def contact(self, contact):
+        """
+        Sets the contact.
+
+        Gets or sets the signature contact.  # noqa: E501
+
+        :param contact: The contact.  # noqa: E501
+        :type: str
+        """
+        self._contact = contact
+    
+    @property
+    def location(self):
+        """
+        Gets the location.  # noqa: E501
+
+        Gets or sets the signature location.  # noqa: E501
+
+        :return: The location.  # noqa: E501
+        :rtype: str
+        """
+        return self._location
+
+    @location.setter
+    def location(self, location):
+        """
+        Sets the location.
+
+        Gets or sets the signature location.  # noqa: E501
+
+        :param location: The location.  # noqa: E501
+        :type: str
+        """
+        self._location = location
+    
+    @property
+    def visible(self):
+        """
+        Gets the visible.  # noqa: E501
+
+        Gets or sets the visibility of signature.  # noqa: E501
+
+        :return: The visible.  # noqa: E501
+        :rtype: bool
+        """
+        return self._visible
+
+    @visible.setter
+    def visible(self, visible):
+        """
+        Sets the visible.
+
+        Gets or sets the visibility of signature.  # noqa: E501
+
+        :param visible: The visible.  # noqa: E501
+        :type: bool
+        """
+        if visible is None:
+            raise ValueError("Invalid value for `visible`, must not be `None`")  # noqa: E501
+        self._visible = visible
     
     @property
     def password(self):
@@ -96,28 +219,62 @@ class SignDigitalOptions(SignImageOptions):
         self._password = password
     
     @property
-    def certificate_guid(self):
+    def certificate_file_path(self):
         """
-        Gets the certificate_guid.  # noqa: E501
+        Gets the certificate_file_path.  # noqa: E501
 
         Gets or sets the digital certificate file GUID  # noqa: E501
 
-        :return: The certificate_guid.  # noqa: E501
+        :return: The certificate_file_path.  # noqa: E501
         :rtype: str
         """
-        return self._certificate_guid
+        return self._certificate_file_path
 
-    @certificate_guid.setter
-    def certificate_guid(self, certificate_guid):
+    @certificate_file_path.setter
+    def certificate_file_path(self, certificate_file_path):
         """
-        Sets the certificate_guid.
+        Sets the certificate_file_path.
 
         Gets or sets the digital certificate file GUID  # noqa: E501
 
-        :param certificate_guid: The certificate_guid.  # noqa: E501
+        :param certificate_file_path: The certificate_file_path.  # noqa: E501
         :type: str
         """
-        self._certificate_guid = certificate_guid
+        self._certificate_file_path = certificate_file_path
+    
+    @property
+    def x_ad_es_type(self):
+        """
+        Gets the x_ad_es_type.  # noqa: E501
+
+        XAdES type GroupDocs.Signature.Options.DigitalSignOptions.XAdESType. Default value is None (XAdES is off). At this moment XAdES signature type is supported only for Spreadsheet documents.               # noqa: E501
+
+        :return: The x_ad_es_type.  # noqa: E501
+        :rtype: str
+        """
+        return self._x_ad_es_type
+
+    @x_ad_es_type.setter
+    def x_ad_es_type(self, x_ad_es_type):
+        """
+        Sets the x_ad_es_type.
+
+        XAdES type GroupDocs.Signature.Options.DigitalSignOptions.XAdESType. Default value is None (XAdES is off). At this moment XAdES signature type is supported only for Spreadsheet documents.               # noqa: E501
+
+        :param x_ad_es_type: The x_ad_es_type.  # noqa: E501
+        :type: str
+        """
+        if x_ad_es_type is None:
+            raise ValueError("Invalid value for `x_ad_es_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["None", "XAdES"]  # noqa: E501
+        if not x_ad_es_type.isdigit():	
+            if x_ad_es_type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `x_ad_es_type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(x_ad_es_type, allowed_values))
+            self._x_ad_es_type = x_ad_es_type
+        else:
+            self._x_ad_es_type = allowed_values[int(x_ad_es_type) if six.PY3 else long(x_ad_es_type)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""

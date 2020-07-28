@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="TextureBrush.py">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,20 +45,20 @@ class TextureBrush(Brush):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'image_guid': 'str'
+        'image_file_path': 'str'
     }
 
     attribute_map = {
-        'image_guid': 'ImageGuid'
+        'image_file_path': 'ImageFilePath'
     }
 
-    def __init__(self, image_guid=None, **kwargs):  # noqa: E501
+    def __init__(self, image_file_path=None, **kwargs):  # noqa: E501
         """Initializes new instance of TextureBrush"""  # noqa: E501
 
-        self._image_guid = None
+        self._image_file_path = None
 
-        if image_guid is not None:
-            self.image_guid = image_guid
+        if image_file_path is not None:
+            self.image_file_path = image_file_path
 
         base = super(TextureBrush, self)
         base.__init__(**kwargs)
@@ -67,28 +67,28 @@ class TextureBrush(Brush):
         self.attribute_map.update(base.attribute_map)
     
     @property
-    def image_guid(self):
+    def image_file_path(self):
         """
-        Gets the image_guid.  # noqa: E501
+        Gets the image_file_path.  # noqa: E501
 
-        Gets or sets the texture image file Guid  # noqa: E501
+        Gets or sets the texture image file path  # noqa: E501
 
-        :return: The image_guid.  # noqa: E501
+        :return: The image_file_path.  # noqa: E501
         :rtype: str
         """
-        return self._image_guid
+        return self._image_file_path
 
-    @image_guid.setter
-    def image_guid(self, image_guid):
+    @image_file_path.setter
+    def image_file_path(self, image_file_path):
         """
-        Sets the image_guid.
+        Sets the image_file_path.
 
-        Gets or sets the texture image file Guid  # noqa: E501
+        Gets or sets the texture image file path  # noqa: E501
 
-        :param image_guid: The image_guid.  # noqa: E501
+        :param image_file_path: The image_file_path.  # noqa: E501
         :type: str
         """
-        self._image_guid = image_guid
+        self._image_file_path = image_file_path
 
     def to_dict(self):
         """Returns the model properties as a dict"""

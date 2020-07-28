@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,7 +40,6 @@ class TestSearchQRcode(TestContext):
         test_file = TestFile.image_signed()
         opts = SearchQRCodeOptions()
         self.populate_options(opts)
-        opts.document_type = 'Image'
         settings = SearchSettings()
         settings.file_info = test_file.ToFileInfo()
         settings.options = [opts]
@@ -51,7 +50,6 @@ class TestSearchQRcode(TestContext):
         test_file = TestFile.pdf_signed()
         opts = SearchQRCodeOptions()
         self.populate_options(opts)
-        opts.document_type = 'Pdf'
         settings = SearchSettings()
         settings.file_info = test_file.ToFileInfo()
         settings.options = [opts]
@@ -62,7 +60,6 @@ class TestSearchQRcode(TestContext):
         test_file = TestFile.presentation_signed()
         opts = SearchQRCodeOptions()
         self.populate_options(opts)
-        opts.document_type = 'Presentation'
         settings = SearchSettings()
         settings.file_info = test_file.ToFileInfo()
         settings.options = [opts]
@@ -73,7 +70,6 @@ class TestSearchQRcode(TestContext):
         test_file = TestFile.spreadsheet_signed()
         opts = SearchQRCodeOptions()
         self.populate_options(opts)
-        opts.document_type = 'Spreadsheet'
         settings = SearchSettings()
         settings.file_info = test_file.ToFileInfo()
         settings.options = [opts]
@@ -84,7 +80,6 @@ class TestSearchQRcode(TestContext):
         test_file = TestFile.wordprocessing_signed()
         opts = SearchQRCodeOptions()
         self.populate_options(opts)
-        opts.document_type = 'WordProcessing'
         settings = SearchSettings()
         settings.file_info = test_file.ToFileInfo()
         settings.options = [opts]

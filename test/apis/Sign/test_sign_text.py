@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,42 +39,42 @@ class TestSignText(TestContext):
     def test_sign_text_image(self):
         test_file = TestFile.image_jpg()
         signedFileName = "Output\\ImageTextSigned.jpg"        
-        settings = self.populate_sign_options(signedFileName, 'Image', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_text_pdf(self):
         test_file = TestFile.pdf_one_page()
         signedFileName = "Output\\PdfTextSigned.pdf"        
-        settings = self.populate_sign_options(signedFileName, 'Pdf', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_text_presentation(self):
         test_file = TestFile.presentation_pptx()
         signedFileName = "Output\\PresentationTextSigned.pptx"        
-        settings = self.populate_sign_options(signedFileName, 'Presentation', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_text_spreadsheet(self):
         test_file = TestFile.spreadsheet_xlsx()
         signedFileName = "Output\\SpreadsheetTextSigned.xlsx"        
-        settings = self.populate_sign_options(signedFileName, 'Spreadsheet', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_text_wordprocessing(self):
         test_file = TestFile.word_docx()
         signedFileName = "Output\\WordTextSigned.docx"        
-        settings = self.populate_sign_options(signedFileName, 'WordProcessing', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)                       
 
     @staticmethod
-    def populate_sign_options(signedFileName, documentType, testFile):
+    def populate_sign_options(signedFileName, testFile):
         opts = SignTextOptions()        
-        opts.document_type = documentType
+        
         # set signature properties
         opts.signature_type = 'Text'
         opts.text = 'John Smith'
@@ -103,12 +103,14 @@ class TestSignText(TestContext):
         opts.font.underline = False        
         opts.fore_color = Color()
         opts.fore_color.web = "BlueViolet"
-        opts.border_color = Color()
-        opts.border_color.web = "DarkOrange"
+        opts.border = BorderLine()
+        opts.border.color = Color()
+        opts.border.color.web = "DarkOrange"
+        opts.border.visible = True
+        opts.border.style = "Dash"
+
         opts.background_color = Color()
-        opts.background_color.web = "DarkOrange"
-        opts.border_visiblity = True
-        opts.border_dash_style = "Dash"        
+        opts.background_color.web = "DarkOrange"   
 
         opts.page = 1
         opts.all_pages = False

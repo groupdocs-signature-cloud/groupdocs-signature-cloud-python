@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="RadialGradientBrush.py">
+# <copyright company="Aspose Pty Ltd" file="ImageSignature.py">
 #   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,11 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import Brush
+from groupdocs_signature_cloud.models import Signature
 
-class RadialGradientBrush(Brush):
+class ImageSignature(Signature):
     """
-    Represents radial gradient brush
+    Contains Image signature properties             
     """
 
     """
@@ -45,79 +45,81 @@ class RadialGradientBrush(Brush):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'inner_color': 'Color',
-        'outer_color': 'Color'
+        'size': 'int',
+        'format': 'str'
     }
 
     attribute_map = {
-        'inner_color': 'InnerColor',
-        'outer_color': 'OuterColor'
+        'size': 'Size',
+        'format': 'Format'
     }
 
-    def __init__(self, inner_color=None, outer_color=None, **kwargs):  # noqa: E501
-        """Initializes new instance of RadialGradientBrush"""  # noqa: E501
+    def __init__(self, size=None, format=None, **kwargs):  # noqa: E501
+        """Initializes new instance of ImageSignature"""  # noqa: E501
 
-        self._inner_color = None
-        self._outer_color = None
+        self._size = None
+        self._format = None
 
-        if inner_color is not None:
-            self.inner_color = inner_color
-        if outer_color is not None:
-            self.outer_color = outer_color
+        if size is not None:
+            self.size = size
+        if format is not None:
+            self.format = format
 
-        base = super(RadialGradientBrush, self)
+        base = super(ImageSignature, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
     
     @property
-    def inner_color(self):
+    def size(self):
         """
-        Gets the inner_color.  # noqa: E501
+        Gets the size.  # noqa: E501
 
-        Gets or sets inner gradient color  # noqa: E501
+        Specifies the image size  # noqa: E501
 
-        :return: The inner_color.  # noqa: E501
-        :rtype: Color
+        :return: The size.  # noqa: E501
+        :rtype: int
         """
-        return self._inner_color
+        return self._size
 
-    @inner_color.setter
-    def inner_color(self, inner_color):
+    @size.setter
+    def size(self, size):
         """
-        Sets the inner_color.
+        Sets the size.
 
-        Gets or sets inner gradient color  # noqa: E501
+        Specifies the image size  # noqa: E501
 
-        :param inner_color: The inner_color.  # noqa: E501
-        :type: Color
+        :param size: The size.  # noqa: E501
+        :type: int
         """
-        self._inner_color = inner_color
+        if size is None:
+            raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
+        self._size = size
     
     @property
-    def outer_color(self):
+    def format(self):
         """
-        Gets the outer_color.  # noqa: E501
+        Gets the format.  # noqa: E501
 
-        Gets or sets outer gradient color  # noqa: E501
+        Specifies the format of image  # noqa: E501
 
-        :return: The outer_color.  # noqa: E501
-        :rtype: Color
+        :return: The format.  # noqa: E501
+        :rtype: str
         """
-        return self._outer_color
+        return self._format
 
-    @outer_color.setter
-    def outer_color(self, outer_color):
+    @format.setter
+    def format(self, format):
         """
-        Sets the outer_color.
+        Sets the format.
 
-        Gets or sets outer gradient color  # noqa: E501
+        Specifies the format of image  # noqa: E501
 
-        :param outer_color: The outer_color.  # noqa: E501
-        :type: Color
+        :param format: The format.  # noqa: E501
+        :type: str
         """
-        self._outer_color = outer_color
+        self._format = format
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -153,7 +155,7 @@ class RadialGradientBrush(Brush):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, RadialGradientBrush):
+        if not isinstance(other, ImageSignature):
             return False
 
         return self.__dict__ == other.__dict__

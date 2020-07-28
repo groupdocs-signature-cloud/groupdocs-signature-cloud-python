@@ -15,7 +15,7 @@ from groupdocs_signature_cloud.apis.storage_api import StorageApi
 from groupdocs_signature_cloud.apis.file_api import CopyFileRequest, DeleteFileRequest, DownloadFileRequest, MoveFileRequest, UploadFileRequest
 from groupdocs_signature_cloud.apis.storage_api import GetDiscUsageRequest, GetFileVersionsRequest, ObjectExistsRequest, StorageExistsRequest
 from groupdocs_signature_cloud.apis.folder_api import CopyFolderRequest, CreateFolderRequest, DeleteFolderRequest, GetFilesListRequest, MoveFolderRequest
-from groupdocs_signature_cloud.apis.sign_api import CreateSignaturesRequest, SearchSignaturesRequest, VerifySignaturesRequest
+from groupdocs_signature_cloud.apis.sign_api import CreateSignaturesRequest, SearchSignaturesRequest, VerifySignaturesRequest, UpdateSignaturesRequest, DeleteSignaturesRequest
 from groupdocs_signature_cloud.apis.info_api import GetInfoRequest
 
 # import ApiClient
@@ -31,6 +31,8 @@ from groupdocs_signature_cloud.models.base_settings import BaseSettings
 from groupdocs_signature_cloud.models.border_line import BorderLine
 from groupdocs_signature_cloud.models.brush import Brush
 from groupdocs_signature_cloud.models.color import Color
+from groupdocs_signature_cloud.models.delete_options import DeleteOptions
+from groupdocs_signature_cloud.models.delete_result import DeleteResult
 from groupdocs_signature_cloud.models.disc_usage import DiscUsage
 from groupdocs_signature_cloud.models.error import Error
 from groupdocs_signature_cloud.models.error_details import ErrorDetails
@@ -56,10 +58,14 @@ from groupdocs_signature_cloud.models.signature_font import SignatureFont
 from groupdocs_signature_cloud.models.stamp_line import StampLine
 from groupdocs_signature_cloud.models.storage_exist import StorageExist
 from groupdocs_signature_cloud.models.storage_file import StorageFile
+from groupdocs_signature_cloud.models.update_options import UpdateOptions
+from groupdocs_signature_cloud.models.update_result import UpdateResult
 from groupdocs_signature_cloud.models.verify_result import VerifyResult
 from groupdocs_signature_cloud.models.barcode_signature import BarcodeSignature
+from groupdocs_signature_cloud.models.delete_settings import DeleteSettings
 from groupdocs_signature_cloud.models.digital_signature import DigitalSignature
 from groupdocs_signature_cloud.models.file_version import FileVersion
+from groupdocs_signature_cloud.models.image_signature import ImageSignature
 from groupdocs_signature_cloud.models.info_settings import InfoSettings
 from groupdocs_signature_cloud.models.linear_gradient_brush import LinearGradientBrush
 from groupdocs_signature_cloud.models.qr_code_signature import QRCodeSignature
@@ -69,7 +75,9 @@ from groupdocs_signature_cloud.models.search_settings import SearchSettings
 from groupdocs_signature_cloud.models.sign_options import SignOptions
 from groupdocs_signature_cloud.models.sign_settings import SignSettings
 from groupdocs_signature_cloud.models.solid_brush import SolidBrush
+from groupdocs_signature_cloud.models.text_signature import TextSignature
 from groupdocs_signature_cloud.models.texture_brush import TextureBrush
+from groupdocs_signature_cloud.models.update_settings import UpdateSettings
 from groupdocs_signature_cloud.models.verify_options import VerifyOptions
 from groupdocs_signature_cloud.models.verify_settings import VerifySettings
 from groupdocs_signature_cloud.models.search_barcode_options import SearchBarcodeOptions

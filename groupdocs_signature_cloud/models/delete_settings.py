@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="RadialGradientBrush.py">
+# <copyright company="Aspose Pty Ltd" file="DeleteSettings.py">
 #   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,11 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import Brush
+from groupdocs_signature_cloud.models import BaseSettings
 
-class RadialGradientBrush(Brush):
+class DeleteSettings(BaseSettings):
     """
-    Represents radial gradient brush
+    Defines delete sign document settings
     """
 
     """
@@ -45,79 +45,50 @@ class RadialGradientBrush(Brush):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'inner_color': 'Color',
-        'outer_color': 'Color'
+        'options': 'list[DeleteOptions]'
     }
 
     attribute_map = {
-        'inner_color': 'InnerColor',
-        'outer_color': 'OuterColor'
+        'options': 'Options'
     }
 
-    def __init__(self, inner_color=None, outer_color=None, **kwargs):  # noqa: E501
-        """Initializes new instance of RadialGradientBrush"""  # noqa: E501
+    def __init__(self, options=None, **kwargs):  # noqa: E501
+        """Initializes new instance of DeleteSettings"""  # noqa: E501
 
-        self._inner_color = None
-        self._outer_color = None
+        self._options = None
 
-        if inner_color is not None:
-            self.inner_color = inner_color
-        if outer_color is not None:
-            self.outer_color = outer_color
+        if options is not None:
+            self.options = options
 
-        base = super(RadialGradientBrush, self)
+        base = super(DeleteSettings, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
     
     @property
-    def inner_color(self):
+    def options(self):
         """
-        Gets the inner_color.  # noqa: E501
+        Gets the options.  # noqa: E501
 
-        Gets or sets inner gradient color  # noqa: E501
+        Gets or sets options to perform signatures delete  # noqa: E501
 
-        :return: The inner_color.  # noqa: E501
-        :rtype: Color
+        :return: The options.  # noqa: E501
+        :rtype: list[DeleteOptions]
         """
-        return self._inner_color
+        return self._options
 
-    @inner_color.setter
-    def inner_color(self, inner_color):
+    @options.setter
+    def options(self, options):
         """
-        Sets the inner_color.
+        Sets the options.
 
-        Gets or sets inner gradient color  # noqa: E501
+        Gets or sets options to perform signatures delete  # noqa: E501
 
-        :param inner_color: The inner_color.  # noqa: E501
-        :type: Color
+        :param options: The options.  # noqa: E501
+        :type: list[DeleteOptions]
         """
-        self._inner_color = inner_color
-    
-    @property
-    def outer_color(self):
-        """
-        Gets the outer_color.  # noqa: E501
-
-        Gets or sets outer gradient color  # noqa: E501
-
-        :return: The outer_color.  # noqa: E501
-        :rtype: Color
-        """
-        return self._outer_color
-
-    @outer_color.setter
-    def outer_color(self, outer_color):
-        """
-        Sets the outer_color.
-
-        Gets or sets outer gradient color  # noqa: E501
-
-        :param outer_color: The outer_color.  # noqa: E501
-        :type: Color
-        """
-        self._outer_color = outer_color
+        self._options = options
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -153,7 +124,7 @@ class RadialGradientBrush(Brush):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, RadialGradientBrush):
+        if not isinstance(other, DeleteSettings):
             return False
 
         return self.__dict__ == other.__dict__

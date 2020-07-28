@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,42 +39,42 @@ class TestSignCollection(TestContext):
     def test_sign_collection_image(self):
         test_file = TestFile.image_jpg()
         signedFileName = "Output\\ImageCollectionSigned.jpg"        
-        settings = self.populate_sign_options(signedFileName, 'Image', test_file)            
+        settings = self.populate_sign_options_image(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_collection_pdf(self):
         test_file = TestFile.pdf_one_page()
         signedFileName = "Output\\PdfCollectionSigned.pdf"        
-        settings = self.populate_sign_options(signedFileName, 'Pdf', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_collection_presentation(self):
         test_file = TestFile.presentation_pptx()
         signedFileName = "Output\\PresentationCollectionSigned.pptx"        
-        settings = self.populate_sign_options(signedFileName, 'Presentation', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_collection_spreadsheet(self):
         test_file = TestFile.spreadsheet_xlsx()
         signedFileName = "Output\\SpreadsheetCollectionSigned.xlsx"        
-        settings = self.populate_sign_options(signedFileName, 'Spreadsheet', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_collection_wordprocessing(self):
         test_file = TestFile.word_docx()
         signedFileName = "Output\\WordCollectionSigned.docx"        
-        settings = self.populate_sign_options(signedFileName, 'WordProcessing', test_file)            
+        settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)                       
 
     @staticmethod
-    def barcode_opts(documentType):
+    def barcode_opts():
         opts = SignBarcodeOptions()        
-        opts.document_type = documentType
+        
         # set signature properties
         opts.signature_type = 'Barcode'
         opts.text = '123456789012'
@@ -99,16 +99,18 @@ class TestSignCollection(TestContext):
         # set signature appearance
         opts.fore_color = Color()
         opts.fore_color.web = "BlueViolet"
-        opts.border_color = Color()
-        opts.border_color.web = "DarkOrange"
+        opts.border = BorderLine()
+        opts.border.color = Color()
+        opts.border.color.web = "DarkOrange"
+        opts.border.visible = True
+        opts.border.style = "Dash"
+        opts.border.weight = 12
+
         opts.background_color = Color()
         opts.background_color.web = "DarkOrange"
-        opts.opacity = 0.8
+        opts.transparency = 0.8
         opts.inner_margins = Padding()
         opts.inner_margins.all = 2
-        opts.border_visiblity = True
-        opts.border_dash_style = "Dash"
-        opts.border_weight = 12
 
         opts.page = 1
         opts.all_pages = False
@@ -123,9 +125,9 @@ class TestSignCollection(TestContext):
         return opts
 
     @staticmethod
-    def qr_code_opts(documentType):
+    def qr_code_opts():
         opts = SignQRCodeOptions()        
-        opts.document_type = documentType
+        
         # set signature properties
         opts.signature_type = 'QRCode'
         opts.text = 'John Smit'
@@ -149,16 +151,18 @@ class TestSignCollection(TestContext):
         # set signature appearance
         opts.fore_color = Color()
         opts.fore_color.web = "BlueViolet"
-        opts.border_color = Color()
-        opts.border_color.web = "DarkOrange"
+        opts.border = BorderLine()
+        opts.border.color = Color()
+        opts.border.color.web = "DarkOrange"
+        opts.border.visible = True
+        opts.border.style = "Dash"
+        opts.border.weight = 12
+
         opts.background_color = Color()
         opts.background_color.web = "DarkOrange"
-        opts.opacity = 0.8
+        opts.transparency = 0.8
         opts.inner_margins = Padding()
         opts.inner_margins.all = 2
-        opts.border_visiblity = True
-        opts.border_dash_style = "Dash"
-        opts.border_weight = 12
 
         opts.page = 1
         opts.all_pages = False
@@ -173,13 +177,13 @@ class TestSignCollection(TestContext):
         return opts
 
     @staticmethod
-    def digital_opts(documentType):
+    def digital_opts():
         opts = SignDigitalOptions()        
-        opts.document_type = documentType
+        
         # set signature properties
         opts.signature_type = 'Digital'
-        opts.image_guid = TestFile.additional_signature01().FilePath()
-        opts.certificate_guid = TestFile.additional_pfx().FilePath()
+        opts.image_file_path = TestFile.additional_signature01().FilePath()
+        opts.certificate_file_path = TestFile.additional_pfx().FilePath()
         opts.password = '1234567890'
 
         # set signature position on a page
@@ -211,12 +215,12 @@ class TestSignCollection(TestContext):
         return opts
     
     @staticmethod
-    def image_opts(documentType):
+    def image_opts():
         opts = SignImageOptions()        
-        opts.document_type = documentType
+        
         # set signature properties
         opts.signature_type = 'Image'
-        opts.image_guid = TestFile.image_sign().FilePath()
+        opts.image_file_path = TestFile.image_sign().FilePath()
 
         # set signature position on a page
         opts.left = 100
@@ -233,7 +237,7 @@ class TestSignCollection(TestContext):
         opts.margin_measure_type = "Pixels"
 
         # set signature appearance
-        opts.opacity = 0.8
+        opts.transparency = 0.8
 
         opts.page = 1
         opts.all_pages = False
@@ -247,12 +251,12 @@ class TestSignCollection(TestContext):
         return opts
     
     @staticmethod
-    def stamp_opts(documentType):
+    def stamp_opts():
         opts = SignStampOptions()        
-        opts.document_type = documentType
+        
         # set signature properties
         opts.signature_type = 'Stamp'
-        opts.image_guid = TestFile.image_sign().FilePath()
+        opts.image_file_path = TestFile.image_sign().FilePath()
 
         # set signature position on a page
         opts.left = 100
@@ -273,7 +277,7 @@ class TestSignCollection(TestContext):
         opts.background_color.web = "CornflowerBlue"   
         opts.background_color_crop_type = "InnerArea"
         opts.background_image_crop_type = "MiddleArea"
-        opts.opacity = 0.8
+        opts.transparency = 0.8
 
         outline = StampLine()
         outline.text = "John Smith"
@@ -347,9 +351,9 @@ class TestSignCollection(TestContext):
         return opts
     
     @staticmethod
-    def text_opts(documentType):
+    def text_opts():
         opts = SignTextOptions()        
-        opts.document_type = documentType
+        
         # set signature properties
         opts.signature_type = 'Text'
         opts.text = 'John Smith'
@@ -378,12 +382,14 @@ class TestSignCollection(TestContext):
         opts.font.underline = False        
         opts.fore_color = Color()
         opts.fore_color.web = "BlueViolet"
-        opts.border_color = Color()
-        opts.border_color.web = "DarkOrange"
+        opts.border = BorderLine()
+        opts.border.color = Color()
+        opts.border.color.web = "DarkOrange"
+        opts.border.visible = True
+        opts.border.style = "Dash"
+
         opts.background_color = Color()
         opts.background_color.web = "DarkOrange"
-        opts.border_visiblity = True
-        opts.border_dash_style = "Dash"        
 
         opts.page = 1
         opts.all_pages = False
@@ -397,22 +403,28 @@ class TestSignCollection(TestContext):
         return opts
 
     @staticmethod
-    def populate_sign_options(signedFileName, documentType, testFile):
+    def populate_sign_options_image(signedFileName, testFile):
         settings = SignSettings()
         settings.file_info = testFile.ToFileInfo()
-        if (documentType == "Image" or documentType == "Presentation"):
-            settings.options = [TestSignCollection.barcode_opts(documentType),
-                                TestSignCollection.qr_code_opts(documentType),
-                                TestSignCollection.image_opts(documentType),
-                                TestSignCollection.stamp_opts(documentType),
-                                TestSignCollection.text_opts(documentType)]
-        else:
-            settings.options = [TestSignCollection.barcode_opts(documentType),
-                                TestSignCollection.qr_code_opts(documentType),
-                                TestSignCollection.digital_opts(documentType),
-                                TestSignCollection.image_opts(documentType),
-                                TestSignCollection.stamp_opts(documentType),
-                                TestSignCollection.text_opts(documentType)]
+        settings.options = [TestSignCollection.barcode_opts(),
+                            TestSignCollection.qr_code_opts(),
+                            TestSignCollection.image_opts(),
+                            TestSignCollection.stamp_opts(),
+                            TestSignCollection.text_opts()]
+        settings.save_options = SaveOptions()
+        settings.save_options.output_file_path = signedFileName
+        return settings
+
+    @staticmethod
+    def populate_sign_options(signedFileName, testFile):
+        settings = SignSettings()
+        settings.file_info = testFile.ToFileInfo()
+        settings.options = [TestSignCollection.barcode_opts(),
+                            TestSignCollection.qr_code_opts(),
+                            TestSignCollection.digital_opts(),
+                            TestSignCollection.image_opts(),
+                            TestSignCollection.stamp_opts(),
+                            TestSignCollection.text_opts()]
         settings.save_options = SaveOptions()
         settings.save_options.output_file_path = signedFileName
         return settings

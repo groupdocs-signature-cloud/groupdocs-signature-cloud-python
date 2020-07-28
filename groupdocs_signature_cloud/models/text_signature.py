@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="RadialGradientBrush.py">
+# <copyright company="Aspose Pty Ltd" file="TextSignature.py">
 #   Copyright (c) 2003-2020 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,11 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import Brush
+from groupdocs_signature_cloud.models import Signature
 
-class RadialGradientBrush(Brush):
+class TextSignature(Signature):
     """
-    Represents radial gradient brush
+    Contains Text signature properties
     """
 
     """
@@ -45,79 +45,79 @@ class RadialGradientBrush(Brush):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'inner_color': 'Color',
-        'outer_color': 'Color'
+        'text': 'str',
+        'signature_implementation': 'str'
     }
 
     attribute_map = {
-        'inner_color': 'InnerColor',
-        'outer_color': 'OuterColor'
+        'text': 'Text',
+        'signature_implementation': 'SignatureImplementation'
     }
 
-    def __init__(self, inner_color=None, outer_color=None, **kwargs):  # noqa: E501
-        """Initializes new instance of RadialGradientBrush"""  # noqa: E501
+    def __init__(self, text=None, signature_implementation=None, **kwargs):  # noqa: E501
+        """Initializes new instance of TextSignature"""  # noqa: E501
 
-        self._inner_color = None
-        self._outer_color = None
+        self._text = None
+        self._signature_implementation = None
 
-        if inner_color is not None:
-            self.inner_color = inner_color
-        if outer_color is not None:
-            self.outer_color = outer_color
+        if text is not None:
+            self.text = text
+        if signature_implementation is not None:
+            self.signature_implementation = signature_implementation
 
-        base = super(RadialGradientBrush, self)
+        base = super(TextSignature, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
     
     @property
-    def inner_color(self):
+    def text(self):
         """
-        Gets the inner_color.  # noqa: E501
+        Gets the text.  # noqa: E501
 
-        Gets or sets inner gradient color  # noqa: E501
+        Specifies signature text  # noqa: E501
 
-        :return: The inner_color.  # noqa: E501
-        :rtype: Color
+        :return: The text.  # noqa: E501
+        :rtype: str
         """
-        return self._inner_color
+        return self._text
 
-    @inner_color.setter
-    def inner_color(self, inner_color):
+    @text.setter
+    def text(self, text):
         """
-        Sets the inner_color.
+        Sets the text.
 
-        Gets or sets inner gradient color  # noqa: E501
+        Specifies signature text  # noqa: E501
 
-        :param inner_color: The inner_color.  # noqa: E501
-        :type: Color
+        :param text: The text.  # noqa: E501
+        :type: str
         """
-        self._inner_color = inner_color
+        self._text = text
     
     @property
-    def outer_color(self):
+    def signature_implementation(self):
         """
-        Gets the outer_color.  # noqa: E501
+        Gets the signature_implementation.  # noqa: E501
 
-        Gets or sets outer gradient color  # noqa: E501
+        Text signature implementation  # noqa: E501
 
-        :return: The outer_color.  # noqa: E501
-        :rtype: Color
+        :return: The signature_implementation.  # noqa: E501
+        :rtype: str
         """
-        return self._outer_color
+        return self._signature_implementation
 
-    @outer_color.setter
-    def outer_color(self, outer_color):
+    @signature_implementation.setter
+    def signature_implementation(self, signature_implementation):
         """
-        Sets the outer_color.
+        Sets the signature_implementation.
 
-        Gets or sets outer gradient color  # noqa: E501
+        Text signature implementation  # noqa: E501
 
-        :param outer_color: The outer_color.  # noqa: E501
-        :type: Color
+        :param signature_implementation: The signature_implementation.  # noqa: E501
+        :type: str
         """
-        self._outer_color = outer_color
+        self._signature_implementation = signature_implementation
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -153,7 +153,7 @@ class RadialGradientBrush(Brush):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, RadialGradientBrush):
+        if not isinstance(other, TextSignature):
             return False
 
         return self.__dict__ == other.__dict__
