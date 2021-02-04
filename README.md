@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/api-v2.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/groupdocs-signature-cloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/groupdocs-signature-cloud) ![PyPI - Implementation](https://img.shields.io/pypi/implementation/groupdocs-signature-cloud) ![PyPI - Wheel](https://img.shields.io/pypi/wheel/groupdocs-signature-cloud) [![GitHub license](https://img.shields.io/github/license/groupdocs-signature-cloud/groupdocs-signature-cloud-python)](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-python/blob/master/LICENSE) 
+![](https://img.shields.io/badge/api-v2.0-lightgrey) ![PyPI](https://img.shields.io/pypi/v/groupdocs-signature-cloud) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/groupdocs-signature-cloud) ![PyPI - Implementation](https://img.shields.io/pypi/implementation/groupdocs-signature-cloud) ![PyPI - Wheel](https://img.shields.io/pypi/wheel/groupdocs-signature-cloud) [![GitHub license](https://img.shields.io/github/license/groupdocs-signature-cloud/groupdocs-signature-cloud-python)](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-python/blob/master/LICENSE)
 
 # Python SDK to Document Signature REST API
 
@@ -20,11 +20,11 @@ Check out the [Developer's Guide](https://docs.groupdocs.cloud/signature/develop
 
 ## Supported Signature Types
 
-- **Text Signature** 
-- **Image Signature** 
-- **Barcode Signature** 
+- **Text Signature**
+- **Image Signature**
+- **Barcode Signature**
 - **QR-Code Signature**
-- **Digital Signature** 
+- **Digital Signature**
 - **Stamp Signature**
 
 ## Microsoft Office Formats
@@ -52,7 +52,7 @@ Install `groupdocs-signature-cloud` with [PIP](https://pypi.org/project/pip/) fr
 pip install groupdocs-signature-cloud
 ```
 
-Or clone repository and install it via [Setuptools](http://pypi.python.org/pypi/setuptools): 
+Or clone repository and install it via [Setuptools](http://pypi.python.org/pypi/setuptools):
 
 ```sh
 python setup.py install
@@ -61,26 +61,24 @@ python setup.py install
 ## Get Supported File Formats for e-Signature
 
 ```python
-# Import module
+# Load the gem
 import groupdocs_signature_cloud
 
-# Get your app_sid and app_key at https://dashboard.groupdocs.cloud (free registration is required).
-app_sid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-app_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+# Get Client Id and Client Secret from https://dashboard.groupdocs.cloud
+my_client_id = ""
+my_client_secret = ""
 
 # Create instance of the API
-api = groupdocs_signature_cloud.InfoApi.from_keys(app_sid, app_key)
+configuration = groupdocs_signature_cloud.Configuration(my_client_id, my_client_secret)
+api = groupdocs_signature_cloud.InfoApi.from_config(configuration)
 
-try:
-    # Retrieve supported file-formats
-    response = api.get_supported_file_formats()
+# Retrieve supported file-formats
+response = api.get_supported_file_formats()
 
-    # Print out supported file-formats
-    print("Supported file-formats:")
-    for format in response.formats:
-        print('{0} ({1})'.format(format.file_format, format.extension)) 
-except groupdocs_signature_cloud.ApiException as e:
-    print("Exception when calling get_supported_file_formats: {0}".format(e.message))
+# Print out supported file-formats
+print("Supported file-formats:")
+for format in response.formats:
+	print('{0} ({1})'.format(format.file_format, format.extension))
 ```
 
 ## GroupDocs.Signature Cloud SDKs in Popular Languages
@@ -88,6 +86,6 @@ except groupdocs_signature_cloud.ApiException as e:
 | .NET | Java | PHP | Python | Ruby | Node.js |
 |---|---|---|---|---|---|
 | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-dotnet) | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-java) | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-php) | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-python) | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-ruby)  | [GitHub](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-node) |
-| [NuGet](https://www.nuget.org/packages/GroupDocs.Signature-Cloud/) | [Maven](https://repository.groupdocs.cloud/webapp/#/artifacts/browse/tree/General/repo/com/groupdocs/groupdocs-signature-cloud) | [Composer](https://packagist.org/packages/groupdocscloud/groupdocs-signature-cloud) | [PIP](https://pypi.org/project/groupdocs-signature-cloud/) | [GEM](https://rubygems.org/gems/groupdocs_signature_cloud)  | [NPM](https://www.npmjs.com/package/groupdocs-signature-cloud) | 
+| [NuGet](https://www.nuget.org/packages/GroupDocs.Signature-Cloud/) | [Maven](https://repository.groupdocs.cloud/webapp/#/artifacts/browse/tree/General/repo/com/groupdocs/groupdocs-signature-cloud) | [Composer](https://packagist.org/packages/groupdocscloud/groupdocs-signature-cloud) | [PIP](https://pypi.org/project/groupdocs-signature-cloud/) | [GEM](https://rubygems.org/gems/groupdocs_signature_cloud)  | [NPM](https://www.npmjs.com/package/groupdocs-signature-cloud) |
 
 [Home](https://www.groupdocs.cloud/) | [Product Page](https://products.groupdocs.cloud/signature/python) | [Documentation](https://docs.groupdocs.cloud/signature/) | [Live Demo](https://products.groupdocs.app/signature/total) | [API Reference](https://apireference.groupdocs.cloud/signature/) | [Code Samples](https://github.com/groupdocs-signature-cloud/groupdocs-signature-cloud-python-samples) | [Blog](https://blog.groupdocs.cloud/category/signature/) | [Free Support](https://forum.groupdocs.cloud/c/signature) | [Free Trial](https://dashboard.groupdocs.cloud)
