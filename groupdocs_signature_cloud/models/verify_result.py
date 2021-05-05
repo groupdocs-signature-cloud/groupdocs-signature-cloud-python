@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="VerifyResult.py">
-#   Copyright (c) 2003-2020 Aspose Pty Ltd
+#   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -73,7 +73,7 @@ class VerifyResult(object):
         """
         Gets the file_info.  # noqa: E501
 
-        Processed document basic info  # noqa: E501
+        Processed document file info  # noqa: E501
 
         :return: The file_info.  # noqa: E501
         :rtype: FileInfo
@@ -85,7 +85,7 @@ class VerifyResult(object):
         """
         Sets the file_info.
 
-        Processed document basic info  # noqa: E501
+        Processed document file info  # noqa: E501
 
         :param file_info: The file_info.  # noqa: E501
         :type: FileInfo

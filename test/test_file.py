@@ -126,6 +126,13 @@ class TestFile(object):
         f.file_name = "JohnSmithSign.png"
         f.folder = "Additional\\"        
         return f   
+    
+    @classmethod
+    def not_exist(cls):
+        f = TestFile()
+        f.file_name = "not-exist.docx"
+        f.folder = "somefolder\\"
+        return f
 
     @classmethod
     def get_test_files(cls):

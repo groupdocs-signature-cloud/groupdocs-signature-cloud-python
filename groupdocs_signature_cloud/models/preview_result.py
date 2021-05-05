@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="ImageSignature.py">
+# <copyright company="Aspose Pty Ltd" file="PreviewResult.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import Signature
-
-class ImageSignature(Signature):
+class PreviewResult(object):
     """
-    Contains Image signature properties             
+    Document preview result
     """
 
     """
@@ -45,38 +43,66 @@ class ImageSignature(Signature):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'file_info': 'FileInfo',
         'size': 'int',
-        'format': 'str'
+        'pages_count': 'int',
+        'pages': 'list[PreviewPage]'
     }
 
     attribute_map = {
+        'file_info': 'FileInfo',
         'size': 'Size',
-        'format': 'Format'
+        'pages_count': 'PagesCount',
+        'pages': 'Pages'
     }
 
-    def __init__(self, size=None, format=None, **kwargs):  # noqa: E501
-        """Initializes new instance of ImageSignature"""  # noqa: E501
+    def __init__(self, file_info=None, size=None, pages_count=None, pages=None, **kwargs):  # noqa: E501
+        """Initializes new instance of PreviewResult"""  # noqa: E501
 
+        self._file_info = None
         self._size = None
-        self._format = None
+        self._pages_count = None
+        self._pages = None
 
+        if file_info is not None:
+            self.file_info = file_info
         if size is not None:
             self.size = size
-        if format is not None:
-            self.format = format
+        if pages_count is not None:
+            self.pages_count = pages_count
+        if pages is not None:
+            self.pages = pages
+    
+    @property
+    def file_info(self):
+        """
+        Gets the file_info.  # noqa: E501
 
-        base = super(ImageSignature, self)
-        base.__init__(**kwargs)
+        Input File info  # noqa: E501
 
-        self.swagger_types.update(base.swagger_types)
-        self.attribute_map.update(base.attribute_map)
+        :return: The file_info.  # noqa: E501
+        :rtype: FileInfo
+        """
+        return self._file_info
+
+    @file_info.setter
+    def file_info(self, file_info):
+        """
+        Sets the file_info.
+
+        Input File info  # noqa: E501
+
+        :param file_info: The file_info.  # noqa: E501
+        :type: FileInfo
+        """
+        self._file_info = file_info
     
     @property
     def size(self):
         """
         Gets the size.  # noqa: E501
 
-        Specifies the image size  # noqa: E501
+        Input File size  # noqa: E501
 
         :return: The size.  # noqa: E501
         :rtype: int
@@ -88,7 +114,7 @@ class ImageSignature(Signature):
         """
         Sets the size.
 
-        Specifies the image size  # noqa: E501
+        Input File size  # noqa: E501
 
         :param size: The size.  # noqa: E501
         :type: int
@@ -98,28 +124,54 @@ class ImageSignature(Signature):
         self._size = size
     
     @property
-    def format(self):
+    def pages_count(self):
         """
-        Gets the format.  # noqa: E501
+        Gets the pages_count.  # noqa: E501
 
-        Specifies the format of image  # noqa: E501
+        Count of pages  # noqa: E501
 
-        :return: The format.  # noqa: E501
-        :rtype: str
+        :return: The pages_count.  # noqa: E501
+        :rtype: int
         """
-        return self._format
+        return self._pages_count
 
-    @format.setter
-    def format(self, format):
+    @pages_count.setter
+    def pages_count(self, pages_count):
         """
-        Sets the format.
+        Sets the pages_count.
 
-        Specifies the format of image  # noqa: E501
+        Count of pages  # noqa: E501
 
-        :param format: The format.  # noqa: E501
-        :type: str
+        :param pages_count: The pages_count.  # noqa: E501
+        :type: int
         """
-        self._format = format
+        if pages_count is None:
+            raise ValueError("Invalid value for `pages_count`, must not be `None`")  # noqa: E501
+        self._pages_count = pages_count
+    
+    @property
+    def pages(self):
+        """
+        Gets the pages.  # noqa: E501
+
+        Document preview pages  # noqa: E501
+
+        :return: The pages.  # noqa: E501
+        :rtype: list[PreviewPage]
+        """
+        return self._pages
+
+    @pages.setter
+    def pages(self, pages):
+        """
+        Sets the pages.
+
+        Document preview pages  # noqa: E501
+
+        :param pages: The pages.  # noqa: E501
+        :type: list[PreviewPage]
+        """
+        self._pages = pages
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -155,7 +207,7 @@ class ImageSignature(Signature):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ImageSignature):
+        if not isinstance(other, PreviewResult):
             return False
 
         return self.__dict__ == other.__dict__

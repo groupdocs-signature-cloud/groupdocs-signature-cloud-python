@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="SignTextOptions.py">
-#   Copyright (c) 2003-2020 Aspose Pty Ltd
+#   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,7 +65,8 @@ class SignTextOptions(SignOptions):
         'border': 'BorderLine',
         'text_horizontal_alignment': 'str',
         'text_vertical_alignment': 'str',
-        'z_order': 'int'
+        'z_order': 'int',
+        'native': 'bool'
     }
 
     attribute_map = {
@@ -89,10 +90,11 @@ class SignTextOptions(SignOptions):
         'border': 'Border',
         'text_horizontal_alignment': 'TextHorizontalAlignment',
         'text_vertical_alignment': 'TextVerticalAlignment',
-        'z_order': 'ZOrder'
+        'z_order': 'ZOrder',
+        'native': 'Native'
     }
 
-    def __init__(self, left=None, top=None, width=None, height=None, location_measure_type=None, size_measure_type=None, stretch=None, rotation_angle=None, horizontal_alignment=None, vertical_alignment=None, margin=None, margin_measure_type=None, text=None, font=None, fore_color=None, background_color=None, background_brush=None, border=None, text_horizontal_alignment=None, text_vertical_alignment=None, z_order=None, **kwargs):  # noqa: E501
+    def __init__(self, left=None, top=None, width=None, height=None, location_measure_type=None, size_measure_type=None, stretch=None, rotation_angle=None, horizontal_alignment=None, vertical_alignment=None, margin=None, margin_measure_type=None, text=None, font=None, fore_color=None, background_color=None, background_brush=None, border=None, text_horizontal_alignment=None, text_vertical_alignment=None, z_order=None, native=None, **kwargs):  # noqa: E501
         """Initializes new instance of SignTextOptions"""  # noqa: E501
 
         self._left = None
@@ -116,6 +118,7 @@ class SignTextOptions(SignOptions):
         self._text_horizontal_alignment = None
         self._text_vertical_alignment = None
         self._z_order = None
+        self._native = None
 
         if left is not None:
             self.left = left
@@ -159,6 +162,8 @@ class SignTextOptions(SignOptions):
             self.text_vertical_alignment = text_vertical_alignment
         if z_order is not None:
             self.z_order = z_order
+        if native is not None:
+            self.native = native
 
         base = super(SignTextOptions, self)
         base.__init__(**kwargs)
@@ -761,6 +766,32 @@ class SignTextOptions(SignOptions):
         if z_order is None:
             raise ValueError("Invalid value for `z_order`, must not be `None`")  # noqa: E501
         self._z_order = z_order
+    
+    @property
+    def native(self):
+        """
+        Gets the native.  # noqa: E501
+
+        Gets or sets the native attribute. If it is set document specific signatures could be used. Native text watermark for WordProcessing documents is different than regular, for example.               # noqa: E501
+
+        :return: The native.  # noqa: E501
+        :rtype: bool
+        """
+        return self._native
+
+    @native.setter
+    def native(self, native):
+        """
+        Sets the native.
+
+        Gets or sets the native attribute. If it is set document specific signatures could be used. Native text watermark for WordProcessing documents is different than regular, for example.               # noqa: E501
+
+        :param native: The native.  # noqa: E501
+        :type: bool
+        """
+        if native is None:
+            raise ValueError("Invalid value for `native`, must not be `None`")  # noqa: E501
+        self._native = native
 
     def to_dict(self):
         """Returns the model properties as a dict"""

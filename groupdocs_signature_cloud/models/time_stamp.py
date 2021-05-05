@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="ImageSignature.py">
+# <copyright company="Aspose Pty Ltd" file="TimeStamp.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import Signature
-
-class ImageSignature(Signature):
+class TimeStamp(object):
     """
-    Contains Image signature properties             
+    Represents data to get time stamp from third-party site.
     """
 
     """
@@ -45,81 +43,102 @@ class ImageSignature(Signature):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'size': 'int',
-        'format': 'str'
+        'url': 'str',
+        'user': 'str',
+        'password': 'str'
     }
 
     attribute_map = {
-        'size': 'Size',
-        'format': 'Format'
+        'url': 'Url',
+        'user': 'User',
+        'password': 'Password'
     }
 
-    def __init__(self, size=None, format=None, **kwargs):  # noqa: E501
-        """Initializes new instance of ImageSignature"""  # noqa: E501
+    def __init__(self, url=None, user=None, password=None, **kwargs):  # noqa: E501
+        """Initializes new instance of TimeStamp"""  # noqa: E501
 
-        self._size = None
-        self._format = None
+        self._url = None
+        self._user = None
+        self._password = None
 
-        if size is not None:
-            self.size = size
-        if format is not None:
-            self.format = format
-
-        base = super(ImageSignature, self)
-        base.__init__(**kwargs)
-
-        self.swagger_types.update(base.swagger_types)
-        self.attribute_map.update(base.attribute_map)
+        if url is not None:
+            self.url = url
+        if user is not None:
+            self.user = user
+        if password is not None:
+            self.password = password
     
     @property
-    def size(self):
+    def url(self):
         """
-        Gets the size.  # noqa: E501
+        Gets the url.  # noqa: E501
 
-        Specifies the image size  # noqa: E501
+        Url of third-party site.  # noqa: E501
 
-        :return: The size.  # noqa: E501
-        :rtype: int
-        """
-        return self._size
-
-    @size.setter
-    def size(self, size):
-        """
-        Sets the size.
-
-        Specifies the image size  # noqa: E501
-
-        :param size: The size.  # noqa: E501
-        :type: int
-        """
-        if size is None:
-            raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
-        self._size = size
-    
-    @property
-    def format(self):
-        """
-        Gets the format.  # noqa: E501
-
-        Specifies the format of image  # noqa: E501
-
-        :return: The format.  # noqa: E501
+        :return: The url.  # noqa: E501
         :rtype: str
         """
-        return self._format
+        return self._url
 
-    @format.setter
-    def format(self, format):
+    @url.setter
+    def url(self, url):
         """
-        Sets the format.
+        Sets the url.
 
-        Specifies the format of image  # noqa: E501
+        Url of third-party site.  # noqa: E501
 
-        :param format: The format.  # noqa: E501
+        :param url: The url.  # noqa: E501
         :type: str
         """
-        self._format = format
+        self._url = url
+    
+    @property
+    def user(self):
+        """
+        Gets the user.  # noqa: E501
+
+        User.  # noqa: E501
+
+        :return: The user.  # noqa: E501
+        :rtype: str
+        """
+        return self._user
+
+    @user.setter
+    def user(self, user):
+        """
+        Sets the user.
+
+        User.  # noqa: E501
+
+        :param user: The user.  # noqa: E501
+        :type: str
+        """
+        self._user = user
+    
+    @property
+    def password(self):
+        """
+        Gets the password.  # noqa: E501
+
+        Password.  # noqa: E501
+
+        :return: The password.  # noqa: E501
+        :rtype: str
+        """
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        """
+        Sets the password.
+
+        Password.  # noqa: E501
+
+        :param password: The password.  # noqa: E501
+        :type: str
+        """
+        self._password = password
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -155,7 +174,7 @@ class ImageSignature(Signature):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ImageSignature):
+        if not isinstance(other, TimeStamp):
             return False
 
         return self.__dict__ == other.__dict__

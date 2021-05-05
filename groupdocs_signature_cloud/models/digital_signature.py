@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="DigitalSignature.py">
-#   Copyright (c) 2003-2020 Aspose Pty Ltd
+#   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,21 +47,24 @@ class DigitalSignature(Signature):
     swagger_types = {
         'comments': 'str',
         'is_valid': 'bool',
-        'sign_time': 'datetime'
+        'sign_time': 'datetime',
+        'pdf_digital_signature': 'PdfDigitalSignature'
     }
 
     attribute_map = {
         'comments': 'Comments',
         'is_valid': 'IsValid',
-        'sign_time': 'SignTime'
+        'sign_time': 'SignTime',
+        'pdf_digital_signature': 'PdfDigitalSignature'
     }
 
-    def __init__(self, comments=None, is_valid=None, sign_time=None, **kwargs):  # noqa: E501
+    def __init__(self, comments=None, is_valid=None, sign_time=None, pdf_digital_signature=None, **kwargs):  # noqa: E501
         """Initializes new instance of DigitalSignature"""  # noqa: E501
 
         self._comments = None
         self._is_valid = None
         self._sign_time = None
+        self._pdf_digital_signature = None
 
         if comments is not None:
             self.comments = comments
@@ -69,6 +72,8 @@ class DigitalSignature(Signature):
             self.is_valid = is_valid
         if sign_time is not None:
             self.sign_time = sign_time
+        if pdf_digital_signature is not None:
+            self.pdf_digital_signature = pdf_digital_signature
 
         base = super(DigitalSignature, self)
         base.__init__(**kwargs)
@@ -151,6 +156,30 @@ class DigitalSignature(Signature):
         if sign_time is None:
             raise ValueError("Invalid value for `sign_time`, must not be `None`")  # noqa: E501
         self._sign_time = sign_time
+    
+    @property
+    def pdf_digital_signature(self):
+        """
+        Gets the pdf_digital_signature.  # noqa: E501
+
+        Pdf digital signature properties  # noqa: E501
+
+        :return: The pdf_digital_signature.  # noqa: E501
+        :rtype: PdfDigitalSignature
+        """
+        return self._pdf_digital_signature
+
+    @pdf_digital_signature.setter
+    def pdf_digital_signature(self, pdf_digital_signature):
+        """
+        Sets the pdf_digital_signature.
+
+        Pdf digital signature properties  # noqa: E501
+
+        :param pdf_digital_signature: The pdf_digital_signature.  # noqa: E501
+        :type: PdfDigitalSignature
+        """
+        self._pdf_digital_signature = pdf_digital_signature
 
     def to_dict(self):
         """Returns the model properties as a dict"""

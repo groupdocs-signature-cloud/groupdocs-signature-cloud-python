@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="ImageSignature.py">
+# <copyright company="Aspose Pty Ltd" file="PreviewPage.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import Signature
-
-class ImageSignature(Signature):
+class PreviewPage(object):
     """
-    Contains Image signature properties             
+    Document preview page
     """
 
     """
@@ -45,38 +43,92 @@ class ImageSignature(Signature):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'page_number': 'int',
+        'file_path': 'str',
         'size': 'int',
-        'format': 'str'
+        'download_url': 'str'
     }
 
     attribute_map = {
+        'page_number': 'PageNumber',
+        'file_path': 'FilePath',
         'size': 'Size',
-        'format': 'Format'
+        'download_url': 'DownloadUrl'
     }
 
-    def __init__(self, size=None, format=None, **kwargs):  # noqa: E501
-        """Initializes new instance of ImageSignature"""  # noqa: E501
+    def __init__(self, page_number=None, file_path=None, size=None, download_url=None, **kwargs):  # noqa: E501
+        """Initializes new instance of PreviewPage"""  # noqa: E501
 
+        self._page_number = None
+        self._file_path = None
         self._size = None
-        self._format = None
+        self._download_url = None
 
+        if page_number is not None:
+            self.page_number = page_number
+        if file_path is not None:
+            self.file_path = file_path
         if size is not None:
             self.size = size
-        if format is not None:
-            self.format = format
+        if download_url is not None:
+            self.download_url = download_url
+    
+    @property
+    def page_number(self):
+        """
+        Gets the page_number.  # noqa: E501
 
-        base = super(ImageSignature, self)
-        base.__init__(**kwargs)
+        Page number  # noqa: E501
 
-        self.swagger_types.update(base.swagger_types)
-        self.attribute_map.update(base.attribute_map)
+        :return: The page_number.  # noqa: E501
+        :rtype: int
+        """
+        return self._page_number
+
+    @page_number.setter
+    def page_number(self, page_number):
+        """
+        Sets the page_number.
+
+        Page number  # noqa: E501
+
+        :param page_number: The page_number.  # noqa: E501
+        :type: int
+        """
+        if page_number is None:
+            raise ValueError("Invalid value for `page_number`, must not be `None`")  # noqa: E501
+        self._page_number = page_number
+    
+    @property
+    def file_path(self):
+        """
+        Gets the file_path.  # noqa: E501
+
+        Page file path in storage  # noqa: E501
+
+        :return: The file_path.  # noqa: E501
+        :rtype: str
+        """
+        return self._file_path
+
+    @file_path.setter
+    def file_path(self, file_path):
+        """
+        Sets the file_path.
+
+        Page file path in storage  # noqa: E501
+
+        :param file_path: The file_path.  # noqa: E501
+        :type: str
+        """
+        self._file_path = file_path
     
     @property
     def size(self):
         """
         Gets the size.  # noqa: E501
 
-        Specifies the image size  # noqa: E501
+        Page file size  # noqa: E501
 
         :return: The size.  # noqa: E501
         :rtype: int
@@ -88,7 +140,7 @@ class ImageSignature(Signature):
         """
         Sets the size.
 
-        Specifies the image size  # noqa: E501
+        Page file size  # noqa: E501
 
         :param size: The size.  # noqa: E501
         :type: int
@@ -98,28 +150,28 @@ class ImageSignature(Signature):
         self._size = size
     
     @property
-    def format(self):
+    def download_url(self):
         """
-        Gets the format.  # noqa: E501
+        Gets the download_url.  # noqa: E501
 
-        Specifies the format of image  # noqa: E501
+        Download url  # noqa: E501
 
-        :return: The format.  # noqa: E501
+        :return: The download_url.  # noqa: E501
         :rtype: str
         """
-        return self._format
+        return self._download_url
 
-    @format.setter
-    def format(self, format):
+    @download_url.setter
+    def download_url(self, download_url):
         """
-        Sets the format.
+        Sets the download_url.
 
-        Specifies the format of image  # noqa: E501
+        Download url  # noqa: E501
 
-        :param format: The format.  # noqa: E501
+        :param download_url: The download_url.  # noqa: E501
         :type: str
         """
-        self._format = format
+        self._download_url = download_url
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -155,7 +207,7 @@ class ImageSignature(Signature):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, ImageSignature):
+        if not isinstance(other, PreviewPage):
             return False
 
         return self.__dict__ == other.__dict__

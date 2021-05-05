@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="InfoResult.py">
-#   Copyright (c) 2003-2020 Aspose Pty Ltd
+#   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -108,7 +108,7 @@ class InfoResult(object):
         """
         Gets the file_info.  # noqa: E501
 
-        File info  # noqa: E501
+        Input File info  # noqa: E501
 
         :return: The file_info.  # noqa: E501
         :rtype: FileInfo
@@ -120,7 +120,7 @@ class InfoResult(object):
         """
         Sets the file_info.
 
-        File info  # noqa: E501
+        Input File info  # noqa: E501
 
         :param file_info: The file_info.  # noqa: E501
         :type: FileInfo

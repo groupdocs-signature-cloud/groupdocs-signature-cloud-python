@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2020 Aspose Pty Ltd
+#   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -67,6 +67,15 @@ class TestInfoApi(TestContext):
         self.assertEqual(response.width_for_max_height, 612)
         self.assertEqual(response.pages_count, 1)
         self.assertEqual(response.file_info.file_path, settings.file_info.file_path)
+
+    def test_get_info_returns_file_not_found(self):
+        file_info = TestFile.not_exist().ToFileInfo()
+        settings = InfoSettings()
+        settings.file_info = file_info
+        request = GetInfoRequest(settings)
+        with self.assertRaises(ApiException) as context:
+            self.info_api.get_info(request)
+        self.assertEqual("Can't find file located at 'somefolder\\not-exist.docx'.", context.exception.message)
 
 if __name__ == '__main__':
     unittest.main()

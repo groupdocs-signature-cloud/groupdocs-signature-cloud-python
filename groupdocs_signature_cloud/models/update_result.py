@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="UpdateResult.py">
-#   Copyright (c) 2003-2020 Aspose Pty Ltd
+#   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -78,7 +78,7 @@ class UpdateResult(object):
         """
         Gets the file_info.  # noqa: E501
 
-        Source document basic info  # noqa: E501
+        Updated document file info  # noqa: E501
 
         :return: The file_info.  # noqa: E501
         :rtype: FileInfo
@@ -90,7 +90,7 @@ class UpdateResult(object):
         """
         Sets the file_info.
 
-        Source document basic info  # noqa: E501
+        Updated document file info  # noqa: E501
 
         :param file_info: The file_info.  # noqa: E501
         :type: FileInfo

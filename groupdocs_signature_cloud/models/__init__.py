@@ -27,6 +27,9 @@ from groupdocs_signature_cloud.models.options_base import OptionsBase
 from groupdocs_signature_cloud.models.padding import Padding
 from groupdocs_signature_cloud.models.page_info import PageInfo
 from groupdocs_signature_cloud.models.pages_setup import PagesSetup
+from groupdocs_signature_cloud.models.pdf_digital_signature import PdfDigitalSignature
+from groupdocs_signature_cloud.models.preview_page import PreviewPage
+from groupdocs_signature_cloud.models.preview_result import PreviewResult
 from groupdocs_signature_cloud.models.qr_code_type import QRCodeType
 from groupdocs_signature_cloud.models.qr_codes_result import QRCodesResult
 from groupdocs_signature_cloud.models.save_options import SaveOptions
@@ -37,6 +40,7 @@ from groupdocs_signature_cloud.models.signature_font import SignatureFont
 from groupdocs_signature_cloud.models.stamp_line import StampLine
 from groupdocs_signature_cloud.models.storage_exist import StorageExist
 from groupdocs_signature_cloud.models.storage_file import StorageFile
+from groupdocs_signature_cloud.models.time_stamp import TimeStamp
 from groupdocs_signature_cloud.models.update_options import UpdateOptions
 from groupdocs_signature_cloud.models.update_result import UpdateResult
 from groupdocs_signature_cloud.models.verify_result import VerifyResult
@@ -47,6 +51,7 @@ from groupdocs_signature_cloud.models.file_version import FileVersion
 from groupdocs_signature_cloud.models.image_signature import ImageSignature
 from groupdocs_signature_cloud.models.info_settings import InfoSettings
 from groupdocs_signature_cloud.models.linear_gradient_brush import LinearGradientBrush
+from groupdocs_signature_cloud.models.preview_settings import PreviewSettings
 from groupdocs_signature_cloud.models.qr_code_signature import QRCodeSignature
 from groupdocs_signature_cloud.models.radial_gradient_brush import RadialGradientBrush
 from groupdocs_signature_cloud.models.search_options import SearchOptions
