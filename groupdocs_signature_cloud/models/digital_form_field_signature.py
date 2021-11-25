@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="SignOptions.py">
+# <copyright company="Aspose Pty Ltd" file="DigitalFormFieldSignature.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,11 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import OptionsBase
+from groupdocs_signature_cloud.models import FormFieldSignature
 
-class SignOptions(OptionsBase):
+class DigitalFormFieldSignature(FormFieldSignature):
     """
-    Base container class for signature options data
+    Contains digital signature input form field properties for Pdf Documents
     """
 
     """
@@ -45,50 +45,52 @@ class SignOptions(OptionsBase):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'appearance': 'SignatureAppearance'
+        'signed': 'bool'
     }
 
     attribute_map = {
-        'appearance': 'Appearance'
+        'signed': 'Signed'
     }
 
-    def __init__(self, appearance=None, **kwargs):  # noqa: E501
-        """Initializes new instance of SignOptions"""  # noqa: E501
+    def __init__(self, signed=None, **kwargs):  # noqa: E501
+        """Initializes new instance of DigitalFormFieldSignature"""  # noqa: E501
 
-        self._appearance = None
+        self._signed = None
 
-        if appearance is not None:
-            self.appearance = appearance
+        if signed is not None:
+            self.signed = signed
 
-        base = super(SignOptions, self)
+        base = super(DigitalFormFieldSignature, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
     
     @property
-    def appearance(self):
+    def signed(self):
         """
-        Gets the appearance.  # noqa: E501
+        Gets the signed.  # noqa: E501
 
-        Specifies Appearance with additional properties for this options instance  # noqa: E501
+        Property that shows if Form-field Signature was signed with digital certificate  # noqa: E501
 
-        :return: The appearance.  # noqa: E501
-        :rtype: SignatureAppearance
+        :return: The signed.  # noqa: E501
+        :rtype: bool
         """
-        return self._appearance
+        return self._signed
 
-    @appearance.setter
-    def appearance(self, appearance):
+    @signed.setter
+    def signed(self, signed):
         """
-        Sets the appearance.
+        Sets the signed.
 
-        Specifies Appearance with additional properties for this options instance  # noqa: E501
+        Property that shows if Form-field Signature was signed with digital certificate  # noqa: E501
 
-        :param appearance: The appearance.  # noqa: E501
-        :type: SignatureAppearance
+        :param signed: The signed.  # noqa: E501
+        :type: bool
         """
-        self._appearance = appearance
+        if signed is None:
+            raise ValueError("Invalid value for `signed`, must not be `None`")  # noqa: E501
+        self._signed = signed
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -124,7 +126,7 @@ class SignOptions(OptionsBase):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, SignOptions):
+        if not isinstance(other, DigitalFormFieldSignature):
             return False
 
         return self.__dict__ == other.__dict__

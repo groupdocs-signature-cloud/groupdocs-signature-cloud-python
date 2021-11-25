@@ -74,12 +74,12 @@ class ApiClient(object):
         self.configuration = configuration
         self.pool = None
         self.rest_client = rest.RESTClientObject(configuration)
-        self.default_headers = {'x-groupdocs-client': 'python sdk', 'x-groupdocs-version': '21.5'}
+        self.default_headers = {'x-groupdocs-client': 'python sdk', 'x-groupdocs-version': '21.11'}
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'python sdk 21.5'
+        self.user_agent = 'python sdk 21.11'
 
     def __del__(self):
         if self.pool is not None:
@@ -615,8 +615,20 @@ class ApiClient(object):
             return data
 
         # Signature type fix
-        if (data is not None and 'signatureType' in data):
+        if (data is not None and 'signatureType' in data):            
             derived_klass = getattr(groupdocs_signature_cloud.models, data['signatureType'] + 'Signature')
+            if(data['signatureType'] == 'FormField' and 'type' in data):
+                type = data['type']
+                if(type == 'Checkbox'):
+                    derived_klass = getattr(groupdocs_signature_cloud.models, 'CheckboxFormFieldSignature')
+                if(type == 'Text'):
+                    derived_klass = getattr(groupdocs_signature_cloud.models, 'TextFormFieldSignature')
+                if(type == 'Combobox'):
+                    derived_klass = getattr(groupdocs_signature_cloud.models, 'ComboboxFormFieldSignature')
+                if(type == 'DigitalSignature'):
+                    derived_klass = getattr(groupdocs_signature_cloud.models, 'DigitalFormFieldSignature')
+                if(type == 'Radio'):
+                    derived_klass = getattr(groupdocs_signature_cloud.models, 'RadioButtonFormFieldSignature')
             if(issubclass(derived_klass, klass)):
                 klass = derived_klass
 

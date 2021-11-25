@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="SignOptions.py">
+# <copyright company="Aspose Pty Ltd" file="SignatureAppearance.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import OptionsBase
-
-class SignOptions(OptionsBase):
+class SignatureAppearance(object):
     """
-    Base container class for signature options data
+    Appearance is a base class for keeping additional information for various options
     """
 
     """
@@ -45,50 +43,54 @@ class SignOptions(OptionsBase):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'appearance': 'SignatureAppearance'
+        'appearance_type': 'str'
     }
 
     attribute_map = {
-        'appearance': 'Appearance'
+        'appearance_type': 'AppearanceType'
     }
 
-    def __init__(self, appearance=None, **kwargs):  # noqa: E501
-        """Initializes new instance of SignOptions"""  # noqa: E501
+    def __init__(self, appearance_type=None, **kwargs):  # noqa: E501
+        """Initializes new instance of SignatureAppearance"""  # noqa: E501
 
-        self._appearance = None
+        self._appearance_type = None
 
-        if appearance is not None:
-            self.appearance = appearance
-
-        base = super(SignOptions, self)
-        base.__init__(**kwargs)
-
-        self.swagger_types.update(base.swagger_types)
-        self.attribute_map.update(base.attribute_map)
+        if appearance_type is not None:
+            self.appearance_type = appearance_type
     
     @property
-    def appearance(self):
+    def appearance_type(self):
         """
-        Gets the appearance.  # noqa: E501
+        Gets the appearance_type.  # noqa: E501
 
-        Specifies Appearance with additional properties for this options instance  # noqa: E501
+        Specifies the type of appearance  # noqa: E501
 
-        :return: The appearance.  # noqa: E501
-        :rtype: SignatureAppearance
+        :return: The appearance_type.  # noqa: E501
+        :rtype: str
         """
-        return self._appearance
+        return self._appearance_type
 
-    @appearance.setter
-    def appearance(self, appearance):
+    @appearance_type.setter
+    def appearance_type(self, appearance_type):
         """
-        Sets the appearance.
+        Sets the appearance_type.
 
-        Specifies Appearance with additional properties for this options instance  # noqa: E501
+        Specifies the type of appearance  # noqa: E501
 
-        :param appearance: The appearance.  # noqa: E501
-        :type: SignatureAppearance
+        :param appearance_type: The appearance_type.  # noqa: E501
+        :type: str
         """
-        self._appearance = appearance
+        if appearance_type is None:
+            raise ValueError("Invalid value for `appearance_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["Undefined", "PdfTextAnnotation", "PdfTextSticker", "Image", "DigitalSignature", "PdfDigitalSignature"]  # noqa: E501
+        if not appearance_type.isdigit():	
+            if appearance_type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `appearance_type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(appearance_type, allowed_values))
+            self._appearance_type = appearance_type
+        else:
+            self._appearance_type = allowed_values[int(appearance_type) if six.PY3 else long(appearance_type)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -124,7 +126,7 @@ class SignOptions(OptionsBase):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, SignOptions):
+        if not isinstance(other, SignatureAppearance):
             return False
 
         return self.__dict__ == other.__dict__

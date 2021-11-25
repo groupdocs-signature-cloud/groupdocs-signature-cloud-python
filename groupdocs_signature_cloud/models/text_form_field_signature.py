@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="SignOptions.py">
+# <copyright company="Aspose Pty Ltd" file="TextFormFieldSignature.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,11 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import OptionsBase
+from groupdocs_signature_cloud.models import FormFieldSignature
 
-class SignOptions(OptionsBase):
+class TextFormFieldSignature(FormFieldSignature):
     """
-    Base container class for signature options data
+    Contains text input form field signature properties for Pdf Document
     """
 
     """
@@ -45,50 +45,50 @@ class SignOptions(OptionsBase):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'appearance': 'SignatureAppearance'
+        'text': 'str'
     }
 
     attribute_map = {
-        'appearance': 'Appearance'
+        'text': 'Text'
     }
 
-    def __init__(self, appearance=None, **kwargs):  # noqa: E501
-        """Initializes new instance of SignOptions"""  # noqa: E501
+    def __init__(self, text=None, **kwargs):  # noqa: E501
+        """Initializes new instance of TextFormFieldSignature"""  # noqa: E501
 
-        self._appearance = None
+        self._text = None
 
-        if appearance is not None:
-            self.appearance = appearance
+        if text is not None:
+            self.text = text
 
-        base = super(SignOptions, self)
+        base = super(TextFormFieldSignature, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
     
     @property
-    def appearance(self):
+    def text(self):
         """
-        Gets the appearance.  # noqa: E501
+        Gets the text.  # noqa: E501
 
-        Specifies Appearance with additional properties for this options instance  # noqa: E501
+        Gets or sets text of form field text input  # noqa: E501
 
-        :return: The appearance.  # noqa: E501
-        :rtype: SignatureAppearance
+        :return: The text.  # noqa: E501
+        :rtype: str
         """
-        return self._appearance
+        return self._text
 
-    @appearance.setter
-    def appearance(self, appearance):
+    @text.setter
+    def text(self, text):
         """
-        Sets the appearance.
+        Sets the text.
 
-        Specifies Appearance with additional properties for this options instance  # noqa: E501
+        Gets or sets text of form field text input  # noqa: E501
 
-        :param appearance: The appearance.  # noqa: E501
-        :type: SignatureAppearance
+        :param text: The text.  # noqa: E501
+        :type: str
         """
-        self._appearance = appearance
+        self._text = text
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -124,7 +124,7 @@ class SignOptions(OptionsBase):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, SignOptions):
+        if not isinstance(other, TextFormFieldSignature):
             return False
 
         return self.__dict__ == other.__dict__

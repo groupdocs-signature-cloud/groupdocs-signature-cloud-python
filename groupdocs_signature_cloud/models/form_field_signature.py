@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="SignOptions.py">
+# <copyright company="Aspose Pty Ltd" file="FormFieldSignature.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,11 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import OptionsBase
+from groupdocs_signature_cloud.models import Signature
 
-class SignOptions(OptionsBase):
+class FormFieldSignature(Signature):
     """
-    Base container class for signature options data
+    Contains Form field signature properties
     """
 
     """
@@ -45,50 +45,89 @@ class SignOptions(OptionsBase):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'appearance': 'SignatureAppearance'
+        'name': 'str',
+        'type': 'str'
     }
 
     attribute_map = {
-        'appearance': 'Appearance'
+        'name': 'Name',
+        'type': 'Type'
     }
 
-    def __init__(self, appearance=None, **kwargs):  # noqa: E501
-        """Initializes new instance of SignOptions"""  # noqa: E501
+    def __init__(self, name=None, type=None, **kwargs):  # noqa: E501
+        """Initializes new instance of FormFieldSignature"""  # noqa: E501
 
-        self._appearance = None
+        self._name = None
+        self._type = None
 
-        if appearance is not None:
-            self.appearance = appearance
+        if name is not None:
+            self.name = name
+        if type is not None:
+            self.type = type
 
-        base = super(SignOptions, self)
+        base = super(FormFieldSignature, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
     
     @property
-    def appearance(self):
+    def name(self):
         """
-        Gets the appearance.  # noqa: E501
+        Gets the name.  # noqa: E501
 
-        Specifies Appearance with additional properties for this options instance  # noqa: E501
+        Specifies unique form field name  # noqa: E501
 
-        :return: The appearance.  # noqa: E501
-        :rtype: SignatureAppearance
+        :return: The name.  # noqa: E501
+        :rtype: str
         """
-        return self._appearance
+        return self._name
 
-    @appearance.setter
-    def appearance(self, appearance):
+    @name.setter
+    def name(self, name):
         """
-        Sets the appearance.
+        Sets the name.
 
-        Specifies Appearance with additional properties for this options instance  # noqa: E501
+        Specifies unique form field name  # noqa: E501
 
-        :param appearance: The appearance.  # noqa: E501
-        :type: SignatureAppearance
+        :param name: The name.  # noqa: E501
+        :type: str
         """
-        self._appearance = appearance
+        self._name = name
+    
+    @property
+    def type(self):
+        """
+        Gets the type.  # noqa: E501
+
+        Specifies Form field type  # noqa: E501
+
+        :return: The type.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """
+        Sets the type.
+
+        Specifies Form field type  # noqa: E501
+
+        :param type: The type.  # noqa: E501
+        :type: str
+        """
+        if type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        allowed_values = ["Text", "Checkbox", "Combobox", "DigitalSignature", "Radio", "None"]  # noqa: E501
+        if not type.isdigit():	
+            if type not in allowed_values:
+                raise ValueError(
+                    "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                    .format(type, allowed_values))
+            self._type = type
+        else:
+            self._type = allowed_values[int(type) if six.PY3 else long(type)]
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -124,7 +163,7 @@ class SignOptions(OptionsBase):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, SignOptions):
+        if not isinstance(other, FormFieldSignature):
             return False
 
         return self.__dict__ == other.__dict__

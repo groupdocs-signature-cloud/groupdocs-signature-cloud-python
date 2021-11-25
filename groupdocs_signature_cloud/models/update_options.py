@@ -117,7 +117,7 @@ class UpdateOptions(object):
         """
         if signature_type is None:
             raise ValueError("Invalid value for `signature_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["None", "Text", "Image", "Digital", "Barcode", "QRCode", "Stamp"]  # noqa: E501
+        allowed_values = ["None", "Text", "Image", "Digital", "Barcode", "QRCode", "Stamp", "FormField", "Metadata"]  # noqa: E501
         if not signature_type.isdigit():	
             if signature_type not in allowed_values:
                 raise ValueError(

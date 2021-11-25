@@ -52,7 +52,8 @@ class InfoResult(object):
         'date_modified': 'datetime',
         'width_for_max_height': 'int',
         'max_page_height': 'int',
-        'pages': 'list[PageInfo]'
+        'pages': 'list[PageInfo]',
+        'signatures': 'list[Signature]'
     }
 
     attribute_map = {
@@ -65,10 +66,11 @@ class InfoResult(object):
         'date_modified': 'DateModified',
         'width_for_max_height': 'WidthForMaxHeight',
         'max_page_height': 'MaxPageHeight',
-        'pages': 'Pages'
+        'pages': 'Pages',
+        'signatures': 'Signatures'
     }
 
-    def __init__(self, file_info=None, extension=None, file_format=None, size=None, pages_count=None, date_created=None, date_modified=None, width_for_max_height=None, max_page_height=None, pages=None, **kwargs):  # noqa: E501
+    def __init__(self, file_info=None, extension=None, file_format=None, size=None, pages_count=None, date_created=None, date_modified=None, width_for_max_height=None, max_page_height=None, pages=None, signatures=None, **kwargs):  # noqa: E501
         """Initializes new instance of InfoResult"""  # noqa: E501
 
         self._file_info = None
@@ -81,6 +83,7 @@ class InfoResult(object):
         self._width_for_max_height = None
         self._max_page_height = None
         self._pages = None
+        self._signatures = None
 
         if file_info is not None:
             self.file_info = file_info
@@ -102,6 +105,8 @@ class InfoResult(object):
             self.max_page_height = max_page_height
         if pages is not None:
             self.pages = pages
+        if signatures is not None:
+            self.signatures = signatures
     
     @property
     def file_info(self):
@@ -354,6 +359,30 @@ class InfoResult(object):
         :type: list[PageInfo]
         """
         self._pages = pages
+    
+    @property
+    def signatures(self):
+        """
+        Gets the signatures.  # noqa: E501
+
+        Collection of document signatures  # noqa: E501
+
+        :return: The signatures.  # noqa: E501
+        :rtype: list[Signature]
+        """
+        return self._signatures
+
+    @signatures.setter
+    def signatures(self, signatures):
+        """
+        Sets the signatures.
+
+        Collection of document signatures  # noqa: E501
+
+        :param signatures: The signatures.  # noqa: E501
+        :type: list[Signature]
+        """
+        self._signatures = signatures
 
     def to_dict(self):
         """Returns the model properties as a dict"""

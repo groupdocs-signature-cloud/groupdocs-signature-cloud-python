@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="SignOptions.py">
+# <copyright company="Aspose Pty Ltd" file="RadioButtonFormFieldSignature.py">
 #   Copyright (c) 2003-2021 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,11 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import OptionsBase
+from groupdocs_signature_cloud.models import FormFieldSignature
 
-class SignOptions(OptionsBase):
+class RadioButtonFormFieldSignature(FormFieldSignature):
     """
-    Base container class for signature options data
+    Contains radio-button input form field signature properties
     """
 
     """
@@ -45,50 +45,79 @@ class SignOptions(OptionsBase):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'appearance': 'SignatureAppearance'
+        'selected': 'str',
+        'items': 'list[str]'
     }
 
     attribute_map = {
-        'appearance': 'Appearance'
+        'selected': 'Selected',
+        'items': 'Items'
     }
 
-    def __init__(self, appearance=None, **kwargs):  # noqa: E501
-        """Initializes new instance of SignOptions"""  # noqa: E501
+    def __init__(self, selected=None, items=None, **kwargs):  # noqa: E501
+        """Initializes new instance of RadioButtonFormFieldSignature"""  # noqa: E501
 
-        self._appearance = None
+        self._selected = None
+        self._items = None
 
-        if appearance is not None:
-            self.appearance = appearance
+        if selected is not None:
+            self.selected = selected
+        if items is not None:
+            self.items = items
 
-        base = super(SignOptions, self)
+        base = super(RadioButtonFormFieldSignature, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
     
     @property
-    def appearance(self):
+    def selected(self):
         """
-        Gets the appearance.  # noqa: E501
+        Gets the selected.  # noqa: E501
 
-        Specifies Appearance with additional properties for this options instance  # noqa: E501
+        Get or set selected value  # noqa: E501
 
-        :return: The appearance.  # noqa: E501
-        :rtype: SignatureAppearance
+        :return: The selected.  # noqa: E501
+        :rtype: str
         """
-        return self._appearance
+        return self._selected
 
-    @appearance.setter
-    def appearance(self, appearance):
+    @selected.setter
+    def selected(self, selected):
         """
-        Sets the appearance.
+        Sets the selected.
 
-        Specifies Appearance with additional properties for this options instance  # noqa: E501
+        Get or set selected value  # noqa: E501
 
-        :param appearance: The appearance.  # noqa: E501
-        :type: SignatureAppearance
+        :param selected: The selected.  # noqa: E501
+        :type: str
         """
-        self._appearance = appearance
+        self._selected = selected
+    
+    @property
+    def items(self):
+        """
+        Gets the items.  # noqa: E501
+
+        Get or set radio options list  # noqa: E501
+
+        :return: The items.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._items
+
+    @items.setter
+    def items(self, items):
+        """
+        Sets the items.
+
+        Get or set radio options list  # noqa: E501
+
+        :param items: The items.  # noqa: E501
+        :type: list[str]
+        """
+        self._items = items
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -124,7 +153,7 @@ class SignOptions(OptionsBase):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, SignOptions):
+        if not isinstance(other, RadioButtonFormFieldSignature):
             return False
 
         return self.__dict__ == other.__dict__

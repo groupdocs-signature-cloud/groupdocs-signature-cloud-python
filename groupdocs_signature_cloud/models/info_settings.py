@@ -45,19 +45,52 @@ class InfoSettings(BaseSettings):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'show_deleted_signatures_info': 'bool'
     }
 
     attribute_map = {
+        'show_deleted_signatures_info': 'ShowDeletedSignaturesInfo'
     }
 
-    def __init__(self, **kwargs):  # noqa: E501
+    def __init__(self, show_deleted_signatures_info=None, **kwargs):  # noqa: E501
         """Initializes new instance of InfoSettings"""  # noqa: E501
+
+        self._show_deleted_signatures_info = None
+
+        if show_deleted_signatures_info is not None:
+            self.show_deleted_signatures_info = show_deleted_signatures_info
 
         base = super(InfoSettings, self)
         base.__init__(**kwargs)
 
         self.swagger_types.update(base.swagger_types)
         self.attribute_map.update(base.attribute_map)
+    
+    @property
+    def show_deleted_signatures_info(self):
+        """
+        Gets the show_deleted_signatures_info.  # noqa: E501
+
+        Gets or sets flag that includes deleted signatures into Document Info result.  # noqa: E501
+
+        :return: The show_deleted_signatures_info.  # noqa: E501
+        :rtype: bool
+        """
+        return self._show_deleted_signatures_info
+
+    @show_deleted_signatures_info.setter
+    def show_deleted_signatures_info(self, show_deleted_signatures_info):
+        """
+        Sets the show_deleted_signatures_info.
+
+        Gets or sets flag that includes deleted signatures into Document Info result.  # noqa: E501
+
+        :param show_deleted_signatures_info: The show_deleted_signatures_info.  # noqa: E501
+        :type: bool
+        """
+        if show_deleted_signatures_info is None:
+            raise ValueError("Invalid value for `show_deleted_signatures_info`, must not be `None`")  # noqa: E501
+        self._show_deleted_signatures_info = show_deleted_signatures_info
 
     def to_dict(self):
         """Returns the model properties as a dict"""
