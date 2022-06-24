@@ -10,6 +10,7 @@ from groupdocs_signature_cloud.models.base_settings import BaseSettings
 from groupdocs_signature_cloud.models.border_line import BorderLine
 from groupdocs_signature_cloud.models.brush import Brush
 from groupdocs_signature_cloud.models.color import Color
+from groupdocs_signature_cloud.models.consumption_result import ConsumptionResult
 from groupdocs_signature_cloud.models.delete_options import DeleteOptions
 from groupdocs_signature_cloud.models.delete_result import DeleteResult
 from groupdocs_signature_cloud.models.disc_usage import DiscUsage

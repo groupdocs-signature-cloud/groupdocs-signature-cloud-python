@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="SaveOptions.py">
+# <copyright company="Aspose Pty Ltd" file="ConsumptionResult.py">
 #   Copyright (c) 2003-2022 Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,9 +30,9 @@ import re  # noqa: F401
 
 import six
 
-class SaveOptions(object):
+class ConsumptionResult(object):
     """
-    Base document save options class
+    Metered license consumption information
     """
 
     """
@@ -43,104 +43,77 @@ class SaveOptions(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'overwrite_existing': 'bool',
-        'output_file_path': 'str',
-        'save_format': 'str'
+        'credit': 'float',
+        'quantity': 'float'
     }
 
     attribute_map = {
-        'overwrite_existing': 'OverwriteExisting',
-        'output_file_path': 'OutputFilePath',
-        'save_format': 'SaveFormat'
+        'credit': 'Credit',
+        'quantity': 'Quantity'
     }
 
-    def __init__(self, overwrite_existing=None, output_file_path=None, save_format=None, **kwargs):  # noqa: E501
-        """Initializes new instance of SaveOptions"""  # noqa: E501
+    def __init__(self, credit=None, quantity=None, **kwargs):  # noqa: E501
+        """Initializes new instance of ConsumptionResult"""  # noqa: E501
 
-        self._overwrite_existing = None
-        self._output_file_path = None
-        self._save_format = None
+        self._credit = None
+        self._quantity = None
 
-        if overwrite_existing is not None:
-            self.overwrite_existing = overwrite_existing
-        if output_file_path is not None:
-            self.output_file_path = output_file_path
-        if save_format is not None:
-            self.save_format = save_format
+        if credit is not None:
+            self.credit = credit
+        if quantity is not None:
+            self.quantity = quantity
     
     @property
-    def overwrite_existing(self):
+    def credit(self):
         """
-        Gets the overwrite_existing.  # noqa: E501
+        Gets the credit.  # noqa: E501
 
-        Overwrite existing file with new output file. Otherwise new file will be created with number as suffix  # noqa: E501
+        Amount of used credits  # noqa: E501
 
-        :return: The overwrite_existing.  # noqa: E501
-        :rtype: bool
+        :return: The credit.  # noqa: E501
+        :rtype: float
         """
-        return self._overwrite_existing
+        return self._credit
 
-    @overwrite_existing.setter
-    def overwrite_existing(self, overwrite_existing):
+    @credit.setter
+    def credit(self, credit):
         """
-        Sets the overwrite_existing.
+        Sets the credit.
 
-        Overwrite existing file with new output file. Otherwise new file will be created with number as suffix  # noqa: E501
+        Amount of used credits  # noqa: E501
 
-        :param overwrite_existing: The overwrite_existing.  # noqa: E501
-        :type: bool
+        :param credit: The credit.  # noqa: E501
+        :type: float
         """
-        if overwrite_existing is None:
-            raise ValueError("Invalid value for `overwrite_existing`, must not be `None`")  # noqa: E501
-        self._overwrite_existing = overwrite_existing
+        if credit is None:
+            raise ValueError("Invalid value for `credit`, must not be `None`")  # noqa: E501
+        self._credit = credit
     
     @property
-    def output_file_path(self):
+    def quantity(self):
         """
-        Gets the output_file_path.  # noqa: E501
+        Gets the quantity.  # noqa: E501
 
-        Output file name  # noqa: E501
+        Amount of MBs processed  # noqa: E501
 
-        :return: The output_file_path.  # noqa: E501
-        :rtype: str
+        :return: The quantity.  # noqa: E501
+        :rtype: float
         """
-        return self._output_file_path
+        return self._quantity
 
-    @output_file_path.setter
-    def output_file_path(self, output_file_path):
+    @quantity.setter
+    def quantity(self, quantity):
         """
-        Sets the output_file_path.
+        Sets the quantity.
 
-        Output file name  # noqa: E501
+        Amount of MBs processed  # noqa: E501
 
-        :param output_file_path: The output_file_path.  # noqa: E501
-        :type: str
+        :param quantity: The quantity.  # noqa: E501
+        :type: float
         """
-        self._output_file_path = output_file_path
-    
-    @property
-    def save_format(self):
-        """
-        Gets the save_format.  # noqa: E501
-
-        format of save  # noqa: E501
-
-        :return: The save_format.  # noqa: E501
-        :rtype: str
-        """
-        return self._save_format
-
-    @save_format.setter
-    def save_format(self, save_format):
-        """
-        Sets the save_format.
-
-        format of save  # noqa: E501
-
-        :param save_format: The save_format.  # noqa: E501
-        :type: str
-        """
-        self._save_format = save_format
+        if quantity is None:
+            raise ValueError("Invalid value for `quantity`, must not be `None`")  # noqa: E501
+        self._quantity = quantity
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -176,7 +149,7 @@ class SaveOptions(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, SaveOptions):
+        if not isinstance(other, ConsumptionResult):
             return False
 
         return self.__dict__ == other.__dict__

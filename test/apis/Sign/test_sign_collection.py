@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#   Copyright (c) 2003-2021 Aspose Pty Ltd
+#   Copyright (c) 2003-2022 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,7 +53,7 @@ class TestSignCollection(TestContext):
     def test_sign_collection_presentation(self):
         test_file = TestFile.presentation_pptx()
         signedFileName = "Output\\PresentationCollectionSigned.pptx"        
-        settings = self.populate_sign_options(signedFileName, test_file)            
+        settings = self.populate_sign_options_image(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 

@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="Color.py">
-#   Copyright (c) 2003-2021 Aspose Pty Ltd
+#   Copyright (c) 2003-2022 Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,20 +43,25 @@ class Color(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'web': 'str'
+        'web': 'str',
+        'alpha': 'int'
     }
 
     attribute_map = {
-        'web': 'Web'
+        'web': 'Web',
+        'alpha': 'Alpha'
     }
 
-    def __init__(self, web=None, **kwargs):  # noqa: E501
+    def __init__(self, web=None, alpha=None, **kwargs):  # noqa: E501
         """Initializes new instance of Color"""  # noqa: E501
 
         self._web = None
+        self._alpha = None
 
         if web is not None:
             self.web = web
+        if alpha is not None:
+            self.alpha = alpha
     
     @property
     def web(self):
@@ -81,6 +86,32 @@ class Color(object):
         :type: str
         """
         self._web = web
+    
+    @property
+    def alpha(self):
+        """
+        Gets the alpha.  # noqa: E501
+
+        Alpha component of color structure  # noqa: E501
+
+        :return: The alpha.  # noqa: E501
+        :rtype: int
+        """
+        return self._alpha
+
+    @alpha.setter
+    def alpha(self, alpha):
+        """
+        Sets the alpha.
+
+        Alpha component of color structure  # noqa: E501
+
+        :param alpha: The alpha.  # noqa: E501
+        :type: int
+        """
+        if alpha is None:
+            raise ValueError("Invalid value for `alpha`, must not be `None`")  # noqa: E501
+        self._alpha = alpha
 
     def to_dict(self):
         """Returns the model properties as a dict"""
