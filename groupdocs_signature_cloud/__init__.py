@@ -33,6 +33,7 @@ from groupdocs_signature_cloud.models.base_settings import BaseSettings
 from groupdocs_signature_cloud.models.border_line import BorderLine
 from groupdocs_signature_cloud.models.brush import Brush
 from groupdocs_signature_cloud.models.color import Color
+from groupdocs_signature_cloud.models.consumption_result import ConsumptionResult
 from groupdocs_signature_cloud.models.delete_options import DeleteOptions
 from groupdocs_signature_cloud.models.delete_result import DeleteResult
 from groupdocs_signature_cloud.models.disc_usage import DiscUsage
@@ -78,6 +79,7 @@ from groupdocs_signature_cloud.models.image_appearance import ImageAppearance
 from groupdocs_signature_cloud.models.image_signature import ImageSignature
 from groupdocs_signature_cloud.models.info_settings import InfoSettings
 from groupdocs_signature_cloud.models.linear_gradient_brush import LinearGradientBrush
+from groupdocs_signature_cloud.models.metadata_signature import MetadataSignature
 from groupdocs_signature_cloud.models.pdf_digital_signature_appearance import PdfDigitalSignatureAppearance
 from groupdocs_signature_cloud.models.pdf_text_annotation_appearance import PdfTextAnnotationAppearance
 from groupdocs_signature_cloud.models.pdf_text_sticker_appearance import PdfTextStickerAppearance
