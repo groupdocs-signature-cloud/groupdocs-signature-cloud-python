@@ -13,6 +13,7 @@ from groupdocs_signature_cloud.models.color import Color
 from groupdocs_signature_cloud.models.consumption_result import ConsumptionResult
 from groupdocs_signature_cloud.models.delete_options import DeleteOptions
 from groupdocs_signature_cloud.models.delete_result import DeleteResult
+from groupdocs_signature_cloud.models.digital_vba import DigitalVBA
 from groupdocs_signature_cloud.models.disc_usage import DiscUsage
 from groupdocs_signature_cloud.models.error import Error
 from groupdocs_signature_cloud.models.error_details import ErrorDetails

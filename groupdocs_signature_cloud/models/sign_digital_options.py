@@ -51,7 +51,8 @@ class SignDigitalOptions(SignImageOptions):
         'visible': 'bool',
         'password': 'str',
         'certificate_file_path': 'str',
-        'x_ad_es_type': 'str'
+        'x_ad_es_type': 'str',
+        'digital_vba': 'DigitalVBA'
     }
 
     attribute_map = {
@@ -61,10 +62,11 @@ class SignDigitalOptions(SignImageOptions):
         'visible': 'Visible',
         'password': 'Password',
         'certificate_file_path': 'CertificateFilePath',
-        'x_ad_es_type': 'XAdESType'
+        'x_ad_es_type': 'XAdESType',
+        'digital_vba': 'DigitalVBA'
     }
 
-    def __init__(self, reason=None, contact=None, location=None, visible=None, password=None, certificate_file_path=None, x_ad_es_type=None, **kwargs):  # noqa: E501
+    def __init__(self, reason=None, contact=None, location=None, visible=None, password=None, certificate_file_path=None, x_ad_es_type=None, digital_vba=None, **kwargs):  # noqa: E501
         """Initializes new instance of SignDigitalOptions"""  # noqa: E501
 
         self._reason = None
@@ -74,6 +76,7 @@ class SignDigitalOptions(SignImageOptions):
         self._password = None
         self._certificate_file_path = None
         self._x_ad_es_type = None
+        self._digital_vba = None
 
         if reason is not None:
             self.reason = reason
@@ -89,6 +92,8 @@ class SignDigitalOptions(SignImageOptions):
             self.certificate_file_path = certificate_file_path
         if x_ad_es_type is not None:
             self.x_ad_es_type = x_ad_es_type
+        if digital_vba is not None:
+            self.digital_vba = digital_vba
 
         base = super(SignDigitalOptions, self)
         base.__init__(**kwargs)
@@ -275,6 +280,30 @@ class SignDigitalOptions(SignImageOptions):
             self._x_ad_es_type = x_ad_es_type
         else:
             self._x_ad_es_type = allowed_values[int(x_ad_es_type) if six.PY3 else long(x_ad_es_type)]
+    
+    @property
+    def digital_vba(self):
+        """
+        Gets the digital_vba.  # noqa: E501
+
+        Options for signing VBA project  # noqa: E501
+
+        :return: The digital_vba.  # noqa: E501
+        :rtype: DigitalVBA
+        """
+        return self._digital_vba
+
+    @digital_vba.setter
+    def digital_vba(self, digital_vba):
+        """
+        Sets the digital_vba.
+
+        Options for signing VBA project  # noqa: E501
+
+        :param digital_vba: The digital_vba.  # noqa: E501
+        :type: DigitalVBA
+        """
+        self._digital_vba = digital_vba
 
     def to_dict(self):
         """Returns the model properties as a dict"""
