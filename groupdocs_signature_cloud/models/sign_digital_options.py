@@ -52,7 +52,9 @@ class SignDigitalOptions(SignImageOptions):
         'password': 'str',
         'certificate_file_path': 'str',
         'x_ad_es_type': 'str',
-        'digital_vba': 'DigitalVBA'
+        'digital_vba': 'DigitalVBA',
+        'sign_time': 'datetime',
+        'comments': 'str'
     }
 
     attribute_map = {
@@ -63,10 +65,12 @@ class SignDigitalOptions(SignImageOptions):
         'password': 'Password',
         'certificate_file_path': 'CertificateFilePath',
         'x_ad_es_type': 'XAdESType',
-        'digital_vba': 'DigitalVBA'
+        'digital_vba': 'DigitalVBA',
+        'sign_time': 'SignTime',
+        'comments': 'Comments'
     }
 
-    def __init__(self, reason=None, contact=None, location=None, visible=None, password=None, certificate_file_path=None, x_ad_es_type=None, digital_vba=None, **kwargs):  # noqa: E501
+    def __init__(self, reason=None, contact=None, location=None, visible=None, password=None, certificate_file_path=None, x_ad_es_type=None, digital_vba=None, sign_time=None, comments=None, **kwargs):  # noqa: E501
         """Initializes new instance of SignDigitalOptions"""  # noqa: E501
 
         self._reason = None
@@ -77,6 +81,8 @@ class SignDigitalOptions(SignImageOptions):
         self._certificate_file_path = None
         self._x_ad_es_type = None
         self._digital_vba = None
+        self._sign_time = None
+        self._comments = None
 
         if reason is not None:
             self.reason = reason
@@ -94,6 +100,10 @@ class SignDigitalOptions(SignImageOptions):
             self.x_ad_es_type = x_ad_es_type
         if digital_vba is not None:
             self.digital_vba = digital_vba
+        if sign_time is not None:
+            self.sign_time = sign_time
+        if comments is not None:
+            self.comments = comments
 
         base = super(SignDigitalOptions, self)
         base.__init__(**kwargs)
@@ -304,6 +314,54 @@ class SignDigitalOptions(SignImageOptions):
         :type: DigitalVBA
         """
         self._digital_vba = digital_vba
+    
+    @property
+    def sign_time(self):
+        """
+        Gets the sign_time.  # noqa: E501
+
+        The time the document was signed.  # noqa: E501
+
+        :return: The sign_time.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._sign_time
+
+    @sign_time.setter
+    def sign_time(self, sign_time):
+        """
+        Sets the sign_time.
+
+        The time the document was signed.  # noqa: E501
+
+        :param sign_time: The sign_time.  # noqa: E501
+        :type: datetime
+        """
+        self._sign_time = sign_time
+    
+    @property
+    def comments(self):
+        """
+        Gets the comments.  # noqa: E501
+
+        The signing purpose comment.  # noqa: E501
+
+        :return: The comments.  # noqa: E501
+        :rtype: str
+        """
+        return self._comments
+
+    @comments.setter
+    def comments(self, comments):
+        """
+        Sets the comments.
+
+        The signing purpose comment.  # noqa: E501
+
+        :param comments: The comments.  # noqa: E501
+        :type: str
+        """
+        self._comments = comments
 
     def to_dict(self):
         """Returns the model properties as a dict"""
