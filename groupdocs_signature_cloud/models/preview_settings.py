@@ -47,6 +47,7 @@ class PreviewSettings(BaseSettings):
     swagger_types = {
         'width': 'int',
         'height': 'int',
+        'resolution': 'int',
         'page_numbers': 'list[int]',
         'preview_format': 'str',
         'hide_signatures': 'bool',
@@ -56,17 +57,19 @@ class PreviewSettings(BaseSettings):
     attribute_map = {
         'width': 'Width',
         'height': 'Height',
+        'resolution': 'Resolution',
         'page_numbers': 'PageNumbers',
         'preview_format': 'PreviewFormat',
         'hide_signatures': 'HideSignatures',
         'output_path': 'OutputPath'
     }
 
-    def __init__(self, width=None, height=None, page_numbers=None, preview_format=None, hide_signatures=None, output_path=None, **kwargs):  # noqa: E501
+    def __init__(self, width=None, height=None, resolution=None, page_numbers=None, preview_format=None, hide_signatures=None, output_path=None, **kwargs):  # noqa: E501
         """Initializes new instance of PreviewSettings"""  # noqa: E501
 
         self._width = None
         self._height = None
+        self._resolution = None
         self._page_numbers = None
         self._preview_format = None
         self._hide_signatures = None
@@ -76,6 +79,8 @@ class PreviewSettings(BaseSettings):
             self.width = width
         if height is not None:
             self.height = height
+        if resolution is not None:
+            self.resolution = resolution
         if page_numbers is not None:
             self.page_numbers = page_numbers
         if preview_format is not None:
@@ -142,6 +147,32 @@ class PreviewSettings(BaseSettings):
         if height is None:
             raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
         self._height = height
+    
+    @property
+    def resolution(self):
+        """
+        Gets the resolution.  # noqa: E501
+
+        Gets or sets the resolution of the preview images in DPI (dots per inch).  # noqa: E501
+
+        :return: The resolution.  # noqa: E501
+        :rtype: int
+        """
+        return self._resolution
+
+    @resolution.setter
+    def resolution(self, resolution):
+        """
+        Sets the resolution.
+
+        Gets or sets the resolution of the preview images in DPI (dots per inch).  # noqa: E501
+
+        :param resolution: The resolution.  # noqa: E501
+        :type: int
+        """
+        if resolution is None:
+            raise ValueError("Invalid value for `resolution`, must not be `None`")  # noqa: E501
+        self._resolution = resolution
     
     @property
     def page_numbers(self):

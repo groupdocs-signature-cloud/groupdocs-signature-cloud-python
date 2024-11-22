@@ -72,7 +72,7 @@ class TestVerifyCollection(TestContext):
         
         opts.signature_type = 'Barcode'
         opts.text = '123456789012'
-        opts.barcode_type = 'Code39Standard'
+        opts.barcode_type = 'Code39'
         opts.match_type = 'Contains'
 
         opts.page = 1
