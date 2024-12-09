@@ -46,6 +46,7 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
     """
     swagger_types = {
         'background': 'Color',
+        'foreground': 'Color',
         'contact_info_label': 'str',
         'date_signed_at_label': 'str',
         'digital_signed_label': 'str',
@@ -57,6 +58,7 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
 
     attribute_map = {
         'background': 'Background',
+        'foreground': 'Foreground',
         'contact_info_label': 'ContactInfoLabel',
         'date_signed_at_label': 'DateSignedAtLabel',
         'digital_signed_label': 'DigitalSignedLabel',
@@ -66,10 +68,11 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
         'reason_label': 'ReasonLabel'
     }
 
-    def __init__(self, background=None, contact_info_label=None, date_signed_at_label=None, digital_signed_label=None, font_family_name=None, font_size=None, location_label=None, reason_label=None, **kwargs):  # noqa: E501
+    def __init__(self, background=None, foreground=None, contact_info_label=None, date_signed_at_label=None, digital_signed_label=None, font_family_name=None, font_size=None, location_label=None, reason_label=None, **kwargs):  # noqa: E501
         """Initializes new instance of PdfDigitalSignatureAppearance"""  # noqa: E501
 
         self._background = None
+        self._foreground = None
         self._contact_info_label = None
         self._date_signed_at_label = None
         self._digital_signed_label = None
@@ -80,6 +83,8 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
 
         if background is not None:
             self.background = background
+        if foreground is not None:
+            self.foreground = foreground
         if contact_info_label is not None:
             self.contact_info_label = contact_info_label
         if date_signed_at_label is not None:
@@ -106,7 +111,7 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
         """
         Gets the background.  # noqa: E501
 
-        Get or set background color of signature appearance. By default the value is SystemColors.Windows  # noqa: E501
+        Get or set background color of signature appearance.   # noqa: E501
 
         :return: The background.  # noqa: E501
         :rtype: Color
@@ -118,12 +123,36 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
         """
         Sets the background.
 
-        Get or set background color of signature appearance. By default the value is SystemColors.Windows  # noqa: E501
+        Get or set background color of signature appearance.   # noqa: E501
 
         :param background: The background.  # noqa: E501
         :type: Color
         """
         self._background = background
+    
+    @property
+    def foreground(self):
+        """
+        Gets the foreground.  # noqa: E501
+
+        Get or set foreground text color of signature appearance. By default the value is Color.FromArgb(76, 100, 255)  # noqa: E501
+
+        :return: The foreground.  # noqa: E501
+        :rtype: Color
+        """
+        return self._foreground
+
+    @foreground.setter
+    def foreground(self, foreground):
+        """
+        Sets the foreground.
+
+        Get or set foreground text color of signature appearance. By default the value is Color.FromArgb(76, 100, 255)  # noqa: E501
+
+        :param foreground: The foreground.  # noqa: E501
+        :type: Color
+        """
+        self._foreground = foreground
     
     @property
     def contact_info_label(self):
