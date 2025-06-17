@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="SearchSettings.py">
+# <copyright company="Aspose Pty Ltd" file="ApiErrorResponse.py">
 #   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import BaseSettings
-
-class SearchSettings(BaseSettings):
+class ApiErrorResponse(object):
     """
-    Defines signatures search settings request
+    
     """
 
     """
@@ -45,50 +43,69 @@ class SearchSettings(BaseSettings):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'options': 'list[SearchOptions]'
+        'request_id': 'str',
+        'error': 'ApiError'
     }
 
     attribute_map = {
-        'options': 'Options'
+        'request_id': 'RequestId',
+        'error': 'Error'
     }
 
-    def __init__(self, options=None, **kwargs):  # noqa: E501
-        """Initializes new instance of SearchSettings"""  # noqa: E501
+    def __init__(self, request_id=None, error=None, **kwargs):  # noqa: E501
+        """Initializes new instance of ApiErrorResponse"""  # noqa: E501
 
-        self._options = None
+        self._request_id = None
+        self._error = None
 
-        if options is not None:
-            self.options = options
-
-        base = super(SearchSettings, self)
-        base.__init__(**kwargs)
-
-        self.swagger_types.update(base.swagger_types)
-        self.attribute_map.update(base.attribute_map)
+        if request_id is not None:
+            self.request_id = request_id
+        if error is not None:
+            self.error = error
     
     @property
-    def options(self):
+    def request_id(self):
         """
-        Gets the options.  # noqa: E501
+        Gets the request_id.  # noqa: E501
 
-        Gets or sets options collection to perform search in a document  # noqa: E501
 
-        :return: The options.  # noqa: E501
-        :rtype: list[SearchOptions]
+        :return: The request_id.  # noqa: E501
+        :rtype: str
         """
-        return self._options
+        return self._request_id
 
-    @options.setter
-    def options(self, options):
+    @request_id.setter
+    def request_id(self, request_id):
         """
-        Sets the options.
+        Sets the request_id.
 
-        Gets or sets options collection to perform search in a document  # noqa: E501
 
-        :param options: The options.  # noqa: E501
-        :type: list[SearchOptions]
+        :param request_id: The request_id.  # noqa: E501
+        :type: str
         """
-        self._options = options
+        self._request_id = request_id
+    
+    @property
+    def error(self):
+        """
+        Gets the error.  # noqa: E501
+
+
+        :return: The error.  # noqa: E501
+        :rtype: ApiError
+        """
+        return self._error
+
+    @error.setter
+    def error(self, error):
+        """
+        Sets the error.
+
+
+        :param error: The error.  # noqa: E501
+        :type: ApiError
+        """
+        self._error = error
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -124,7 +141,7 @@ class SearchSettings(BaseSettings):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, SearchSettings):
+        if not isinstance(other, ApiErrorResponse):
             return False
 
         return self.__dict__ == other.__dict__

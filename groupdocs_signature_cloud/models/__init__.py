@@ -4,6 +4,8 @@
 from __future__ import absolute_import
 
 # import models
+from groupdocs_signature_cloud.models.api_error import ApiError
+from groupdocs_signature_cloud.models.api_error_response import ApiErrorResponse
 from groupdocs_signature_cloud.models.barcode_type import BarcodeType
 from groupdocs_signature_cloud.models.barcodes_result import BarcodesResult
 from groupdocs_signature_cloud.models.base_settings import BaseSettings

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # -----------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="SignSettings.py">
+# <copyright company="Aspose Pty Ltd" file="ApiError.py">
 #   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -30,11 +30,9 @@ import re  # noqa: F401
 
 import six
 
-from groupdocs_signature_cloud.models import BaseSettings
-
-class SignSettings(BaseSettings):
+class ApiError(object):
     """
-    Defines sign document settings request
+    
     """
 
     """
@@ -45,79 +43,150 @@ class SignSettings(BaseSettings):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'options': 'list[SignOptions]',
-        'save_options': 'SaveOptions'
+        'code': 'str',
+        'message': 'str',
+        'description': 'str',
+        'date_time': 'datetime',
+        'inner_error': 'ApiError'
     }
 
     attribute_map = {
-        'options': 'Options',
-        'save_options': 'SaveOptions'
+        'code': 'Code',
+        'message': 'Message',
+        'description': 'Description',
+        'date_time': 'DateTime',
+        'inner_error': 'InnerError'
     }
 
-    def __init__(self, options=None, save_options=None, **kwargs):  # noqa: E501
-        """Initializes new instance of SignSettings"""  # noqa: E501
+    def __init__(self, code=None, message=None, description=None, date_time=None, inner_error=None, **kwargs):  # noqa: E501
+        """Initializes new instance of ApiError"""  # noqa: E501
 
-        self._options = None
-        self._save_options = None
+        self._code = None
+        self._message = None
+        self._description = None
+        self._date_time = None
+        self._inner_error = None
 
-        if options is not None:
-            self.options = options
-        if save_options is not None:
-            self.save_options = save_options
-
-        base = super(SignSettings, self)
-        base.__init__(**kwargs)
-
-        self.swagger_types.update(base.swagger_types)
-        self.attribute_map.update(base.attribute_map)
+        if code is not None:
+            self.code = code
+        if message is not None:
+            self.message = message
+        if description is not None:
+            self.description = description
+        if date_time is not None:
+            self.date_time = date_time
+        if inner_error is not None:
+            self.inner_error = inner_error
     
     @property
-    def options(self):
+    def code(self):
         """
-        Gets the options.  # noqa: E501
+        Gets the code.  # noqa: E501
 
-        Gets or sets options to perform document signing  # noqa: E501
 
-        :return: The options.  # noqa: E501
-        :rtype: list[SignOptions]
+        :return: The code.  # noqa: E501
+        :rtype: str
         """
-        return self._options
+        return self._code
 
-    @options.setter
-    def options(self, options):
+    @code.setter
+    def code(self, code):
         """
-        Sets the options.
+        Sets the code.
 
-        Gets or sets options to perform document signing  # noqa: E501
 
-        :param options: The options.  # noqa: E501
-        :type: list[SignOptions]
+        :param code: The code.  # noqa: E501
+        :type: str
         """
-        self._options = options
+        self._code = code
     
     @property
-    def save_options(self):
+    def message(self):
         """
-        Gets the save_options.  # noqa: E501
+        Gets the message.  # noqa: E501
 
-        Gets or sets format specific save options for output file  # noqa: E501
 
-        :return: The save_options.  # noqa: E501
-        :rtype: SaveOptions
+        :return: The message.  # noqa: E501
+        :rtype: str
         """
-        return self._save_options
+        return self._message
 
-    @save_options.setter
-    def save_options(self, save_options):
+    @message.setter
+    def message(self, message):
         """
-        Sets the save_options.
+        Sets the message.
 
-        Gets or sets format specific save options for output file  # noqa: E501
 
-        :param save_options: The save_options.  # noqa: E501
-        :type: SaveOptions
+        :param message: The message.  # noqa: E501
+        :type: str
         """
-        self._save_options = save_options
+        self._message = message
+    
+    @property
+    def description(self):
+        """
+        Gets the description.  # noqa: E501
+
+
+        :return: The description.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """
+        Sets the description.
+
+
+        :param description: The description.  # noqa: E501
+        :type: str
+        """
+        self._description = description
+    
+    @property
+    def date_time(self):
+        """
+        Gets the date_time.  # noqa: E501
+
+
+        :return: The date_time.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._date_time
+
+    @date_time.setter
+    def date_time(self, date_time):
+        """
+        Sets the date_time.
+
+
+        :param date_time: The date_time.  # noqa: E501
+        :type: datetime
+        """
+        self._date_time = date_time
+    
+    @property
+    def inner_error(self):
+        """
+        Gets the inner_error.  # noqa: E501
+
+
+        :return: The inner_error.  # noqa: E501
+        :rtype: ApiError
+        """
+        return self._inner_error
+
+    @inner_error.setter
+    def inner_error(self, inner_error):
+        """
+        Sets the inner_error.
+
+
+        :param inner_error: The inner_error.  # noqa: E501
+        :type: ApiError
+        """
+        self._inner_error = inner_error
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -153,7 +222,7 @@ class SignSettings(BaseSettings):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, SignSettings):
+        if not isinstance(other, ApiError):
             return False
 
         return self.__dict__ == other.__dict__
