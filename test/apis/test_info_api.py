@@ -75,7 +75,7 @@ class TestInfoApi(TestContext):
         request = GetInfoRequest(settings)
         with self.assertRaises(ApiException) as context:
             self.info_api.get_info(request)
-        self.assertEqual("Can't find file located at 'somefolder\\not-exist.docx'.", context.exception.message)
+        self.assertEqual("Can't find file located at 'somefolder/not-exist.docx'.", context.exception.message)
 
 if __name__ == '__main__':
     unittest.main()

@@ -38,35 +38,35 @@ class TestSignQRcode(TestContext):
 
     def test_sign_qr_code_image(self):
         test_file = TestFile.image_jpg()
-        signedFileName = "Output\\ImageQRcodeSigned.jpg"        
+        signedFileName = "Output/ImageQRcodeSigned.jpg"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_qr_code_pdf(self):
         test_file = TestFile.pdf_one_page()
-        signedFileName = "Output\\PdfQRcodeSigned.pdf"        
+        signedFileName = "Output/PdfQRcodeSigned.pdf"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_qr_code_presentation(self):
         test_file = TestFile.presentation_pptx()
-        signedFileName = "Output\\PresentationQRcodeSigned.pptx"        
+        signedFileName = "Output/PresentationQRcodeSigned.pptx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_qr_code_spreadsheet(self):
         test_file = TestFile.spreadsheet_xlsx()
-        signedFileName = "Output\\SpreadsheetQRcodeSigned.xlsx"        
+        signedFileName = "Output/SpreadsheetQRcodeSigned.xlsx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_qr_code_wordprocessing(self):
         test_file = TestFile.word_docx()
-        signedFileName = "Output\\WordQRcodeSigned.docx"        
+        signedFileName = "Output/WordQRcodeSigned.docx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)                       

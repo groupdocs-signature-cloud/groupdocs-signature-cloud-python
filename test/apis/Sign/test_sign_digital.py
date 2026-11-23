@@ -42,7 +42,7 @@ class TestSignDigital(TestContext):
 
     def test_sign_digital_pdf(self):
         test_file = TestFile.pdf_one_page()
-        signedFileName = "Output\\PdfDigitalSigned.pdf"        
+        signedFileName = "Output/PdfDigitalSigned.pdf"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
@@ -53,14 +53,14 @@ class TestSignDigital(TestContext):
 
     def test_sign_digital_spreadsheet(self):
         test_file = TestFile.spreadsheet_xlsx()
-        signedFileName = "Output\\SpreadsheetDigitalSigned.xlsx"        
+        signedFileName = "Output/SpreadsheetDigitalSigned.xlsx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_digital_wordprocessing(self):
         test_file = TestFile.word_docx()
-        signedFileName = "Output\\WordDigitalSigned.docx"        
+        signedFileName = "Output/WordDigitalSigned.docx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)                       

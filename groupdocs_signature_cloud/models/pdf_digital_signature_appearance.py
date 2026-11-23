@@ -53,7 +53,8 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
         'font_family_name': 'str',
         'font_size': 'float',
         'location_label': 'str',
-        'reason_label': 'str'
+        'reason_label': 'str',
+        'is_foreground_image': 'bool'
     }
 
     attribute_map = {
@@ -65,10 +66,11 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
         'font_family_name': 'FontFamilyName',
         'font_size': 'FontSize',
         'location_label': 'LocationLabel',
-        'reason_label': 'ReasonLabel'
+        'reason_label': 'ReasonLabel',
+        'is_foreground_image': 'IsForegroundImage'
     }
 
-    def __init__(self, background=None, foreground=None, contact_info_label=None, date_signed_at_label=None, digital_signed_label=None, font_family_name=None, font_size=None, location_label=None, reason_label=None, **kwargs):  # noqa: E501
+    def __init__(self, background=None, foreground=None, contact_info_label=None, date_signed_at_label=None, digital_signed_label=None, font_family_name=None, font_size=None, location_label=None, reason_label=None, is_foreground_image=None, **kwargs):  # noqa: E501
         """Initializes new instance of PdfDigitalSignatureAppearance"""  # noqa: E501
 
         self._background = None
@@ -80,6 +82,7 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
         self._font_size = None
         self._location_label = None
         self._reason_label = None
+        self._is_foreground_image = None
 
         if background is not None:
             self.background = background
@@ -99,6 +102,8 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
             self.location_label = location_label
         if reason_label is not None:
             self.reason_label = reason_label
+        if is_foreground_image is not None:
+            self.is_foreground_image = is_foreground_image
 
         base = super(PdfDigitalSignatureAppearance, self)
         base.__init__(**kwargs)
@@ -321,6 +326,30 @@ class PdfDigitalSignatureAppearance(SignatureAppearance):
         :type: str
         """
         self._reason_label = reason_label
+    
+    @property
+    def is_foreground_image(self):
+        """
+        Gets the is_foreground_image.  # noqa: E501
+
+        Gets or sets whether the signature image is drawn in front of the text.  # noqa: E501
+
+        :return: The is_foreground_image.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_foreground_image
+
+    @is_foreground_image.setter
+    def is_foreground_image(self, is_foreground_image):
+        """
+        Sets the is_foreground_image.
+
+        Gets or sets whether the signature image is drawn in front of the text.  # noqa: E501
+
+        :param is_foreground_image: The is_foreground_image.  # noqa: E501
+        :type: bool
+        """
+        self._is_foreground_image = is_foreground_image
 
     def to_dict(self):
         """Returns the model properties as a dict"""

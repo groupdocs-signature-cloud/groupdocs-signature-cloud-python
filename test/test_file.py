@@ -35,42 +35,42 @@ class TestFile(object):
     def pdf_one_page(cls):
         f = TestFile()
         f.file_name = "01_pages.pdf"
-        f.folder = "Pdf\\"
+        f.folder = "Pdf/"
         return f
 
     @classmethod
     def image_jpg(cls):
         f = TestFile()
         f.file_name = "01_pages.jpg"
-        f.folder = "Images\\"
+        f.folder = "Images/"
         return f  
 
     @classmethod
     def presentation_pptx(cls):
         f = TestFile()
         f.file_name = "01_pages.pptx"
-        f.folder = "Presentations\\"
+        f.folder = "Presentations/"
         return f           
 
     @classmethod
     def spreadsheet_xlsx(cls):
         f = TestFile()
         f.file_name = "01_pages.xlsx"
-        f.folder = "Spreadsheets\\"
+        f.folder = "Spreadsheets/"
         return f  
 
     @classmethod
     def word_docx(cls):
         f = TestFile()
         f.file_name = "01_pages.docx"
-        f.folder = "WordProcessing\\"
+        f.folder = "WordProcessing/"
         return f  
 
     @classmethod
     def image_signed(cls):
         f = TestFile()
         f.file_name = "SignedForVerificationAll.png"
-        f.folder = "Signed\\"
+        f.folder = "Signed/"
         f.size = 27533
         return f
 
@@ -78,15 +78,23 @@ class TestFile(object):
     def pdf_signed(cls):
         f = TestFile()
         f.file_name = "SignedForVerificationAll.pdf"
-        f.folder = "Signed\\"
+        f.folder = "Signed/"
         f.size = 164060
+        return f
+
+    @classmethod
+    def pdf_digital_signed(cls):
+        f = TestFile()
+        f.file_name = "SignedForVerificationDigital.pdf"
+        f.folder = "Signed/"
+        f.size = 581574
         return f
 
     @classmethod
     def presentation_signed(cls):
         f = TestFile()
         f.file_name = "SignedForVerificationAll.pptx"
-        f.folder = "Signed\\"
+        f.folder = "Signed/"
         f.size = 43205
         return f
 
@@ -94,7 +102,7 @@ class TestFile(object):
     def spreadsheet_signed(cls):
         f = TestFile()
         f.file_name = "SignedForVerificationAll.xlsx"
-        f.folder = "Signed\\"
+        f.folder = "Signed/"
         f.size = 318157
         return f
 
@@ -102,7 +110,7 @@ class TestFile(object):
     def wordprocessing_signed(cls):
         f = TestFile()
         f.file_name = "SignedForVerificationAll.docx"
-        f.folder = "Signed\\"
+        f.folder = "Signed/"
         f.size = 1358290
         return f
 
@@ -110,28 +118,28 @@ class TestFile(object):
     def additional_signature01(cls):
         f = TestFile()
         f.file_name = "signature_01.jpg"
-        f.folder = "Additional\\"        
+        f.folder = "Additional/"        
         return f
 
     @classmethod
     def additional_pfx(cls):
         f = TestFile()
-        f.file_name = "SherlockHolmes.pfx"
-        f.folder = "Additional\\"        
+        f.file_name = "TestCertificate.pfx"
+        f.folder = "Additional/"        
         return f   
 
     @classmethod
     def image_sign(cls):
         f = TestFile()
         f.file_name = "JohnSmithSign.png"
-        f.folder = "Additional\\"        
+        f.folder = "Additional/"        
         return f   
     
     @classmethod
     def not_exist(cls):
         f = TestFile()
         f.file_name = "not-exist.docx"
-        f.folder = "somefolder\\"
+        f.folder = "somefolder/"
         return f
 
     @classmethod
@@ -144,6 +152,7 @@ class TestFile(object):
             cls.word_docx(),
             cls.image_signed(),
             cls.pdf_signed(),
+            cls.pdf_digital_signed(),
             cls.presentation_signed(),
             cls.spreadsheet_signed(),
             cls.wordprocessing_signed(),

@@ -38,35 +38,35 @@ class TestSignBarcode(TestContext):
 
     def test_sign_barcode_image(self):
         test_file = TestFile.image_jpg()
-        signedFileName = "Output\\ImageBarcodeSigned.jpg"        
+        signedFileName = "Output/ImageBarcodeSigned.jpg"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_barcode_pdf(self):
         test_file = TestFile.pdf_one_page()
-        signedFileName = "Output\\PdfBarcodeSigned.pdf"        
+        signedFileName = "Output/PdfBarcodeSigned.pdf"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_barcode_presentation(self):
         test_file = TestFile.presentation_pptx()
-        signedFileName = "Output\\PresentationBarcodeSigned.pptx"        
+        signedFileName = "Output/PresentationBarcodeSigned.pptx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_barcode_spreadsheet(self):
         test_file = TestFile.spreadsheet_xlsx()
-        signedFileName = "Output\\SpreadsheetBarcodeSigned.xlsx"        
+        signedFileName = "Output/SpreadsheetBarcodeSigned.xlsx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_barcode_wordprocessing(self):
         test_file = TestFile.word_docx()
-        signedFileName = "Output\\WordBarcodeSigned.docx"        
+        signedFileName = "Output/WordBarcodeSigned.docx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)                       

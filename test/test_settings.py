@@ -25,8 +25,18 @@
 # </summary>
 # -----------------------------------------------------------------------------------
 
+import os
+
+
+def _setting(name, default):
+    """Returns value of the environment variable if it is set and not empty, default value otherwise."""
+    value = os.environ.get(name)
+    return value if value else default
+
+
 class TestSettings:
-# Get your AppSID and AppKey at https://dashboard.groupdocs.cloud (free registration is required).
-    APP_SID="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-    APP_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    API_BASE_URL="https://api.groupdocs.cloud"
+    # Get your AppSID and AppKey at https://dashboard.groupdocs.cloud (free registration is required).
+    # Values can be overridden with TEST_APP_SID, TEST_APP_KEY and TEST_API_BASE_URL environment variables.
+    APP_SID = _setting("TEST_APP_SID", "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
+    APP_KEY = _setting("TEST_APP_KEY", "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+    API_BASE_URL = _setting("TEST_API_BASE_URL", "https://api.groupdocs.cloud")

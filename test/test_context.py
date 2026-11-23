@@ -62,8 +62,10 @@ class TestContext(unittest.TestCase):
         self._close_api_thread_pool()
 
     def get_test_file_path(self, file):
-        test_files = "test\\test_files"
-        test_file_path = os.path.join(test_files, file.folder, file.file_name) 
+        # Resolve test files relative to this file, so tests do not depend on the working directory
+        # and work on any operating system (remote storage paths always use "/").
+        test_files = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test_files")
+        test_file_path = os.path.join(test_files, *(file.folder.split("/") + [file.file_name]))
 
         return test_file_path
 

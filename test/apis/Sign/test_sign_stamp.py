@@ -38,35 +38,35 @@ class TestSignStamp(TestContext):
 
     def test_sign_stamp_image(self):
         test_file = TestFile.image_jpg()
-        signedFileName = "Output\\ImageStampSigned.jpg"        
+        signedFileName = "Output/ImageStampSigned.jpg"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_stamp_pdf(self):
         test_file = TestFile.pdf_one_page()
-        signedFileName = "Output\\PdfStampSigned.pdf"        
+        signedFileName = "Output/PdfStampSigned.pdf"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_stamp_presentation(self):
         test_file = TestFile.presentation_pptx()
-        signedFileName = "Output\\PresentationStampSigned.pptx"        
+        signedFileName = "Output/PresentationStampSigned.pptx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_stamp_spreadsheet(self):
         test_file = TestFile.spreadsheet_xlsx()
-        signedFileName = "Output\\SpreadsheetStampSigned.xlsx"        
+        signedFileName = "Output/SpreadsheetStampSigned.xlsx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_stamp_wordprocessing(self):
         test_file = TestFile.word_docx()
-        signedFileName = "Output\\WordStampSigned.docx"        
+        signedFileName = "Output/WordStampSigned.docx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)                       

@@ -38,35 +38,35 @@ class TestSignCollection(TestContext):
 
     def test_sign_collection_image(self):
         test_file = TestFile.image_jpg()
-        signedFileName = "Output\\ImageCollectionSigned.jpg"        
+        signedFileName = "Output/ImageCollectionSigned.jpg"        
         settings = self.populate_sign_options_image(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_collection_pdf(self):
         test_file = TestFile.pdf_one_page()
-        signedFileName = "Output\\PdfCollectionSigned.pdf"        
+        signedFileName = "Output/PdfCollectionSigned.pdf"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_collection_presentation(self):
         test_file = TestFile.presentation_pptx()
-        signedFileName = "Output\\PresentationCollectionSigned.pptx"        
+        signedFileName = "Output/PresentationCollectionSigned.pptx"        
         settings = self.populate_sign_options_image(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_collection_spreadsheet(self):
         test_file = TestFile.spreadsheet_xlsx()
-        signedFileName = "Output\\SpreadsheetCollectionSigned.xlsx"        
+        signedFileName = "Output/SpreadsheetCollectionSigned.xlsx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)
 
     def test_sign_collection_wordprocessing(self):
         test_file = TestFile.word_docx()
-        signedFileName = "Output\\WordCollectionSigned.docx"        
+        signedFileName = "Output/WordCollectionSigned.docx"        
         settings = self.populate_sign_options(signedFileName, test_file)            
         response = self.sign_api.create_signatures(CreateSignaturesRequest(settings))
         self.check_response(response, signedFileName)                       

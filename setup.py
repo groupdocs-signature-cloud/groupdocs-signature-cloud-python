@@ -6,7 +6,7 @@ import datetime
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "groupdocs-signature-cloud"
-VERSION = "25.6"
+VERSION = "26.11"
 
 # Append current time to the version when publishing to test environment
 if "--test" in sys.argv:
@@ -43,6 +43,13 @@ setup(
 		"Programming Language :: Python :: 3.5",
 		"Programming Language :: Python :: 3.6",
 		"Programming Language :: Python :: 3.7",
+		"Programming Language :: Python :: 3.8",
+		"Programming Language :: Python :: 3.9",
+		"Programming Language :: Python :: 3.10",
+		"Programming Language :: Python :: 3.11",
+		"Programming Language :: Python :: 3.12",
+		"Programming Language :: Python :: 3.13",
+		"Programming Language :: Python :: 3.14",
 	],
     keywords=["groupdocs", "signature", "cloud", "python", "sdk"],
     install_requires=REQUIRES,

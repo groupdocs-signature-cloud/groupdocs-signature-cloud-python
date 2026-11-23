@@ -41,7 +41,7 @@ class TestVerifyDigital(TestContext):
         pass
 
     def test_verify_digital_pdf(self):
-        test_file = TestFile.pdf_signed()
+        test_file = TestFile.pdf_digital_signed()
         settings = self.populate_options(test_file)            
         response = self.sign_api.verify_signatures(VerifySignaturesRequest(settings))
         self.check_response(response, test_file)
